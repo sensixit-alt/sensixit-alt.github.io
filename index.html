@@ -1,497 +1,1695 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SenXit - Produtos</title>
+<title>SenXit - Produtos</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #08080c;
-            color: white;
-            padding: 20px 14px 40px;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #08080c;
+    color: #fff;
+    min-height: 100vh;
+}
 
-        .container {
-            max-width: 520px;
-            margin: auto;
-        }
+button,
+input,
+select {
+    font-family: inherit;
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 22px;
-        }
+.container {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+    padding: 20px 15px 45px;
+}
 
-        .logo {
-            width: 82px;
-            height: 82px;
-            margin: 0 auto 12px;
-            border-radius: 23px;
-            background: linear-gradient(135deg, #9d00ff, #5000a8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 25px;
-            font-weight: 900;
-            box-shadow: 0 0 35px rgba(150, 0, 255, .25);
-        }
+/* HEADER */
 
-        h1 {
-            font-size: 30px;
-            margin-bottom: 5px;
-        }
+.header {
+    text-align: center;
+    padding: 15px 0 22px;
+}
 
-        .subtitle {
-            color: #999;
-            font-size: 14px;
-        }
+.logo {
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 13px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #a600ff, #5800b8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 900;
+    box-shadow: 0 0 35px rgba(166,0,255,.25);
+}
 
-        .security {
-            background: linear-gradient(135deg, #191021, #111118);
-            border: 1px solid #6e19a8;
-            border-radius: 18px;
-            padding: 18px;
-            margin-bottom: 22px;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(0,0,0,.25);
-        }
+.header h1 {
+    font-size: 31px;
+    margin-bottom: 5px;
+}
 
-        .security strong {
-            display: block;
-            font-size: 18px;
-            margin-bottom: 7px;
-        }
+.header p {
+    color: #999;
+    font-size: 14px;
+}
 
-        .security p {
-            color: #bbb;
-            font-size: 13px;
-            line-height: 1.5;
-        }
+/* AVISO */
 
-        .category-title {
-            font-size: 14px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 25px 4px 10px;
-        }
+.security {
+    background: linear-gradient(135deg, #1b0d25, #111117);
+    border: 1px solid #7510a8;
+    border-radius: 19px;
+    padding: 18px 15px;
+    text-align: center;
+    margin-bottom: 25px;
+}
 
-        .product {
-            background: #15151c;
-            border: 1px solid #292933;
-            border-radius: 22px;
-            padding: 22px;
-            margin-bottom: 17px;
-            box-shadow: 0 8px 25px rgba(0,0,0,.25);
-        }
+.security-title {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
 
-        .product-icon {
-            width: 65px;
-            height: 65px;
-            margin-bottom: 14px;
-            border-radius: 18px;
-            background: #22222c;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 29px;
-        }
+.security p {
+    color: #bdbdbd;
+    font-size: 13px;
+    line-height: 1.5;
+}
 
-        .product h2 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
+/* CATEGORIA */
 
-        .product-description {
-            color: #999;
-            font-size: 14px;
-            line-height: 1.55;
-            margin-bottom: 16px;
-        }
+.category-title {
+    font-size: 14px;
+    color: #888;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 24px 3px 11px;
+}
 
-        .features {
-            list-style: none;
-            margin-bottom: 18px;
-        }
+/* PRODUTO */
 
-        .features li {
-            color: #ccc;
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
+.product {
+    background: #15151c;
+    border: 1px solid #292933;
+    border-radius: 22px;
+    padding: 21px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+}
 
-        .features li::before {
-            content: "✓";
-            color: #b000ff;
-            font-weight: bold;
-            margin-right: 8px;
-        }
+.product:hover {
+    border-color: #551878;
+}
 
-        .price {
-            font-size: 24px;
-            font-weight: 900;
-            margin-bottom: 15px;
-        }
+.product-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-        .buy {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #a000ff, #6500d9);
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 900;
-            border: none;
-            cursor: pointer;
-        }
+.product-icon {
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    background: #22222c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 29px;
+}
 
-        .buy:active {
-            transform: scale(.97);
-        }
+.product-info {
+    flex: 1;
+}
 
-        .emulator {
-            border-color: #44215a;
-        }
+.product h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
 
-        .choice-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin: 18px 0 10px;
-        }
+.product-short {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.4;
+}
 
-        .sensi-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 17px;
-        }
+.discount {
+    display: inline-block;
+    margin-top: 12px;
+    background: #5f008b;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 900;
+}
 
-        .sensi-option {
-            position: relative;
-        }
+.price {
+    margin-top: 12px;
+    font-size: 22px;
+    font-weight: 900;
+}
 
-        .sensi-option input {
-            display: none;
-        }
+.old-price {
+    color: #777;
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-right: 5px;
+}
 
-        .sensi-option label {
-            display: block;
-            padding: 12px 5px;
-            text-align: center;
-            border: 1px solid #353540;
-            border-radius: 12px;
-            background: #20202a;
-            color: #aaa;
-            font-size: 12px;
-            cursor: pointer;
-        }
+.buy {
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #a000ff, #6500d9);
+    color: white;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+}
 
-        .sensi-option input:checked + label {
-            border-color: #a000ff;
-            background: #321044;
-            color: white;
-        }
+.buy:active {
+    transform: scale(.98);
+}
 
-        .email-box {
-            margin-top: 18px;
-        }
+/* TELA DO PRODUTO */
 
-        .email-box label {
-            display: block;
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 7px;
-        }
+#productPage {
+    display: none;
+}
 
-        .email-box input {
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            border: 1px solid #34343e;
-            background: #0e0e13;
-            color: white;
-            outline: none;
-            font-size: 14px;
-        }
+.back {
+    border: 0;
+    background: transparent;
+    color: #aaa;
+    font-size: 14px;
+    padding: 8px 0 20px;
+    cursor: pointer;
+}
 
-        .email-box input:focus {
-            border-color: #9500e8;
-        }
+.detail-card {
+    background: #15151c;
+    border: 1px solid #292933;
+    border-radius: 22px;
+    padding: 22px;
+}
 
-        .notice {
-            margin-top: 14px;
-            padding: 12px;
-            background: #101017;
-            border-radius: 12px;
-            color: #888;
-            font-size: 11px;
-            line-height: 1.5;
-        }
+.detail-icon {
+    width: 82px;
+    height: 82px;
+    border-radius: 22px;
+    background: #22222c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    margin-bottom: 17px;
+}
 
-        .footer {
-            text-align: center;
-            color: #666;
-            font-size: 12px;
-            margin-top: 30px;
-            line-height: 1.6;
-        }
-    </style>
+.detail-card h2 {
+    font-size: 24px;
+    margin-bottom: 9px;
+}
+
+.detail-description {
+    color: #999;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.features li {
+    padding: 8px 0;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.features li::before {
+    content: "✓";
+    color: #b000ff;
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+/* ESCOLHAS */
+
+.option-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin: 20px 0 9px;
+}
+
+select,
+.email {
+    width: 100%;
+    background: #0e0e13;
+    color: #fff;
+    border: 1px solid #363641;
+    border-radius: 12px;
+    padding: 14px;
+    outline: none;
+    font-size: 14px;
+}
+
+select:focus,
+.email:focus {
+    border-color: #9700e8;
+}
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.option {
+    position: relative;
+}
+
+.option input {
+    display: none;
+}
+
+.option label {
+    display: block;
+    text-align: center;
+    padding: 12px 4px;
+    border: 1px solid #353540;
+    border-radius: 12px;
+    background: #20202a;
+    color: #aaa;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.option input:checked + label {
+    border-color: #a000ff;
+    background: #351045;
+    color: #fff;
+}
+
+/* ADICIONAL */
+
+.extra {
+    margin-top: 17px;
+    padding: 15px;
+    background: #101017;
+    border: 1px solid #292933;
+    border-radius: 14px;
+}
+
+.extra label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ddd;
+    font-size: 13px;
+}
+
+.extra input {
+    width: 18px;
+    height: 18px;
+    accent-color: #a000ff;
+}
+
+/* EMAIL */
+
+.email-area {
+    margin-top: 20px;
+}
+
+.email-area label {
+    display: block;
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+/* TOTAL */
+
+.total {
+    border-top: 1px solid #292933;
+    margin-top: 20px;
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total span {
+    color: #999;
+    font-size: 14px;
+}
+
+.total strong {
+    font-size: 25px;
+}
+
+/* AVISO PRODUTO */
+
+.product-notice {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 13px;
+    background: #100d13;
+    color: #999;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin-top: 35px;
+    line-height: 1.7;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
+<!-- ========================= -->
+<!-- TELA INICIAL -->
+<!-- ========================= -->
+
+<div id="homePage">
+
     <div class="header">
-        <div class="logo">SX</div>
+
+        <div class="logo">
+            SX
+        </div>
 
         <h1>SenXit</h1>
 
-        <p class="subtitle">
+        <p>
             Produtos e ferramentas
         </p>
+
     </div>
 
 
-    <!-- AVISO PRINCIPAL -->
-
     <div class="security">
-        <strong>🔥 PRODUTOS COM FOCO EM SEGURANÇA</strong>
+
+        <div class="security-title">
+            🔥 PRODUTOS 100% ANTIBAN!
+        </div>
 
         <p>
             🛡️ Mais segurança e proteção durante o uso.
             <br>
             📦 Produtos selecionados e suporte na entrega.
         </p>
+
     </div>
 
+
+    <!-- SENSIBILIDADE -->
 
     <div class="category-title">
-        📱 Android
+        🎯 Sensibilidade Profissional
     </div>
 
-
-    <!-- PRODUTO ANDROID -->
 
     <div class="product">
 
-        <div class="product-icon">
-            📱
+        <div class="product-top">
+
+            <div class="product-icon">
+                🍎
+            </div>
+
+            <div class="product-info">
+
+                <h2>
+                    Sensibilidade Profissional Mobile iOS
+                </h2>
+
+                <p class="product-short">
+                    Sensibilidade profissional testada para iPhone.
+                </p>
+
+            </div>
+
         </div>
 
-        <h2>Xit VIP Mobile Android</h2>
+        <span class="discount">
+            44% OFF
+        </span>
 
-        <p class="product-description">
-            Pacote para Android com arquivo e vídeo explicando
-            como realizar a instalação.
-        </p>
+        <div class="price">
+            R$ 80,00
+        </div>
 
-        <ul class="features">
-            <li>Arquivo para Android</li>
-            <li>Vídeo ensinando a instalação</li>
-            <li>Configuração de sensibilidade</li>
-            <li>Configuração de DPI</li>
-            <li>Entrega após confirmação da compra</li>
-        </ul>
+        <button
+            class="buy"
+            onclick="openProduct('iosSensi')"
+        >
+            VER PRODUTO
+        </button>
+
+    </div>
+
+
+    <div class="product">
+
+        <div class="product-top">
+
+            <div class="product-icon">
+                🤖
+            </div>
+
+            <div class="product-info">
+
+                <h2>
+                    Sensibilidade Profissional Mobile Android
+                </h2>
+
+                <p class="product-short">
+                    Sensibilidade profissional testada para Android.
+                </p>
+
+            </div>
+
+        </div>
+
+        <span class="discount">
+            44% OFF
+        </span>
+
+        <div class="price">
+            R$ 75,00
+        </div>
+
+        <button
+            class="buy"
+            onclick="openProduct('androidSensi')"
+        >
+            VER PRODUTO
+        </button>
+
+    </div>
+
+
+    <div class="product">
+
+        <div class="product-top">
+
+            <div class="product-icon">
+                🖥️
+            </div>
+
+            <div class="product-info">
+
+                <h2>
+                    Sensibilidade Profissional Emulador
+                </h2>
+
+                <p class="product-short">
+                    Configuração profissional para emuladores.
+                </p>
+
+            </div>
+
+        </div>
+
+        <span class="discount">
+            44% OFF
+        </span>
+
+        <div class="price">
+            R$ 97,00
+        </div>
+
+        <button
+            class="buy"
+            onclick="openProduct('emulatorSensi')"
+        >
+            VER PRODUTO
+        </button>
+
+    </div>
+
+
+    <!-- XIT -->
+
+    <div class="category-title">
+        🔥 Xit VIP Atualizado
+    </div>
+
+
+    <div class="product">
+
+        <div class="product-top">
+
+            <div class="product-icon">
+                🍎
+            </div>
+
+            <div class="product-info">
+
+                <h2>
+                    Xit VIP Atualizado iOS
+                </h2>
+
+                <p class="product-short">
+                    Versão atualizada para dispositivos iOS.
+                </p>
+
+            </div>
+
+        </div>
+
+        <span class="discount">
+            44% OFF
+        </span>
+
+        <div class="price">
+            R$ 199,99
+        </div>
+
+        <button
+            class="buy"
+            onclick="openProduct('iosXit')"
+        >
+            VER PRODUTO
+        </button>
+
+    </div>
+
+
+    <div class="product">
+
+        <div class="product-top">
+
+            <div class="product-icon">
+                🤖
+            </div>
+
+            <div class="product-info">
+
+                <h2>
+                    Xit VIP Atualizado Android
+                </h2>
+
+                <p class="product-short">
+                    Arquivo atualizado com suporte para instalação.
+                </p>
+
+            </div>
+
+        </div>
+
+        <span class="discount">
+            44% OFF
+        </span>
 
         <div class="price">
             R$ 179,99
         </div>
 
-        <a class="buy" href="SEU_LINK_DE_PAGAMENTO_ANDROID">
-            COMPRAR AGORA
-        </a>
+        <button
+            class="buy"
+            onclick="openProduct('androidXit')"
+        >
+            VER PRODUTO
+        </button>
 
     </div>
 
 
-    <div class="category-title">
-        🖥️ Emulador
-    </div>
+    <div class="product">
 
+        <div class="product-top">
 
-    <!-- PRODUTO EMULADOR -->
+            <div class="product-icon">
+                🖥️
+            </div>
 
-    <div class="product emulator">
+            <div class="product-info">
 
-        <div class="product-icon">
-            🖥️
+                <h2>
+                    Xit VIP Atualizado Emulador
+                </h2>
+
+                <p class="product-short">
+                    Painel externo e arquivos para emulador.
+                </p>
+
+            </div>
+
         </div>
 
-        <h2>Painel + Arquivos para Emulador</h2>
+        <span class="discount">
+            44% OFF
+        </span>
 
-        <p class="product-description">
-            Receba um painel totalmente externo junto com os
-            arquivos necessários para o emulador.
+        <div class="price">
+            R$ 179,99
+        </div>
+
+        <button
+            class="buy"
+            onclick="openProduct('emulatorXit')"
+        >
+            VER PRODUTO
+        </button>
+
+    </div>
+
+
+    <!-- DIAMANTES -->
+
+    <div class="category-title">
+        💎 Ofertas
+    </div>
+
+
+    <div class="product">
+
+        <div class="product-top">
+
+            <div class="product-icon">
+                💎
+            </div>
+
+            <div class="product-info">
+
+                <h2>
+                    Diamantes com Desconto
+                </h2>
+
+                <p class="product-short">
+                    Diamantes com condição especial.
+                </p>
+
+            </div>
+
+        </div>
+
+        <span class="discount">
+            44% OFF
+        </span>
+
+        <div class="price">
+            Consulte
+        </div>
+
+        <button
+            class="buy"
+            onclick="openProduct('diamantes')"
+        >
+            VER PRODUTO
+        </button>
+
+    </div>
+
+
+    <div class="footer">
+        © 2026 SenXit
+        <br>
+        Todos os direitos reservados.
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- TELA DO PRODUTO -->
+<!-- ========================= -->
+
+<div id="productPage">
+
+    <button
+        class="back"
+        onclick="goHome()"
+    >
+        ← Voltar para produtos
+    </button>
+
+
+    <div class="detail-card">
+
+        <div
+            class="detail-icon"
+            id="detailIcon"
+        >
+            🎯
+        </div>
+
+
+        <h2 id="detailTitle">
+            Produto
+        </h2>
+
+
+        <p
+            class="detail-description"
+            id="detailDescription"
+        >
+            Descrição
         </p>
 
-        <ul class="features">
-            <li>Painel totalmente externo</li>
-            <li>Arquivos para o emulador</li>
-            <li>Pack de sensibilidade à sua escolha</li>
-            <li>Entrega após confirmação da compra</li>
+
+        <ul
+            class="features"
+            id="detailFeatures"
+        >
         </ul>
 
 
-        <div class="choice-title">
-            ⚡ Escolha seu Pack de Sensi
+        <!-- ESCOLHA MODELO -->
+
+        <div
+            id="modelArea"
+            style="display:none;"
+        >
+
+            <div class="option-title">
+                📱 Escolha o modelo do seu celular
+            </div>
+
+            <select id="modelSelect">
+
+                <option value="">
+                    Selecione seu modelo
+                </option>
+
+                <option>
+                    iPhone 11
+                </option>
+
+                <option>
+                    iPhone 11 Pro
+                </option>
+
+                <option>
+                    iPhone 11 Pro Max
+                </option>
+
+                <option>
+                    iPhone 12
+                </option>
+
+                <option>
+                    iPhone 12 Pro
+                </option>
+
+                <option>
+                    iPhone 13
+                </option>
+
+                <option>
+                    iPhone 13 Pro
+                </option>
+
+                <option>
+                    iPhone 14
+                </option>
+
+                <option>
+                    iPhone 14 Pro
+                </option>
+
+                <option>
+                    iPhone 15
+                </option>
+
+                <option>
+                    iPhone 15 Pro
+                </option>
+
+                <option>
+                    iPhone 16
+                </option>
+
+                <option>
+                    iPhone 16 Pro
+                </option>
+
+                <option>
+                    Outro
+                </option>
+
+            </select>
+
         </div>
 
-        <div class="sensi-options">
 
-            <div class="sensi-option">
-                <input
-                    type="radio"
-                    id="lenta"
-                    name="sensi"
-                    value="Lenta"
-                >
-                <label for="lenta">
-                    🐢 Lenta
-                </label>
+        <!-- EMULADOR -->
+
+        <div
+            id="emulatorArea"
+            style="display:none;"
+        >
+
+            <div class="option-title">
+                🖥️ Escolha seu emulador
             </div>
 
-            <div class="sensi-option">
-                <input
-                    type="radio"
-                    id="media"
-                    name="sensi"
-                    value="Média"
-                >
-                <label for="media">
-                    ⚡ Média
-                </label>
+            <select id="emulatorSelect">
+
+                <option value="">
+                    Selecione seu emulador
+                </option>
+
+                <option>
+                    BlueStacks
+                </option>
+
+                <option>
+                    MSI
+                </option>
+
+                <option>
+                    LDPlayer
+                </option>
+
+                <option>
+                    GameLoop
+                </option>
+
+                <option>
+                    Nox
+                </option>
+
+                <option>
+                    MEmu
+                </option>
+
+                <option>
+                    Outro
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- SENSI EMULADOR -->
+
+        <div
+            id="sensiArea"
+            style="display:none;"
+        >
+
+            <div class="option-title">
+                ⚡ Escolha seu Pack de Sensi
             </div>
 
-            <div class="sensi-option">
-                <input
-                    type="radio"
-                    id="rapida"
-                    name="sensi"
-                    value="Rápida"
-                >
-                <label for="rapida">
-                    🚀 Rápida
-                </label>
+            <div class="option-grid">
+
+                <div class="option">
+
+                    <input
+                        type="radio"
+                        name="sensiPack"
+                        id="sensiLenta"
+                        value="Lenta"
+                    >
+
+                    <label for="sensiLenta">
+                        🐢 Lenta
+                    </label>
+
+                </div>
+
+
+                <div class="option">
+
+                    <input
+                        type="radio"
+                        name="sensiPack"
+                        id="sensiMedia"
+                        value="Média"
+                    >
+
+                    <label for="sensiMedia">
+                        ⚡ Média
+                    </label>
+
+                </div>
+
+
+                <div class="option">
+
+                    <input
+                        type="radio"
+                        name="sensiPack"
+                        id="sensiRapida"
+                        value="Rápida"
+                    >
+
+                    <label for="sensiRapida">
+                        🚀 Rápida
+                    </label>
+
+                </div>
+
             </div>
 
         </div>
 
 
-        <div class="email-box">
+        <!-- ADICIONAL IOS -->
 
-            <label for="email">
-                📧 E-mail para receber o contato da entrega
+        <div
+            class="extra"
+            id="iosExtra"
+            style="display:none;"
+        >
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="iosExtraCheck"
+                    onchange="updateTotal()"
+                >
+
+                Adicionar opção extra
+                <strong>+ R$ 15,00</strong>
+
+            </label>
+
+        </div>
+
+
+        <!-- ADICIONAL ANDROID -->
+
+        <div
+            class="extra"
+            id="androidExtra"
+            style="display:none;"
+        >
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="androidExtraCheck"
+                    onchange="updateTotal()"
+                >
+
+                Adicionar opção extra
+                <strong>+ R$ 10,00</strong>
+
+            </label>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="email-area">
+
+            <label>
+                📧 E-mail para contato e entrega
             </label>
 
             <input
-                type="email"
+                class="email"
                 id="email"
+                type="email"
                 placeholder="Digite seu melhor e-mail"
             >
 
         </div>
 
 
-        <div class="notice">
-            A escolha do Pack de Sensi será considerada junto
-            ao pedido do painel e dos arquivos para o emulador.
-            Configurações de sensibilidade e recursos de
-            diamantes não fazem parte dessa seleção.
+        <!-- TOTAL -->
+
+        <div class="total">
+
+            <span>
+                Total
+            </span>
+
+            <strong id="totalPrice">
+                R$ 0,00
+            </strong>
+
         </div>
 
 
-        <br>
-
-        <button class="buy" onclick="comprarEmulador()">
-            COMPRAR AGORA
+        <button
+            class="buy"
+            onclick="continuePurchase()"
+        >
+            CONTINUAR PARA COMPRA
         </button>
 
-    </div>
 
+        <!-- AVISO EMULADOR -->
 
-    <!-- PRODUTO EXTRA -->
+        <div
+            class="product-notice"
+            id="emulatorNotice"
+            style="display:none;"
+        >
 
-    <div class="category-title">
-        🔥 Outros produtos
-    </div>
+            🔥 <strong>PRODUTOS 100% ANTIBAN!</strong>
+            <br><br>
 
+            🛡️ Mais segurança e proteção durante o uso.
+            <br>
 
-    <div class="product">
+            📦 Painel + arquivos para emulador
+            + Pack de Sensi à sua escolha.
+            <br><br>
 
-        <div class="product-icon">
-            🎯
+            ⚡ Lenta • Média • Rápida
+
         </div>
 
-        <h2>Sensi Premium</h2>
 
-        <p class="product-description">
-            Sensibilidade otimizada para melhorar sua jogabilidade.
-        </p>
+        <div
+            class="product-notice"
+            id="androidNotice"
+            style="display:none;"
+        >
 
-        <div class="price">
-            R$ 19,90
+            📦 O produto Android inclui o arquivo
+            e o vídeo ensinando a instalação.
+
+            <br><br>
+
+            🎯 Sensibilidade e DPI testadas.
+
         </div>
-
-        <a class="buy" href="SEU_LINK_DE_PAGAMENTO_SENSI">
-            COMPRAR AGORA
-        </a>
 
     </div>
 
 
     <div class="footer">
-        © 2026 SenXit · Todos os direitos reservados
+        © 2026 SenXit
     </div>
+
+</div>
 
 </div>
 
 
 <script>
 
-function comprarEmulador() {
+/* =====================================
+   DADOS DOS PRODUTOS
+===================================== */
 
-    const email = document.getElementById("email").value;
+const products = {
 
-    const sensi = document.querySelector(
-        'input[name="sensi"]:checked'
-    );
+    iosSensi: {
+
+        icon: "🍎",
+
+        title: "Sensibilidade Profissional Mobile iOS",
+
+        price: 80,
+
+        description:
+        "Sensibilidade profissional testada para dispositivos iOS, buscando uma configuração mais adequada ao seu modelo de celular.",
+
+        features: [
+            "Sensibilidade profissional",
+            "Configuração para celular",
+            "Escolha do modelo do aparelho",
+            "Configuração personalizada"
+        ],
+
+        model: true
+
+    },
+
+
+    androidSensi: {
+
+        icon: "🤖",
+
+        title: "Sensibilidade Profissional Mobile Android",
+
+        price: 75,
+
+        description:
+        "Sensibilidade profissional para Android, com escolha do modelo do aparelho.",
+
+        features: [
+            "Sensibilidade profissional",
+            "Configuração para celular",
+            "Escolha do modelo do aparelho",
+            "Configuração personalizada"
+        ],
+
+        model: true
+
+    },
+
+
+    emulatorSensi: {
+
+        icon: "🖥️",
+
+        title: "Sensibilidade Profissional Emulador",
+
+        price: 97,
+
+        description:
+        "Configuração de sensibilidade profissional para quem joga através de emulador.",
+
+        features: [
+            "Sensibilidade profissional",
+            "Escolha do emulador",
+            "Configuração direcionada ao emulador",
+            "Pack de configuração"
+        ],
+
+        emulator: true
+
+    },
+
+
+    iosXit: {
+
+        icon: "🍎",
+
+        title: "Xit VIP Atualizado iOS",
+
+        price: 199.99,
+
+        description:
+        "Xit VIP atualizado para dispositivos iOS.",
+
+        features: [
+            "Versão atualizada",
+            "Produto para iOS",
+            "Suporte na entrega",
+            "Configuração conforme o produto"
+        ],
+
+        iosExtra: true
+
+    },
+
+
+    androidXit: {
+
+        icon: "🤖",
+
+        title: "Xit VIP Atualizado Android",
+
+        price: 179.99,
+
+        description:
+        "Xit VIP atualizado para Android com arquivo e vídeo explicando como realizar a instalação.",
+
+        features: [
+            "Arquivo para Android",
+            "Vídeo ensinando a instalação",
+            "Sensibilidade testada",
+            "DPI testada",
+            "Suporte na entrega"
+        ],
+
+        androidExtra: true,
+
+        androidNotice: true
+
+    },
+
+
+    emulatorXit: {
+
+        icon: "🖥️",
+
+        title: "Xit VIP Atualizado Emulador",
+
+        price: 179.99,
+
+        description:
+        "Produto para emulador com painel totalmente externo e os arquivos necessários.",
+
+        features: [
+            "Painel totalmente externo",
+            "Arquivos para o emulador",
+            "Escolha do Pack de Sensi",
+            "Lenta, Média ou Rápida",
+            "Suporte na entrega"
+        ],
+
+        emulator: true,
+
+        sensi: true,
+
+        emulatorNotice: true
+
+    },
+
+
+    diamantes: {
+
+        icon: "💎",
+
+        title: "Diamantes com Desconto",
+
+        price: 0,
+
+        description:
+        "Consulte a disponibilidade e as condições atuais para diamantes.",
+
+        features: [
+            "Condição especial",
+            "Atendimento após o pedido",
+            "Entrega conforme disponibilidade"
+        ],
+
+        diamantes: true
+
+    }
+
+};
+
+
+/* =====================================
+   VARIÁVEIS
+===================================== */
+
+let currentProduct = null;
+
+
+/* =====================================
+   ABRIR PRODUTO
+===================================== */
+
+function openProduct(id) {
+
+    currentProduct = id;
+
+    const product = products[id];
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("productPage").style.display = "block";
+
+    document.getElementById("detailIcon").textContent =
+        product.icon;
+
+    document.getElementById("detailTitle").textContent =
+        product.title;
+
+    document.getElementById("detailDescription").textContent =
+        product.description;
+
+
+    /* FEATURES */
+
+    const features =
+        document.getElementById("detailFeatures");
+
+    features.innerHTML = "";
+
+    product.features.forEach(function(item) {
+
+        const li = document.createElement("li");
+
+        li.textContent = item;
+
+        features.appendChild(li);
+
+    });
+
+
+    /* ESCONDER TUDO */
+
+    document.getElementById("modelArea").style.display = "none";
+
+    document.getElementById("emulatorArea").style.display = "none";
+
+    document.getElementById("sensiArea").style.display = "none";
+
+    document.getElementById("iosExtra").style.display = "none";
+
+    document.getElementById("androidExtra").style.display = "none";
+
+    document.getElementById("emulatorNotice").style.display = "none";
+
+    document.getElementById("androidNotice").style.display = "none";
+
+
+    /* MODELO */
+
+    if (product.model) {
+
+        document.getElementById("modelArea").style.display =
+            "block";
+
+    }
+
+
+    /* EMULADOR */
+
+    if (product.emulator) {
+
+        document.getElementById("emulatorArea").style.display =
+            "block";
+
+    }
+
+
+    /* PACK SENSI */
+
+    if (product.sensi) {
+
+        document.getElementById("sensiArea").style.display =
+            "block";
+
+    }
+
+
+    /* ADICIONAL IOS */
+
+    if (product.iosExtra) {
+
+        document.getElementById("iosExtra").style.display =
+            "block";
+
+    }
+
+
+    /* ADICIONAL ANDROID */
+
+    if (product.androidExtra) {
+
+        document.getElementById("androidExtra").style.display =
+            "block";
+
+    }
+
+
+    /* AVISOS */
+
+    if (product.emulatorNotice) {
+
+        document.getElementById("emulatorNotice").style.display =
+            "block";
+
+    }
+
+
+    if (product.androidNotice) {
+
+        document.getElementById("androidNotice").style.display =
+            "block";
+
+    }
+
+
+    /* LIMPAR CAMPOS */
+
+    document.getElementById("email").value = "";
+
+    document.getElementById("modelSelect").value = "";
+
+    document.getElementById("emulatorSelect").value = "";
+
+    document.getElementById("iosExtraCheck").checked = false;
+
+    document.getElementById("androidExtraCheck").checked = false;
+
+    document.querySelectorAll(
+        'input[name="sensiPack"]'
+    ).forEach(function(input) {
+
+        input.checked = false;
+
+    });
+
+
+    updateTotal();
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* =====================================
+   VOLTAR
+===================================== */
+
+function goHome() {
+
+    document.getElementById("productPage").style.display =
+        "none";
+
+    document.getElementById("homePage").style.display =
+        "block";
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* =====================================
+   ATUALIZAR TOTAL
+===================================== */
+
+function updateTotal() {
+
+    if (!currentProduct) return;
+
+    const product = products[currentProduct];
+
+    let total = product.price;
+
+
+    if (
+        currentProduct === "iosXit" &&
+        document.getElementById("iosExtraCheck").checked
+    ) {
+
+        total += 15;
+
+    }
+
+
+    if (
+        currentProduct === "androidXit" &&
+        document.getElementById("androidExtraCheck").checked
+    ) {
+
+        total += 10;
+
+    }
+
+
+    if (product.diamantes) {
+
+        document.getElementById("totalPrice").textContent =
+            "Consulte";
+
+        return;
+
+    }
+
+
+    document.getElementById("totalPrice").textContent =
+        total.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+
+}
+
+
+/* =====================================
+   COMPRA
+===================================== */
+
+function continuePurchase() {
+
+    const product = products[currentProduct];
+
+    const email =
+        document.getElementById("email").value.trim();
+
 
     if (!email) {
-        alert("Digite seu e-mail para continuar.");
+
+        alert(
+            "Digite seu e-mail para continuar."
+        );
+
         return;
+
     }
 
-    if (!sensi) {
-        alert("Escolha o Pack de Sensi: lenta, média ou rápida.");
+
+    if (!email.includes("@")) {
+
+        alert(
+            "Digite um e-mail válido."
+        );
+
         return;
+
     }
+
+
+    /* MODELO */
+
+    if (product.model) {
+
+        const model =
+            document.getElementById("modelSelect").value;
+
+        if (!model) {
+
+            alert(
+                "Escolha o modelo do seu celular."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* EMULADOR */
+
+    if (product.emulator) {
+
+        const emulator =
+            document.getElementById("emulatorSelect").value;
+
+        if (!emulator) {
+
+            alert(
+                "Escolha o seu emulador."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* PACK */
+
+    if (product.sensi) {
+
+        const sensi =
+            document.querySelector(
+                'input[name="sensiPack"]:checked'
+            );
+
+        if (!sensi) {
+
+            alert(
+                "Escolha o Pack de Sensi."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    let total = product.price;
+
+
+    if (
+        currentProduct === "iosXit" &&
+        document.getElementById("iosExtraCheck").checked
+    ) {
+
+        total += 15;
+
+    }
+
+
+    if (
+        currentProduct === "androidXit" &&
+        document.getElementById("androidExtraCheck").checked
+    ) {
+
+        total += 10;
+
+    }
+
+
+    if (product.diamantes) {
+
+        alert(
+            "Pedido recebido! Entraremos em contato pelo e-mail informado."
+        );
+
+        return;
+
+    }
+
 
     /*
-       AQUI VAMOS COLOCAR O LINK DO PAGAMENTO
-       QUANDO VOCÊ DEFINIR QUAL SERVIÇO VAI USAR.
+       ==================================
+       PAGAMENTO
+       ==================================
 
-       O pedido ficará associado à escolha:
-       - E-mail
-       - Pack de Sensi
+       O LINK REAL DE PAGAMENTO SERÁ
+       COLOCADO AQUI DEPOIS.
+
+       NÃO COLOQUE SENHAS OU CHAVES
+       SECRETAS NESTE ARQUIVO.
     */
 
-    alert(
-        "Pedido preparado!\\n\\n" +
-        "E-mail: " + email + "\\n" +
-        "Pack escolhido: " + sensi.value
-    );
+
+    const paymentLink =
+        "COLOCAR_LINK_DE_PAGAMENTO_AQUI";
+
+
+    if (
+        paymentLink ===
+        "COLOCAR_LINK_DE_PAGAMENTO_AQUI"
+    ) {
+
+        alert(
+            "Produto selecionado com sucesso!\\n\\n" +
+            "E-mail: " + email + "\\n" +
+            "Produto: " + product.title + "\\n\\n" +
+            "O pagamento ainda será configurado."
+        );
+
+        return;
+
+    }
+
+
+    window.location.href = paymentLink;
+
 }
 
 </script>
