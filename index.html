@@ -128,7 +128,17 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 29px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.platform-ios {
+    color: #fff;
+}
+
+.platform-android {
+    color: #8cff9a;
+    font-size: 15px;
 }
 
 .product-info {
@@ -187,6 +197,44 @@ select {
     transform: scale(.98);
 }
 
+/* DIAMANTES */
+
+.diamond-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.diamond-pack {
+    background: #15151c;
+    border: 1px solid #292933;
+    border-radius: 18px;
+    padding: 16px 12px;
+    text-align: center;
+}
+
+.diamond-pack:hover {
+    border-color: #7510a8;
+}
+
+.diamond-icon {
+    font-size: 27px;
+    margin-bottom: 7px;
+}
+
+.diamond-amount {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.diamond-price {
+    margin-top: 6px;
+    font-size: 17px;
+    font-weight: 900;
+    color: #c45cff;
+}
+
 /* TELA DO PRODUTO */
 
 #productPage {
@@ -217,7 +265,8 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 38px;
+    font-size: 25px;
+    font-weight: 900;
     margin-bottom: 17px;
 }
 
@@ -386,6 +435,12 @@ select:focus,
     margin-top: 35px;
     line-height: 1.7;
 }
+
+@media (max-width: 380px) {
+    .diamond-grid {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 </head>
 
@@ -413,7 +468,6 @@ select:focus,
 
     </div>
 
-
     <div class="security">
 
         <div class="security-title">
@@ -440,8 +494,8 @@ select:focus,
 
         <div class="product-top">
 
-            <div class="product-icon">
-                🍎
+            <div class="product-icon platform-ios">
+                iOS
             </div>
 
             <div class="product-info">
@@ -480,8 +534,8 @@ select:focus,
 
         <div class="product-top">
 
-            <div class="product-icon">
-                🤖
+            <div class="product-icon platform-android">
+                Android
             </div>
 
             <div class="product-info">
@@ -521,7 +575,7 @@ select:focus,
         <div class="product-top">
 
             <div class="product-icon">
-                🖥️
+                PC
             </div>
 
             <div class="product-info">
@@ -567,8 +621,8 @@ select:focus,
 
         <div class="product-top">
 
-            <div class="product-icon">
-                🍎
+            <div class="product-icon platform-ios">
+                iOS
             </div>
 
             <div class="product-info">
@@ -607,8 +661,8 @@ select:focus,
 
         <div class="product-top">
 
-            <div class="product-icon">
-                🤖
+            <div class="product-icon platform-android">
+                Android
             </div>
 
             <div class="product-info">
@@ -648,7 +702,7 @@ select:focus,
         <div class="product-top">
 
             <div class="product-icon">
-                🖥️
+                PC
             </div>
 
             <div class="product-info">
@@ -689,43 +743,55 @@ select:focus,
         💎 Ofertas
     </div>
 
+    <div class="diamond-grid">
 
-    <div class="product">
-
-        <div class="product-top">
-
-            <div class="product-icon">
-                💎
-            </div>
-
-            <div class="product-info">
-
-                <h2>
-                    Diamantes com Desconto
-                </h2>
-
-                <p class="product-short">
-                    Diamantes com condição especial.
-                </p>
-
-            </div>
-
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">65 Diamantes</div>
+            <div class="diamond-price">R$ 1,50</div>
         </div>
 
-        <span class="discount">
-            44% OFF
-        </span>
-
-        <div class="price">
-            Consulte
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">100 Diamantes</div>
+            <div class="diamond-price">R$ 3,99</div>
         </div>
 
-        <button
-            class="buy"
-            onclick="openProduct('diamantes')"
-        >
-            VER PRODUTO
-        </button>
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">310 Diamantes</div>
+            <div class="diamond-price">R$ 12,99</div>
+        </div>
+
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">520 Diamantes</div>
+            <div class="diamond-price">R$ 18,99</div>
+        </div>
+
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">1.060 Diamantes</div>
+            <div class="diamond-price">R$ 41,99</div>
+        </div>
+
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">2.180 Diamantes</div>
+            <div class="diamond-price">R$ 85,99</div>
+        </div>
+
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">5.600 Diamantes</div>
+            <div class="diamond-price">R$ 205,99</div>
+        </div>
+
+        <div class="diamond-pack">
+            <div class="diamond-icon">💎</div>
+            <div class="diamond-amount">22.400 Diamantes</div>
+            <div class="diamond-price">R$ 819,99</div>
+        </div>
 
     </div>
 
@@ -795,67 +861,9 @@ select:focus,
             </div>
 
             <select id="modelSelect">
-
                 <option value="">
                     Selecione seu modelo
                 </option>
-
-                <option>
-                    iPhone 11
-                </option>
-
-                <option>
-                    iPhone 11 Pro
-                </option>
-
-                <option>
-                    iPhone 11 Pro Max
-                </option>
-
-                <option>
-                    iPhone 12
-                </option>
-
-                <option>
-                    iPhone 12 Pro
-                </option>
-
-                <option>
-                    iPhone 13
-                </option>
-
-                <option>
-                    iPhone 13 Pro
-                </option>
-
-                <option>
-                    iPhone 14
-                </option>
-
-                <option>
-                    iPhone 14 Pro
-                </option>
-
-                <option>
-                    iPhone 15
-                </option>
-
-                <option>
-                    iPhone 15 Pro
-                </option>
-
-                <option>
-                    iPhone 16
-                </option>
-
-                <option>
-                    iPhone 16 Pro
-                </option>
-
-                <option>
-                    Outro
-                </option>
-
             </select>
 
         </div>
@@ -1118,6 +1126,72 @@ select:focus,
 <script>
 
 /* =====================================
+   LISTAS DE APARELHOS
+===================================== */
+
+const iosModels = [
+
+    "iPhone 11",
+    "iPhone 11 Pro",
+    "iPhone 11 Pro Max",
+
+    "iPhone 12",
+    "iPhone 12 Pro",
+    "iPhone 12 Pro Max",
+
+    "iPhone 13",
+    "iPhone 13 Pro",
+    "iPhone 13 Pro Max",
+
+    "iPhone 14",
+    "iPhone 14 Plus",
+    "iPhone 14 Pro",
+    "iPhone 14 Pro Max",
+
+    "iPhone 15",
+    "iPhone 15 Plus",
+    "iPhone 15 Pro",
+    "iPhone 15 Pro Max",
+
+    "iPhone 16",
+    "iPhone 16 Plus",
+    "iPhone 16 Pro",
+    "iPhone 16 Pro Max",
+
+    "Outro iPhone"
+
+];
+
+
+const androidModels = [
+
+    "Samsung Galaxy A",
+    "Samsung Galaxy S",
+    "Samsung Galaxy M",
+    "Samsung Galaxy Z",
+
+    "Motorola Moto G",
+    "Motorola Edge",
+
+    "Xiaomi",
+    "Redmi",
+    "POCO",
+
+    "Realme",
+    "Infinix",
+    "Tecno",
+
+    "ASUS ROG",
+    "ASUS Zenfone",
+
+    "OnePlus",
+
+    "Outro Android"
+
+];
+
+
+/* =====================================
    DADOS DOS PRODUTOS
 ===================================== */
 
@@ -1125,11 +1199,15 @@ const products = {
 
     iosSensi: {
 
-        icon: "🍎",
+        icon: "iOS",
+
+        iconClass: "platform-ios",
 
         title: "Sensibilidade Profissional Mobile iOS",
 
         price: 80,
+
+        platform: "ios",
 
         description:
         "Sensibilidade profissional testada para dispositivos iOS, buscando uma configuração mais adequada ao seu modelo de celular.",
@@ -1148,11 +1226,15 @@ const products = {
 
     androidSensi: {
 
-        icon: "🤖",
+        icon: "Android",
+
+        iconClass: "platform-android",
 
         title: "Sensibilidade Profissional Mobile Android",
 
         price: 75,
+
+        platform: "android",
 
         description:
         "Sensibilidade profissional para Android, com escolha do modelo do aparelho.",
@@ -1171,7 +1253,7 @@ const products = {
 
     emulatorSensi: {
 
-        icon: "🖥️",
+        icon: "PC",
 
         title: "Sensibilidade Profissional Emulador",
 
@@ -1194,7 +1276,9 @@ const products = {
 
     iosXit: {
 
-        icon: "🍎",
+        icon: "iOS",
+
+        iconClass: "platform-ios",
 
         title: "Xit VIP Atualizado iOS",
 
@@ -1217,7 +1301,9 @@ const products = {
 
     androidXit: {
 
-        icon: "🤖",
+        icon: "Android",
+
+        iconClass: "platform-android",
 
         title: "Xit VIP Atualizado Android",
 
@@ -1243,7 +1329,7 @@ const products = {
 
     emulatorXit: {
 
-        icon: "🖥️",
+        icon: "PC",
 
         title: "Xit VIP Atualizado Emulador",
 
@@ -1266,28 +1352,6 @@ const products = {
 
         emulatorNotice: true
 
-    },
-
-
-    diamantes: {
-
-        icon: "💎",
-
-        title: "Diamantes com Desconto",
-
-        price: 0,
-
-        description:
-        "Consulte a disponibilidade e as condições atuais para diamantes.",
-
-        features: [
-            "Condição especial",
-            "Atendimento após o pedido",
-            "Entrega conforme disponibilidade"
-        ],
-
-        diamantes: true
-
     }
 
 };
@@ -1301,6 +1365,50 @@ let currentProduct = null;
 
 
 /* =====================================
+   PREENCHER MODELOS
+===================================== */
+
+function loadModels(platform) {
+
+    const select =
+        document.getElementById("modelSelect");
+
+    select.innerHTML = "";
+
+    const firstOption =
+        document.createElement("option");
+
+    firstOption.value = "";
+
+    firstOption.textContent =
+        "Selecione seu modelo";
+
+    select.appendChild(firstOption);
+
+
+    const models =
+        platform === "ios"
+        ? iosModels
+        : androidModels;
+
+
+    models.forEach(function(model) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = model;
+
+        option.textContent = model;
+
+        select.appendChild(option);
+
+    });
+
+}
+
+
+/* =====================================
    ABRIR PRODUTO
 ===================================== */
 
@@ -1310,12 +1418,22 @@ function openProduct(id) {
 
     const product = products[id];
 
-    document.getElementById("homePage").style.display = "none";
+    document.getElementById("homePage").style.display =
+        "none";
 
-    document.getElementById("productPage").style.display = "block";
+    document.getElementById("productPage").style.display =
+        "block";
 
-    document.getElementById("detailIcon").textContent =
+
+    const detailIcon =
+        document.getElementById("detailIcon");
+
+    detailIcon.textContent =
         product.icon;
+
+    detailIcon.className =
+        "detail-icon " + (product.iconClass || "");
+
 
     document.getElementById("detailTitle").textContent =
         product.title;
@@ -1333,7 +1451,8 @@ function openProduct(id) {
 
     product.features.forEach(function(item) {
 
-        const li = document.createElement("li");
+        const li =
+            document.createElement("li");
 
         li.textContent = item;
 
@@ -1344,19 +1463,26 @@ function openProduct(id) {
 
     /* ESCONDER TUDO */
 
-    document.getElementById("modelArea").style.display = "none";
+    document.getElementById("modelArea").style.display =
+        "none";
 
-    document.getElementById("emulatorArea").style.display = "none";
+    document.getElementById("emulatorArea").style.display =
+        "none";
 
-    document.getElementById("sensiArea").style.display = "none";
+    document.getElementById("sensiArea").style.display =
+        "none";
 
-    document.getElementById("iosExtra").style.display = "none";
+    document.getElementById("iosExtra").style.display =
+        "none";
 
-    document.getElementById("androidExtra").style.display = "none";
+    document.getElementById("androidExtra").style.display =
+        "none";
 
-    document.getElementById("emulatorNotice").style.display = "none";
+    document.getElementById("emulatorNotice").style.display =
+        "none";
 
-    document.getElementById("androidNotice").style.display = "none";
+    document.getElementById("androidNotice").style.display =
+        "none";
 
 
     /* MODELO */
@@ -1365,6 +1491,19 @@ function openProduct(id) {
 
         document.getElementById("modelArea").style.display =
             "block";
+
+
+        if (product.platform === "ios") {
+
+            loadModels("ios");
+
+        }
+
+        else if (product.platform === "android") {
+
+            loadModels("android");
+
+        }
 
     }
 
@@ -1435,9 +1574,12 @@ function openProduct(id) {
 
     document.getElementById("emulatorSelect").value = "";
 
-    document.getElementById("iosExtraCheck").checked = false;
+    document.getElementById("iosExtraCheck").checked =
+        false;
 
-    document.getElementById("androidExtraCheck").checked = false;
+    document.getElementById("androidExtraCheck").checked =
+        false;
+
 
     document.querySelectorAll(
         'input[name="sensiPack"]'
@@ -1480,9 +1622,11 @@ function updateTotal() {
 
     if (!currentProduct) return;
 
-    const product = products[currentProduct];
+    const product =
+        products[currentProduct];
 
-    let total = product.price;
+    let total =
+        product.price;
 
 
     if (
@@ -1505,20 +1649,13 @@ function updateTotal() {
     }
 
 
-    if (product.diamantes) {
-
-        document.getElementById("totalPrice").textContent =
-            "Consulte";
-
-        return;
-
-    }
-
-
     document.getElementById("totalPrice").textContent =
         total.toLocaleString("pt-BR", {
+
             style: "currency",
+
             currency: "BRL"
+
         });
 
 }
@@ -1530,7 +1667,8 @@ function updateTotal() {
 
 function continuePurchase() {
 
-    const product = products[currentProduct];
+    const product =
+        products[currentProduct];
 
     const email =
         document.getElementById("email").value.trim();
@@ -1620,7 +1758,8 @@ function continuePurchase() {
     }
 
 
-    let total = product.price;
+    let total =
+        product.price;
 
 
     if (
@@ -1639,17 +1778,6 @@ function continuePurchase() {
     ) {
 
         total += 10;
-
-    }
-
-
-    if (product.diamantes) {
-
-        alert(
-            "Pedido recebido! Entraremos em contato pelo e-mail informado."
-        );
-
-        return;
 
     }
 
@@ -1677,10 +1805,33 @@ function continuePurchase() {
     ) {
 
         alert(
-            "Produto selecionado com sucesso!\\n\\n" +
-            "E-mail: " + email + "\\n" +
-            "Produto: " + product.title + "\\n\\n" +
+
+            "Produto selecionado com sucesso!\n\n" +
+
+            "E-mail: " +
+            email +
+
+            "\n" +
+
+            "Produto: " +
+            product.title +
+
+            "\n" +
+
+            "Total: " +
+
+            total.toLocaleString(
+                "pt-BR",
+                {
+                    style: "currency",
+                    currency: "BRL"
+                }
+            ) +
+
+            "\n\n" +
+
             "O pagamento ainda será configurado."
+
         );
 
         return;
@@ -1688,7 +1839,8 @@ function continuePurchase() {
     }
 
 
-    window.location.href = paymentLink;
+    window.location.href =
+        paymentLink;
 
 }
 
