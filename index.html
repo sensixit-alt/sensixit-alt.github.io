@@ -15,42 +15,73 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #0b0b0f;
+            background: #08080c;
             color: white;
-            padding: 25px 16px 40px;
+            padding: 20px 14px 40px;
         }
 
         .container {
-            max-width: 500px;
+            max-width: 520px;
             margin: auto;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 22px;
         }
 
         .logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 15px;
-            border-radius: 25px;
-            background: linear-gradient(135deg, #8b00ff, #4b00a8);
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 12px;
+            border-radius: 23px;
+            background: linear-gradient(135deg, #9d00ff, #5000a8);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 25px;
-            font-weight: 800;
+            font-weight: 900;
+            box-shadow: 0 0 35px rgba(150, 0, 255, .25);
         }
 
         h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 30px;
+            margin-bottom: 5px;
         }
 
         .subtitle {
-            color: #aaa;
-            font-size: 15px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .security {
+            background: linear-gradient(135deg, #191021, #111118);
+            border: 1px solid #6e19a8;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 22px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,.25);
+        }
+
+        .security strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .security p {
+            color: #bbb;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .category-title {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 25px 4px 10px;
         }
 
         .product {
@@ -58,21 +89,20 @@
             border: 1px solid #292933;
             border-radius: 22px;
             padding: 22px;
-            margin-bottom: 18px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            margin-bottom: 17px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.25);
         }
 
         .product-icon {
-            width: 75px;
-            height: 75px;
-            margin: 0 auto 15px;
-            border-radius: 20px;
+            width: 65px;
+            height: 65px;
+            margin-bottom: 14px;
+            border-radius: 18px;
             background: #22222c;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 29px;
         }
 
         .product h2 {
@@ -80,15 +110,34 @@
             margin-bottom: 8px;
         }
 
-        .product p {
+        .product-description {
             color: #999;
             font-size: 14px;
-            margin-bottom: 15px;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .features li {
+            color: #ccc;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #b000ff;
+            font-weight: bold;
+            margin-right: 8px;
         }
 
         .price {
-            font-size: 23px;
-            font-weight: 800;
+            font-size: 24px;
+            font-weight: 900;
             margin-bottom: 15px;
         }
 
@@ -100,123 +149,352 @@
             background: linear-gradient(135deg, #a000ff, #6500d9);
             color: white;
             text-decoration: none;
+            text-align: center;
             font-size: 16px;
-            font-weight: 800;
-            transition: 0.2s;
+            font-weight: 900;
+            border: none;
+            cursor: pointer;
         }
 
         .buy:active {
-            transform: scale(0.97);
+            transform: scale(.97);
+        }
+
+        .emulator {
+            border-color: #44215a;
+        }
+
+        .choice-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 18px 0 10px;
+        }
+
+        .sensi-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 17px;
+        }
+
+        .sensi-option {
+            position: relative;
+        }
+
+        .sensi-option input {
+            display: none;
+        }
+
+        .sensi-option label {
+            display: block;
+            padding: 12px 5px;
+            text-align: center;
+            border: 1px solid #353540;
+            border-radius: 12px;
+            background: #20202a;
+            color: #aaa;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .sensi-option input:checked + label {
+            border-color: #a000ff;
+            background: #321044;
+            color: white;
+        }
+
+        .email-box {
+            margin-top: 18px;
+        }
+
+        .email-box label {
+            display: block;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 7px;
+        }
+
+        .email-box input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #34343e;
+            background: #0e0e13;
+            color: white;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .email-box input:focus {
+            border-color: #9500e8;
+        }
+
+        .notice {
+            margin-top: 14px;
+            padding: 12px;
+            background: #101017;
+            border-radius: 12px;
+            color: #888;
+            font-size: 11px;
+            line-height: 1.5;
         }
 
         .footer {
             text-align: center;
-            color: #777;
-            font-size: 13px;
+            color: #666;
+            font-size: 12px;
             margin-top: 30px;
+            line-height: 1.6;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="header">
+    <div class="header">
+        <div class="logo">SX</div>
 
-            <div class="logo">
-                SX
-            </div>
+        <h1>SenXit</h1>
 
-            <h1>SenXit</h1>
+        <p class="subtitle">
+            Produtos e ferramentas
+        </p>
+    </div>
 
-            <p class="subtitle">
-                Produtos e ferramentas
-            </p>
 
+    <!-- AVISO PRINCIPAL -->
+
+    <div class="security">
+        <strong>🔥 PRODUTOS COM FOCO EM SEGURANÇA</strong>
+
+        <p>
+            🛡️ Mais segurança e proteção durante o uso.
+            <br>
+            📦 Produtos selecionados e suporte na entrega.
+        </p>
+    </div>
+
+
+    <div class="category-title">
+        📱 Android
+    </div>
+
+
+    <!-- PRODUTO ANDROID -->
+
+    <div class="product">
+
+        <div class="product-icon">
+            📱
         </div>
 
+        <h2>Xit VIP Mobile Android</h2>
 
-        <!-- PRODUTO 1 -->
+        <p class="product-description">
+            Pacote para Android com arquivo e vídeo explicando
+            como realizar a instalação.
+        </p>
 
-        <div class="product">
+        <ul class="features">
+            <li>Arquivo para Android</li>
+            <li>Vídeo ensinando a instalação</li>
+            <li>Configuração de sensibilidade</li>
+            <li>Configuração de DPI</li>
+            <li>Entrega após confirmação da compra</li>
+        </ul>
 
-            <div class="product-icon">
-                🎯
-            </div>
-
-            <h2>Sensi Premium</h2>
-
-            <p>
-                Sensibilidade otimizada para melhorar sua jogabilidade.
-            </p>
-
-            <div class="price">
-                R$ 19,90
-            </div>
-
-            <a class="buy" href="SEU_LINK_DE_PAGAMENTO_1">
-                COMPRAR AGORA
-            </a>
-
+        <div class="price">
+            R$ 179,99
         </div>
 
-
-        <!-- PRODUTO 2 -->
-
-        <div class="product">
-
-            <div class="product-icon">
-                ⚡
-            </div>
-
-            <h2>Painel Premium</h2>
-
-            <p>
-                Acesso ao painel e recursos exclusivos.
-            </p>
-
-            <div class="price">
-                R$ 29,90
-            </div>
-
-            <a class="buy" href="SEU_LINK_DE_PAGAMENTO_2">
-                COMPRAR AGORA
-            </a>
-
-        </div>
-
-
-        <!-- PRODUTO 3 -->
-
-        <div class="product">
-
-            <div class="product-icon">
-                🔥
-            </div>
-
-            <h2>Pacote Completo</h2>
-
-            <p>
-                Pacote completo com todos os recursos.
-            </p>
-
-            <div class="price">
-                R$ 39,90
-            </div>
-
-            <a class="buy" href="SEU_LINK_DE_PAGAMENTO_3">
-                COMPRAR AGORA
-            </a>
-
-        </div>
-
-
-        <div class="footer">
-            © 2026 SenXit · Todos os direitos reservados
-        </div>
+        <a class="buy" href="SEU_LINK_DE_PAGAMENTO_ANDROID">
+            COMPRAR AGORA
+        </a>
 
     </div>
+
+
+    <div class="category-title">
+        🖥️ Emulador
+    </div>
+
+
+    <!-- PRODUTO EMULADOR -->
+
+    <div class="product emulator">
+
+        <div class="product-icon">
+            🖥️
+        </div>
+
+        <h2>Painel + Arquivos para Emulador</h2>
+
+        <p class="product-description">
+            Receba um painel totalmente externo junto com os
+            arquivos necessários para o emulador.
+        </p>
+
+        <ul class="features">
+            <li>Painel totalmente externo</li>
+            <li>Arquivos para o emulador</li>
+            <li>Pack de sensibilidade à sua escolha</li>
+            <li>Entrega após confirmação da compra</li>
+        </ul>
+
+
+        <div class="choice-title">
+            ⚡ Escolha seu Pack de Sensi
+        </div>
+
+        <div class="sensi-options">
+
+            <div class="sensi-option">
+                <input
+                    type="radio"
+                    id="lenta"
+                    name="sensi"
+                    value="Lenta"
+                >
+                <label for="lenta">
+                    🐢 Lenta
+                </label>
+            </div>
+
+            <div class="sensi-option">
+                <input
+                    type="radio"
+                    id="media"
+                    name="sensi"
+                    value="Média"
+                >
+                <label for="media">
+                    ⚡ Média
+                </label>
+            </div>
+
+            <div class="sensi-option">
+                <input
+                    type="radio"
+                    id="rapida"
+                    name="sensi"
+                    value="Rápida"
+                >
+                <label for="rapida">
+                    🚀 Rápida
+                </label>
+            </div>
+
+        </div>
+
+
+        <div class="email-box">
+
+            <label for="email">
+                📧 E-mail para receber o contato da entrega
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Digite seu melhor e-mail"
+            >
+
+        </div>
+
+
+        <div class="notice">
+            A escolha do Pack de Sensi será considerada junto
+            ao pedido do painel e dos arquivos para o emulador.
+            Configurações de sensibilidade e recursos de
+            diamantes não fazem parte dessa seleção.
+        </div>
+
+
+        <br>
+
+        <button class="buy" onclick="comprarEmulador()">
+            COMPRAR AGORA
+        </button>
+
+    </div>
+
+
+    <!-- PRODUTO EXTRA -->
+
+    <div class="category-title">
+        🔥 Outros produtos
+    </div>
+
+
+    <div class="product">
+
+        <div class="product-icon">
+            🎯
+        </div>
+
+        <h2>Sensi Premium</h2>
+
+        <p class="product-description">
+            Sensibilidade otimizada para melhorar sua jogabilidade.
+        </p>
+
+        <div class="price">
+            R$ 19,90
+        </div>
+
+        <a class="buy" href="SEU_LINK_DE_PAGAMENTO_SENSI">
+            COMPRAR AGORA
+        </a>
+
+    </div>
+
+
+    <div class="footer">
+        © 2026 SenXit · Todos os direitos reservados
+    </div>
+
+</div>
+
+
+<script>
+
+function comprarEmulador() {
+
+    const email = document.getElementById("email").value;
+
+    const sensi = document.querySelector(
+        'input[name="sensi"]:checked'
+    );
+
+    if (!email) {
+        alert("Digite seu e-mail para continuar.");
+        return;
+    }
+
+    if (!sensi) {
+        alert("Escolha o Pack de Sensi: lenta, média ou rápida.");
+        return;
+    }
+
+    /*
+       AQUI VAMOS COLOCAR O LINK DO PAGAMENTO
+       QUANDO VOCÊ DEFINIR QUAL SERVIÇO VAI USAR.
+
+       O pedido ficará associado à escolha:
+       - E-mail
+       - Pack de Sensi
+    */
+
+    alert(
+        "Pedido preparado!\\n\\n" +
+        "E-mail: " + email + "\\n" +
+        "Pack escolhido: " + sensi.value
+    );
+}
+
+</script>
 
 </body>
 </html>
