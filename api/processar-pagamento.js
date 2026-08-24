@@ -1,11 +1,9 @@
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
-
     return res.status(405).json({
       error: "Método não permitido"
     });
-
   }
 
   try {
@@ -14,39 +12,39 @@ export default async function handler(req, res) {
       process.env.MERCADOPAGO_ACCESS_TOKEN;
 
     if (!accessToken) {
-
       return res.status(500).json({
         error:
           "MERCADOPAGO_ACCESS_TOKEN não configurado na Vercel."
       });
-
     }
 
-    const body =
-      req.body || {};
-
     const {
+      formData,
       titulo,
       email,
       dados
-    } = body;
+    } = req.body || {};
 
-
-    /*
-    ========================================
-    VALIDAR DADOS RECEBIDOS
-    ========================================
-    */
-
-    if (!body.payment_method_id) {
-
+    if (!formData) {
       return res.status(400).json({
         error:
-          "Método de pagamento não informado."
+          "Dados do pagamento não recebidos."
       });
-
     }
 
+    if (!titulo) {
+      return res.status(400).json({
+        error:
+          "Produto não informado."
+      });
+    }
+
+    if (!email) {
+      return res.status(400).json({
+        error:
+          "E-mail não informado."
+      });
+    }
 
     /*
     ========================================
@@ -72,12 +70,46 @@ export default async function handler(req, res) {
         179.99,
 
       "Xit VIP Atualizado Emulador":
-        179.99
+        179.99,
+
+      "65 Diamantes":
+        1.50,
+
+      "100 Diamantes":
+        3.99,
+
+      "310 Diamantes":
+        12.99,
+
+      "520 Diamantes":
+        18.99,
+
+      "1.060 Diamantes":
+        41.99,
+
+      "2.180 Diamantes":
+        85.99,
+
+      "5.600 Diamantes":
+        205.99,
+
+      "22.400 Diamantes":
+        819.99
 
     };
 
+    /*
+    ========================================
+    VERIFICAR PRODUTO
+    ========================================
+    */
 
-    if (!precos[titulo]) {
+    if (
+      !Object.prototype.hasOwnProperty.call(
+        precos,
+        titulo
+      )
+    ) {
 
       return res.status(400).json({
         error:
@@ -86,10 +118,14 @@ export default async function handler(req, res) {
 
     }
 
+    /*
+    ========================================
+    VALOR OFICIAL
+    ========================================
+    */
 
     let valor =
-      precos[titulo];
-
+      Number(precos[titulo]);
 
     /*
     ========================================
@@ -106,7 +142,6 @@ export default async function handler(req, res) {
 
     }
 
-
     if (
       titulo === "Xit VIP Atualizado Android" &&
       dados?.extraAndroid === true
@@ -116,25 +151,15 @@ export default async function handler(req, res) {
 
     }
 
-
     /*
     ========================================
-    COPIAR DADOS DO BRICK
+    DADOS DO PAGADOR
     ========================================
     */
 
     const pagamento = {
 
-      ...body,
-
-      titulo:
-        undefined,
-
-      email:
-        undefined,
-
-      dados:
-        undefined,
+      ...formData,
 
       transaction_amount:
         Number(valor),
@@ -144,58 +169,23 @@ export default async function handler(req, res) {
 
       payer: {
 
-        ...(body.payer || {}),
+        ...(formData.payer || {}),
 
         email:
-          email
+          String(email)
 
       }
 
     };
 
-
     /*
     ========================================
-    REMOVER CAMPOS QUE NÃO PERTENCEM
-    À API DO MERCADO PAGO
-    ========================================
-    */
-
-    delete pagamento.titulo;
-
-    delete pagamento.email;
-
-    delete pagamento.dados;
-
-
-    /*
-    ========================================
-    VALIDAR CAMPOS IMPORTANTES
-    ========================================
-    */
-
-    if (
-      !pagamento.payer ||
-      !pagamento.payer.email
-    ) {
-
-      return res.status(400).json({
-        error:
-          "E-mail do comprador não informado."
-      });
-
-    }
-
-
-    /*
-    ========================================
-    ID ÚNICO
+    ID ÚNICO DO PAGAMENTO
     ========================================
     */
 
     const idempotencyKey =
       crypto.randomUUID();
-
 
     /*
     ========================================
@@ -203,47 +193,42 @@ export default async function handler(req, res) {
     ========================================
     */
 
-    const resposta =
-      await fetch(
-        "https://api.mercadopago.com/v1/payments",
-        {
+    const resposta = await fetch(
+      "https://api.mercadopago.com/v1/payments",
+      {
 
-          method:
-            "POST",
+        method: "POST",
 
-          headers: {
+        headers: {
 
-            "Content-Type":
-              "application/json",
+          "Content-Type":
+            "application/json",
 
-            "Authorization":
-              `Bearer ${accessToken}`,
+          "Authorization":
+            `Bearer ${accessToken}`,
 
-            "X-Idempotency-Key":
-              idempotencyKey
+          "X-Idempotency-Key":
+            idempotencyKey
 
-          },
+        },
 
-          body:
-            JSON.stringify(pagamento)
+        body:
+          JSON.stringify(pagamento)
 
-        }
-      );
-
+      }
+    );
 
     const resultado =
       await resposta.json();
-
 
     console.log(
       "Resposta Mercado Pago:",
       resultado
     );
 
-
     /*
     ========================================
-    ERRO
+    ERRO DO MERCADO PAGO
     ========================================
     */
 
@@ -264,7 +249,6 @@ export default async function handler(req, res) {
       });
 
     }
-
 
     /*
     ========================================
@@ -288,14 +272,12 @@ export default async function handler(req, res) {
 
     });
 
-
   } catch (erro) {
 
     console.error(
       "ERRO PROCESSAR PAGAMENTO:",
       erro
     );
-
 
     return res.status(500).json({
 
