@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SenXit - Produtos</title>
+
+<script src="https://sdk.mercadopago.com/js/v2"></script>
 
 <style>
 
@@ -532,11 +535,14 @@ margin-top:35px;
 line-height:1.7;
 }
 
+
+/* PAGAMENTO DENTRO DO SITE */
+
 #paymentModal{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.92);
+background:rgba(0,0,0,.94);
 z-index:99999;
 overflow-y:auto;
 padding:15px;
@@ -550,7 +556,6 @@ background:#15151c;
 border:1px solid #292933;
 border-radius:22px;
 padding:20px;
-min-height:300px;
 }
 
 .payment-close{
@@ -587,6 +592,31 @@ padding:30px 10px;
 line-height:1.5;
 }
 
+#paymentBrick{
+width:100%;
+}
+
+.payment-success{
+text-align:center;
+padding:35px 15px;
+}
+
+.payment-success-icon{
+font-size:55px;
+margin-bottom:15px;
+}
+
+.payment-success h2{
+font-size:23px;
+margin-bottom:10px;
+}
+
+.payment-success p{
+color:#aaa;
+font-size:14px;
+line-height:1.5;
+}
+
 @media(max-width:380px){
 
 .diamond-grid-page{
@@ -602,6 +632,11 @@ grid-template-columns:1fr;
 
 <div class="container">
 
+
+<!-- =========================
+HOME
+========================= -->
+
 <div id="homePage">
 
 <div class="header">
@@ -613,6 +648,7 @@ grid-template-columns:1fr;
 <p>Produtos e ferramentas</p>
 
 </div>
+
 
 <div class="security">
 
@@ -628,9 +664,11 @@ grid-template-columns:1fr;
 
 </div>
 
+
 <div class="category-title">
 🎯 Sensibilidade Profissional
 </div>
+
 
 <div class="product">
 
@@ -642,7 +680,9 @@ iOS
 
 <div class="product-info">
 
-<h2>Sensibilidade Profissional Mobile iOS</h2>
+<h2>
+Sensibilidade Profissional Mobile iOS
+</h2>
 
 <p class="product-short">
 Sensibilidade profissional testada para iPhone.
@@ -652,15 +692,24 @@ Sensibilidade profissional testada para iPhone.
 
 </div>
 
-<span class="discount">44% OFF</span>
+<span class="discount">
+44% OFF
+</span>
 
-<div class="price">R$ 80,00</div>
+<div class="price">
+R$ 80,00
+</div>
 
-<button class="buy" onclick="openProduct('iosSensi')">
+<button
+class="buy"
+onclick="openProduct('iosSensi')">
+
 VER PRODUTO
+
 </button>
 
 </div>
+
 
 <div class="product">
 
@@ -672,7 +721,9 @@ Android
 
 <div class="product-info">
 
-<h2>Sensibilidade Profissional Mobile Android</h2>
+<h2>
+Sensibilidade Profissional Mobile Android
+</h2>
 
 <p class="product-short">
 Sensibilidade profissional testada para Android.
@@ -682,15 +733,24 @@ Sensibilidade profissional testada para Android.
 
 </div>
 
-<span class="discount">44% OFF</span>
+<span class="discount">
+44% OFF
+</span>
 
-<div class="price">R$ 75,00</div>
+<div class="price">
+R$ 75,00
+</div>
 
-<button class="buy" onclick="openProduct('androidSensi')">
+<button
+class="buy"
+onclick="openProduct('androidSensi')">
+
 VER PRODUTO
+
 </button>
 
 </div>
+
 
 <div class="product">
 
@@ -702,7 +762,9 @@ PC
 
 <div class="product-info">
 
-<h2>Sensibilidade Profissional Emulador</h2>
+<h2>
+Sensibilidade Profissional Emulador
+</h2>
 
 <p class="product-short">
 Configuração profissional para emuladores.
@@ -712,19 +774,29 @@ Configuração profissional para emuladores.
 
 </div>
 
-<span class="discount">44% OFF</span>
+<span class="discount">
+44% OFF
+</span>
 
-<div class="price">R$ 97,00</div>
+<div class="price">
+R$ 97,00
+</div>
 
-<button class="buy" onclick="openProduct('emulatorSensi')">
+<button
+class="buy"
+onclick="openProduct('emulatorSensi')">
+
 VER PRODUTO
+
 </button>
 
 </div>
 
+
 <div class="category-title">
 🔥 Xit VIP Atualizado
 </div>
+
 
 <div class="product">
 
@@ -736,7 +808,9 @@ iOS
 
 <div class="product-info">
 
-<h2>Xit VIP Atualizado iOS</h2>
+<h2>
+Xit VIP Atualizado iOS
+</h2>
 
 <p class="product-short">
 Versão atualizada para dispositivos iOS.
@@ -746,15 +820,24 @@ Versão atualizada para dispositivos iOS.
 
 </div>
 
-<span class="discount">44% OFF</span>
+<span class="discount">
+44% OFF
+</span>
 
-<div class="price">R$ 199,99</div>
+<div class="price">
+R$ 199,99
+</div>
 
-<button class="buy" onclick="openProduct('iosXit')">
+<button
+class="buy"
+onclick="openProduct('iosXit')">
+
 VER PRODUTO
+
 </button>
 
 </div>
+
 
 <div class="product">
 
@@ -766,7 +849,9 @@ Android
 
 <div class="product-info">
 
-<h2>Xit VIP Atualizado Android</h2>
+<h2>
+Xit VIP Atualizado Android
+</h2>
 
 <p class="product-short">
 Arquivo atualizado com suporte para instalação.
@@ -776,15 +861,24 @@ Arquivo atualizado com suporte para instalação.
 
 </div>
 
-<span class="discount">44% OFF</span>
+<span class="discount">
+44% OFF
+</span>
 
-<div class="price">R$ 179,99</div>
+<div class="price">
+R$ 179,99
+</div>
 
-<button class="buy" onclick="openProduct('androidXit')">
+<button
+class="buy"
+onclick="openProduct('androidXit')">
+
 VER PRODUTO
+
 </button>
 
 </div>
+
 
 <div class="product">
 
@@ -796,7 +890,9 @@ PC
 
 <div class="product-info">
 
-<h2>Xit VIP Atualizado Emulador</h2>
+<h2>
+Xit VIP Atualizado Emulador
+</h2>
 
 <p class="product-short">
 Painel externo e arquivos para emulador.
@@ -806,21 +902,33 @@ Painel externo e arquivos para emulador.
 
 </div>
 
-<span class="discount">44% OFF</span>
+<span class="discount">
+44% OFF
+</span>
 
-<div class="price">R$ 179,99</div>
+<div class="price">
+R$ 179,99
+</div>
 
-<button class="buy" onclick="openProduct('emulatorXit')">
+<button
+class="buy"
+onclick="openProduct('emulatorXit')">
+
 VER PRODUTO
+
 </button>
 
 </div>
+
 
 <div class="category-title">
 💎 Ofertas
 </div>
 
-<button class="diamond-button" onclick="openDiamonds()">
+
+<button
+class="diamond-button"
+onclick="openDiamonds()">
 
 <div class="diamond-button-top">
 
@@ -830,7 +938,9 @@ VER PRODUTO
 
 <div class="diamond-button-info">
 
-<h2>Diamantes Baratos</h2>
+<h2>
+Diamantes Baratos
+</h2>
 
 <p>
 Compre diamantes com desconto
@@ -847,38 +957,69 @@ e informe seu ID do Free Fire.
 
 </button>
 
+
 <div class="footer">
+
 © 2026 SenXit
+
 <br>
+
 Todos os direitos reservados.
-</div>
 
 </div>
 
+</div>
+
+
+<!-- =========================
+PRODUTO
+========================= -->
 
 <div id="productPage">
 
-<button class="back" onclick="goHome()">
+<button
+class="back"
+onclick="goHome()">
+
 ← Voltar para produtos
+
 </button>
+
 
 <div class="detail-card">
 
-<div class="detail-icon" id="detailIcon">
+<div
+class="detail-icon"
+id="detailIcon">
+
 🎯
+
 </div>
+
 
 <h2 id="detailTitle">
 Produto
 </h2>
 
-<p class="detail-description" id="detailDescription">
+
+<p
+class="detail-description"
+id="detailDescription">
+
 Descrição
+
 </p>
 
-<ul class="features" id="detailFeatures"></ul>
 
-<div id="modelArea" style="display:none;">
+<ul
+class="features"
+id="detailFeatures">
+</ul>
+
+
+<div
+id="modelArea"
+style="display:none;">
 
 <div class="option-title">
 📱 Escolha o modelo do seu celular
@@ -894,7 +1035,10 @@ Selecione seu modelo
 
 </div>
 
-<div id="emulatorArea" style="display:none;">
+
+<div
+id="emulatorArea"
+style="display:none;">
 
 <div class="option-title">
 🖥️ Escolha seu emulador
@@ -918,11 +1062,15 @@ Selecione seu emulador
 
 </div>
 
-<div id="sensiArea" style="display:none;">
+
+<div
+id="sensiArea"
+style="display:none;">
 
 <div class="option-title">
 ⚡ Escolha seu Pack de Sensi
 </div>
+
 
 <div class="option-grid">
 
@@ -940,6 +1088,7 @@ value="Lenta">
 
 </div>
 
+
 <div class="option">
 
 <input
@@ -953,6 +1102,7 @@ value="Média">
 </label>
 
 </div>
+
 
 <div class="option">
 
@@ -972,6 +1122,7 @@ value="Rápida">
 
 </div>
 
+
 <div
 class="extra"
 id="iosExtra"
@@ -986,11 +1137,14 @@ onchange="updateTotal()">
 
 Adicionar opção extra
 
-<strong>+ R$ 15,00</strong>
+<strong>
++ R$ 15,00
+</strong>
 
 </label>
 
 </div>
+
 
 <div
 class="extra"
@@ -1006,11 +1160,14 @@ onchange="updateTotal()">
 
 Adicionar opção extra
 
-<strong>+ R$ 10,00</strong>
+<strong>
++ R$ 10,00
+</strong>
 
 </label>
 
 </div>
+
 
 <div class="email-area">
 
@@ -1026,15 +1183,19 @@ placeholder="Digite seu melhor e-mail">
 
 </div>
 
+
 <div class="total">
 
-<span>Total</span>
+<span>
+Total
+</span>
 
 <strong id="totalPrice">
 R$ 0,00
 </strong>
 
 </div>
+
 
 <button
 class="buy"
@@ -1045,12 +1206,15 @@ CONTINUAR PARA COMPRA
 
 </button>
 
+
 <div
 class="product-notice"
 id="emulatorNotice"
 style="display:none;">
 
-🔥 <strong>PRODUTOS 100% ANTIBAN!</strong>
+🔥 <strong>
+PRODUTOS 100% ANTIBAN!
+</strong>
 
 <br><br>
 
@@ -1066,6 +1230,7 @@ style="display:none;">
 ⚡ Lenta • Média • Rápida
 
 </div>
+
 
 <div
 class="product-notice"
@@ -1083,12 +1248,17 @@ e o vídeo ensinando a instalação.
 
 </div>
 
+
 <div class="footer">
 © 2026 SenXit
 </div>
 
 </div>
 
+
+<!-- =========================
+DIAMANTES
+========================= -->
 
 <div id="diamondPage">
 
@@ -1100,13 +1270,16 @@ onclick="goHomeFromDiamonds()">
 
 </button>
 
+
 <div class="diamond-header">
 
 <div class="diamond-header-icon">
 💎
 </div>
 
-<h2>Diamantes Baratos</h2>
+<h2>
+Diamantes Baratos
+</h2>
 
 <p>
 Escolha a quantidade de diamantes
@@ -1115,13 +1288,17 @@ que deseja comprar.
 
 </div>
 
+
 <div class="diamond-grid-page">
+
 
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,65,1.50)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 65 Diamantes
@@ -1133,11 +1310,14 @@ R$ 1,50
 
 </div>
 
+
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,100,3.99)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 100 Diamantes
@@ -1149,11 +1329,14 @@ R$ 3,99
 
 </div>
 
+
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,310,12.99)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 310 Diamantes
@@ -1165,11 +1348,14 @@ R$ 12,99
 
 </div>
 
+
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,520,18.99)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 520 Diamantes
@@ -1181,11 +1367,14 @@ R$ 18,99
 
 </div>
 
+
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,1060,41.99)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 1.060 Diamantes
@@ -1197,11 +1386,14 @@ R$ 41,99
 
 </div>
 
+
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,2180,85.99)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 2.180 Diamantes
@@ -1213,11 +1405,14 @@ R$ 85,99
 
 </div>
 
+
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,5600,205.99)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 5.600 Diamantes
@@ -1229,11 +1424,14 @@ R$ 205,99
 
 </div>
 
+
 <div
 class="diamond-choice"
 onclick="selectDiamond(this,22400,819.99)">
 
-<div class="diamond-choice-icon">💎</div>
+<div class="diamond-choice-icon">
+💎
+</div>
 
 <div class="diamond-choice-amount">
 22.400 Diamantes
@@ -1247,15 +1445,19 @@ R$ 819,99
 
 </div>
 
+
 <div class="diamond-form">
 
 <div class="diamond-form-title">
 🎮 Dados da compra
 </div>
 
+
 <div class="diamond-input-area">
 
-<label>ID do Free Fire</label>
+<label>
+ID do Free Fire
+</label>
 
 <input
 class="diamond-input"
@@ -1266,9 +1468,12 @@ placeholder="Digite o ID da sua conta">
 
 </div>
 
+
 <div class="diamond-input-area">
 
-<label>📧 E-mail para contato e entrega</label>
+<label>
+📧 E-mail para contato e entrega
+</label>
 
 <input
 class="diamond-input"
@@ -1278,37 +1483,55 @@ placeholder="Digite seu melhor e-mail">
 
 </div>
 
+
 <div
 class="diamond-summary"
 id="diamondSummary">
 
 <div>
 
-<span>Produto</span>
+<span>
+Produto
+</span>
 
-<strong id="summaryDiamondAmount">—</strong>
+<strong id="summaryDiamondAmount">
+—
+</strong>
 
 </div>
+
 
 <div>
 
-<span>ID Free Fire</span>
+<span>
+ID Free Fire
+</span>
 
-<strong id="summaryDiamondId">—</strong>
+<strong id="summaryDiamondId">
+—
+</strong>
 
 </div>
+
 
 <div>
 
-<span>E-mail</span>
+<span>
+E-mail
+</span>
 
-<strong id="summaryDiamondEmail">—</strong>
+<strong id="summaryDiamondEmail">
+—
+</strong>
 
 </div>
+
 
 <div class="summary-total">
 
-<span>Total</span>
+<span>
+Total
+</span>
 
 <strong id="summaryDiamondPrice">
 R$ 0,00
@@ -1317,6 +1540,7 @@ R$ 0,00
 </div>
 
 </div>
+
 
 <button
 class="buy"
@@ -1327,6 +1551,7 @@ IR PARA PAGAMENTO
 
 </button>
 
+
 <div class="product-notice">
 
 💎 Escolha seu pacote de diamantes,
@@ -1336,6 +1561,7 @@ e confira seus dados antes de continuar.
 </div>
 
 </div>
+
 
 <div class="footer">
 
@@ -1352,6 +1578,10 @@ Todos os direitos reservados.
 </div>
 
 
+<!-- =========================
+MODAL PAGAMENTO
+========================= -->
+
 <div id="paymentModal">
 
 <div class="payment-box">
@@ -1364,9 +1594,11 @@ onclick="closePayment()">
 
 </button>
 
+
 <div class="payment-title">
 Finalizar compra
 </div>
+
 
 <div
 class="payment-product"
@@ -1376,12 +1608,14 @@ Produto
 
 </div>
 
+
 <div
 id="paymentLoading">
 
 Preparando pagamento...
 
 </div>
+
 
 <div id="paymentBrick"></div>
 
@@ -1391,6 +1625,11 @@ Preparando pagamento...
 
 
 <script>
+
+
+/* =========================
+MODELOS
+========================= */
 
 const iosModels=[
 
@@ -1454,14 +1693,21 @@ const androidModels=[
 ];
 
 
+/* =========================
+PRODUTOS
+========================= */
+
 const products={
+
 
 iosSensi:{
 
 icon:"iOS",
+
 iconClass:"platform-ios",
 
-title:"Sensibilidade Profissional Mobile iOS",
+title:
+"Sensibilidade Profissional Mobile iOS",
 
 price:80,
 
@@ -1487,9 +1733,11 @@ model:true
 androidSensi:{
 
 icon:"Android",
+
 iconClass:"platform-android",
 
-title:"Sensibilidade Profissional Mobile Android",
+title:
+"Sensibilidade Profissional Mobile Android",
 
 price:75,
 
@@ -1516,7 +1764,8 @@ emulatorSensi:{
 
 icon:"PC",
 
-title:"Sensibilidade Profissional Emulador",
+title:
+"Sensibilidade Profissional Emulador",
 
 price:97,
 
@@ -1540,9 +1789,11 @@ emulator:true
 iosXit:{
 
 icon:"iOS",
+
 iconClass:"platform-ios",
 
-title:"Xit VIP Atualizado iOS",
+title:
+"Xit VIP Atualizado iOS",
 
 price:199.99,
 
@@ -1566,9 +1817,11 @@ iosExtra:true
 androidXit:{
 
 icon:"Android",
+
 iconClass:"platform-android",
 
-title:"Xit VIP Atualizado Android",
+title:
+"Xit VIP Atualizado Android",
 
 price:179.99,
 
@@ -1586,6 +1839,7 @@ features:[
 ],
 
 androidExtra:true,
+
 androidNotice:true
 
 },
@@ -1595,7 +1849,8 @@ emulatorXit:{
 
 icon:"PC",
 
-title:"Xit VIP Atualizado Emulador",
+title:
+"Xit VIP Atualizado Emulador",
 
 price:179.99,
 
@@ -1613,7 +1868,9 @@ features:[
 ],
 
 emulator:true,
+
 sensi:true,
+
 emulatorNotice:true
 
 }
@@ -1621,11 +1878,27 @@ emulatorNotice:true
 };
 
 
+/* =========================
+VARIÁVEIS
+========================= */
+
 let currentProduct=null;
+
 let selectedDiamond=null;
+
+let paymentController=null;
+
+
+/* =========================
+API
+========================= */
 
 const API_URL="/api/criar-pagamento";
 
+
+/* =========================
+MODELOS
+========================= */
 
 function loadModels(platform){
 
@@ -1638,6 +1911,7 @@ const first=
 document.createElement("option");
 
 first.value="";
+
 first.textContent=
 "Selecione seu modelo";
 
@@ -1654,6 +1928,7 @@ const option=
 document.createElement("option");
 
 option.value=model;
+
 option.textContent=model;
 
 select.appendChild(option);
@@ -1663,11 +1938,16 @@ select.appendChild(option);
 }
 
 
+/* =========================
+ABRIR PRODUTO
+========================= */
+
 function openProduct(id){
 
 currentProduct=id;
 
-const product=products[id];
+const product=
+products[id];
 
 document.getElementById("homePage")
 .style.display="none";
@@ -1678,25 +1958,37 @@ document.getElementById("diamondPage")
 document.getElementById("productPage")
 .style.display="block";
 
+
 const icon=
 document.getElementById("detailIcon");
 
-icon.textContent=product.icon;
+icon.textContent=
+product.icon;
 
 icon.className=
 "detail-icon "+
 (product.iconClass||"");
 
-document.getElementById("detailTitle")
-.textContent=product.title;
 
-document.getElementById("detailDescription")
-.textContent=product.description;
+document.getElementById(
+"detailTitle"
+).textContent=
+product.title;
+
+
+document.getElementById(
+"detailDescription"
+).textContent=
+product.description;
+
 
 const features=
-document.getElementById("detailFeatures");
+document.getElementById(
+"detailFeatures"
+);
 
 features.innerHTML="";
+
 
 product.features.forEach(item=>{
 
@@ -1722,6 +2014,7 @@ const areas=[
 
 ];
 
+
 areas.forEach(id=>{
 
 document.getElementById(id)
@@ -1732,65 +2025,94 @@ document.getElementById(id)
 
 if(product.model){
 
-document.getElementById("modelArea")
-.style.display="block";
+document.getElementById(
+"modelArea"
+).style.display="block";
 
-loadModels(product.platform);
+loadModels(
+product.platform
+);
 
 }
+
 
 if(product.emulator){
 
-document.getElementById("emulatorArea")
-.style.display="block";
+document.getElementById(
+"emulatorArea"
+).style.display="block";
 
 }
+
 
 if(product.sensi){
 
-document.getElementById("sensiArea")
-.style.display="block";
+document.getElementById(
+"sensiArea"
+).style.display="block";
 
 }
+
 
 if(product.iosExtra){
 
-document.getElementById("iosExtra")
-.style.display="block";
+document.getElementById(
+"iosExtra"
+).style.display="block";
 
 }
+
 
 if(product.androidExtra){
 
-document.getElementById("androidExtra")
-.style.display="block";
+document.getElementById(
+"androidExtra"
+).style.display="block";
 
 }
+
 
 if(product.emulatorNotice){
 
-document.getElementById("emulatorNotice")
-.style.display="block";
+document.getElementById(
+"emulatorNotice"
+).style.display="block";
 
 }
+
 
 if(product.androidNotice){
 
-document.getElementById("androidNotice")
-.style.display="block";
+document.getElementById(
+"androidNotice"
+).style.display="block";
 
 }
 
 
-document.getElementById("email").value="";
+document.getElementById(
+"email"
+).value="";
 
-document.getElementById("modelSelect").value="";
 
-document.getElementById("emulatorSelect").value="";
+document.getElementById(
+"modelSelect"
+).value="";
 
-document.getElementById("iosExtraCheck").checked=false;
 
-document.getElementById("androidExtraCheck").checked=false;
+document.getElementById(
+"emulatorSelect"
+).value="";
+
+
+document.getElementById(
+"iosExtraCheck"
+).checked=false;
+
+
+document.getElementById(
+"androidExtraCheck"
+).checked=false;
 
 
 document.querySelectorAll(
@@ -1809,21 +2131,32 @@ window.scrollTo(0,0);
 }
 
 
+/* =========================
+VOLTAR
+========================= */
+
 function goHome(){
 
-document.getElementById("productPage")
-.style.display="none";
+document.getElementById(
+"productPage"
+).style.display="none";
 
-document.getElementById("diamondPage")
-.style.display="none";
+document.getElementById(
+"diamondPage"
+).style.display="none";
 
-document.getElementById("homePage")
-.style.display="block";
+document.getElementById(
+"homePage"
+).style.display="block";
 
 window.scrollTo(0,0);
 
 }
 
+
+/* =========================
+TOTAL
+========================= */
 
 function getProductTotal(){
 
@@ -1884,9 +2217,9 @@ currency:"BRL"
 }
 
 
-/* =========================================
-   PAGAMENTO - MERCADO PAGO
-   ========================================= */
+/* =========================
+PAGAMENTO DENTRO DO SITE
+========================= */
 
 async function abrirPagamento(
 titulo,
@@ -1920,7 +2253,8 @@ modal.style.display="block";
 
 document.body.style.overflow="hidden";
 
-name.textContent=titulo;
+name.textContent=
+titulo;
 
 brick.innerHTML="";
 
@@ -1931,6 +2265,12 @@ loading.textContent=
 
 
 try{
+
+/*
+=========================================
+BUSCAR PUBLIC KEY DA API
+=========================================
+*/
 
 const resposta=
 await fetch(
@@ -1973,44 +2313,333 @@ if(!resposta.ok){
 
 throw new Error(
 dados.error ||
-"Erro ao criar o pagamento."
+"Erro ao preparar pagamento."
 );
 
 }
 
 
-if(!dados.link){
+if(!dados.publicKey){
 
 throw new Error(
-"Mercado Pago não retornou o link de pagamento."
+"Public Key do Mercado Pago não encontrada."
 );
 
 }
-
-
-console.log(
-"Pagamento criado:",
-dados.id
-);
-
-console.log(
-"Link do Mercado Pago:",
-dados.link
-);
-
-
-loading.textContent=
-"Redirecionando para o Mercado Pago...";
 
 
 /*
 =========================================
-ABRE O CHECKOUT DO MERCADO PAGO
+INICIALIZA MERCADO PAGO
 =========================================
 */
 
-window.location.href=
-dados.link;
+const mp=
+new MercadoPago(
+dados.publicKey,
+{
+locale:"pt-BR"
+}
+);
+
+
+const bricksBuilder=
+mp.bricks();
+
+
+loading.textContent=
+"Carregando pagamento...";
+
+
+/*
+=========================================
+REMOVE BRICK ANTERIOR
+=========================================
+*/
+
+if(paymentController){
+
+try{
+
+await paymentController.unmount();
+
+}catch(e){
+
+console.log(
+"Brick anterior já estava desmontado."
+);
+
+}
+
+paymentController=null;
+
+}
+
+
+/*
+=========================================
+CONFIGURAÇÃO DO PAYMENT BRICK
+=========================================
+*/
+
+const settings={
+
+initialization:{
+
+amount:Number(preco),
+
+payer:{
+
+email:email
+
+}
+
+},
+
+
+customization:{
+
+visual:{
+
+style:{
+theme:"dark"
+}
+
+},
+
+paymentMethods:{
+
+creditCard:"all",
+
+debitCard:"all",
+
+ticket:"all",
+
+bankTransfer:"all"
+
+}
+
+},
+
+
+callbacks:{
+
+onReady:()=>{
+
+loading.style.display="none";
+
+console.log(
+"Payment Brick carregado."
+);
+
+},
+
+
+onSubmit:async({
+paymentType,
+formData
+})=>{
+
+console.log(
+"Dados recebidos do Brick:",
+formData
+);
+
+try{
+
+/*
+=========================================
+ENVIA O PAGAMENTO PARA A NOSSA API
+=========================================
+*/
+
+const pagamentoResponse=
+await fetch(
+"/api/processar-pagamento",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+...formData,
+
+titulo:titulo,
+
+email:email,
+
+dados:dadosExtra,
+
+transaction_amount:
+Number(preco)
+
+})
+
+});
+
+
+const resultado=
+await pagamentoResponse.json();
+
+
+console.log(
+"Resultado do pagamento:",
+resultado
+);
+
+
+if(!pagamentoResponse.ok){
+
+throw new Error(
+resultado.error ||
+"Não foi possível processar o pagamento."
+);
+
+}
+
+
+/*
+=========================================
+PAGAMENTO APROVADO
+=========================================
+*/
+
+if(
+resultado.status==="approved"
+){
+
+brick.innerHTML=
+
+"<div class='payment-success'>"+
+
+"<div class='payment-success-icon'>"+
+"✅"+
+"</div>"+
+
+"<h2>Pagamento aprovado!</h2>"+
+
+"<p>"+
+"Seu pagamento foi aprovado com sucesso."+
+"<br><br>"+
+"Obrigado pela compra na SenXit!"+
+"</p>"+
+
+"</div>";
+
+return;
+
+}
+
+
+/*
+=========================================
+PAGAMENTO PENDENTE
+=========================================
+*/
+
+if(
+resultado.status==="pending" ||
+resultado.status==="in_process"
+){
+
+brick.innerHTML=
+
+"<div class='payment-success'>"+
+
+"<div class='payment-success-icon'>"+
+"⏳"+
+"</div>"+
+
+"<h2>Pagamento pendente</h2>"+
+
+"<p>"+
+"Seu pagamento foi recebido e está aguardando confirmação."+
+"</p>"+
+
+"</div>";
+
+return;
+
+}
+
+
+/*
+=========================================
+PAGAMENTO RECUSADO
+=========================================
+*/
+
+throw new Error(
+
+resultado.status_detail ||
+
+"Pagamento não aprovado."
+
+);
+
+
+}catch(error){
+
+console.error(
+"Erro ao processar pagamento:",
+error
+);
+
+alert(
+error.message ||
+"Não foi possível processar o pagamento."
+);
+
+}
+
+},
+
+
+onError:error=>{
+
+console.error(
+"Erro no Payment Brick:",
+error
+);
+
+loading.style.display="none";
+
+brick.innerHTML=
+
+"<div class='payment-error'>"+
+
+"Não foi possível carregar o pagamento."+
+
+"<br><br>"+
+
+"Tente novamente."+
+
+"</div>";
+
+}
+
+}
+
+};
+
+
+/*
+=========================================
+CRIAR PAYMENT BRICK
+=========================================
+*/
+
+paymentController=
+await bricksBuilder.create(
+"payment",
+"paymentBrick",
+settings
+);
 
 
 }catch(error){
@@ -2020,16 +2649,22 @@ console.error(
 error
 );
 
-loading.style.display=
-"none";
+loading.style.display="none";
 
 brick.innerHTML=
+
 "<div class='payment-error'>"+
+
 "Não foi possível carregar o pagamento."+
+
 "<br><br>"+
+
 error.message+
+
 "<br><br>"+
+
 "Tente novamente."+
+
 "</div>";
 
 }
@@ -2037,11 +2672,23 @@ error.message+
 }
 
 
-/* =========================================
-   FECHAR PAGAMENTO
-   ========================================= */
+/* =========================
+FECHAR PAGAMENTO
+========================= */
 
-function closePayment(){
+async function closePayment(){
+
+if(paymentController){
+
+try{
+
+await paymentController.unmount();
+
+}catch(e){}
+
+paymentController=null;
+
+}
 
 document.getElementById(
 "paymentModal"
@@ -2052,14 +2699,15 @@ document.body.style.overflow="";
 }
 
 
-/* =========================================
-   COMPRA DE PRODUTO
-   ========================================= */
+/* =========================
+COMPRA DE PRODUTO
+========================= */
 
 async function continuePurchase(){
 
 const product=
 products[currentProduct];
+
 
 const email=
 document.getElementById(
@@ -2136,34 +2784,43 @@ getProductTotal();
 const dados={
 
 modelo:
+
 product.model
 ?document.getElementById(
 "modelSelect"
 ).value
 :null,
 
+
 emulador:
+
 product.emulator
 ?document.getElementById(
 "emulatorSelect"
 ).value
 :null,
 
+
 packSensi:
+
 product.sensi
 ?document.querySelector(
 'input[name="sensiPack"]:checked'
 )?.value
 :null,
 
+
 extraIOS:
+
 currentProduct==="iosXit"
 ?document.getElementById(
 "iosExtraCheck"
 ).checked
 :false,
 
+
 extraAndroid:
+
 currentProduct==="androidXit"
 ?document.getElementById(
 "androidExtraCheck"
@@ -2177,6 +2834,7 @@ const button=
 document.getElementById(
 "productBuyButton"
 );
+
 
 button.disabled=true;
 
@@ -2200,9 +2858,9 @@ button.textContent=
 }
 
 
-/* =========================================
-   DIAMANTES
-   ========================================= */
+/* =========================
+ABRIR DIAMANTES
+========================= */
 
 function openDiamonds(){
 
@@ -2225,6 +2883,7 @@ selectedDiamond=null;
 document.getElementById(
 "diamondId"
 ).value="";
+
 
 document.getElementById(
 "diamondEmail"
@@ -2251,6 +2910,10 @@ window.scrollTo(0,0);
 
 }
 
+
+/* =========================
+SELECIONAR DIAMANTES
+========================= */
 
 function selectDiamond(
 element,
@@ -2288,6 +2951,10 @@ updateDiamondSummary();
 }
 
 
+/* =========================
+RESUMO DIAMANTES
+========================= */
+
 function updateDiamondSummary(){
 
 if(!selectedDiamond)return;
@@ -2308,14 +2975,17 @@ document.getElementById(
 document.getElementById(
 "summaryDiamondAmount"
 ).textContent=
+
 selectedDiamond.amount
 .toLocaleString("pt-BR")
-+" Diamantes";
++
+" Diamantes";
 
 
 document.getElementById(
 "summaryDiamondPrice"
 ).textContent=
+
 selectedDiamond.price
 .toLocaleString(
 "pt-BR",
@@ -2329,6 +2999,7 @@ currency:"BRL"
 document.getElementById(
 "summaryDiamondId"
 ).textContent=
+
 id ||
 "Não informado";
 
@@ -2336,6 +3007,7 @@ id ||
 document.getElementById(
 "summaryDiamondEmail"
 ).textContent=
+
 email ||
 "Não informado";
 
@@ -2365,9 +3037,9 @@ updateDiamondSummary();
 );
 
 
-/* =========================================
-   COMPRA DE DIAMANTES
-   ========================================= */
+/* =========================
+COMPRA DIAMANTES
+========================= */
 
 async function continueDiamondPurchase(){
 
@@ -2455,6 +3127,7 @@ document.getElementById(
 "diamondBuyButton"
 );
 
+
 button.disabled=true;
 
 button.textContent=
@@ -2465,7 +3138,8 @@ await abrirPagamento(
 
 selectedDiamond.amount
 .toLocaleString("pt-BR")
-+" Diamantes",
++
+" Diamantes",
 
 selectedDiamond.price,
 
@@ -2491,9 +3165,9 @@ button.textContent=
 }
 
 
-/* =========================================
-   VOLTAR
-   ========================================= */
+/* =========================
+VOLTAR
+========================= */
 
 function goHomeFromDiamonds(){
 
