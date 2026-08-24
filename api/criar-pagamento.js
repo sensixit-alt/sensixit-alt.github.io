@@ -1,10 +1,8 @@
 export default async function handler(req, res) {
 
-  /*
-   * ==========================================
-   * CORS
-   * ==========================================
-   */
+  // ================================
+  // CORS
+  // ================================
 
   res.setHeader(
     "Access-Control-Allow-Origin",
@@ -21,51 +19,25 @@ export default async function handler(req, res) {
     "Content-Type"
   );
 
-
-  /*
-   * ==========================================
-   * REQUISIÇÃO OPTIONS
-   * ==========================================
-   *
-   * O navegador pode enviar OPTIONS
-   * antes do POST.
-   *
-   * Sem isso pode aparecer:
-   * OPTIONS 405
-   */
+  // ================================
+  // OPTIONS
+  // ================================
 
   if (req.method === "OPTIONS") {
-
     return res.status(204).end();
-
   }
 
-
-  /*
-   * ==========================================
-   * SOMENTE POST
-   * ==========================================
-   */
+  // ================================
+  // SOMENTE POST
+  // ================================
 
   if (req.method !== "POST") {
-
     return res.status(405).json({
-
-      error:
-        "Método não permitido"
-
+      error: "Método não permitido"
     });
-
   }
 
-
   try {
-
-    /*
-     * ========================================
-     * DADOS RECEBIDOS DO SITE
-     * ========================================
-     */
 
     const {
       titulo,
@@ -73,140 +45,92 @@ export default async function handler(req, res) {
       email
     } = req.body || {};
 
-
-    /*
-     * ========================================
-     * VALIDAÇÃO
-     * ========================================
-     */
+    // ================================
+    // VALIDAÇÃO
+    // ================================
 
     if (!titulo) {
-
       return res.status(400).json({
-
-        error:
-          "Produto não informado"
-
+        error: "Produto não informado"
       });
-
     }
 
+    const valor = Number(preco);
 
     if (
-      preco === undefined ||
-      preco === null ||
-      Number(preco) <= 0
+      !Number.isFinite(valor) ||
+      valor <= 0
     ) {
-
       return res.status(400).json({
-
-        error:
-          "Preço inválido"
-
+        error: "Preço inválido"
       });
-
     }
 
-
-    /*
-     * ========================================
-     * ACCESS TOKEN
-     * ========================================
-     */
+    // ================================
+    // ACCESS TOKEN
+    // ================================
 
     const accessToken =
       process.env.MERCADOPAGO_ACCESS_TOKEN;
 
-
     if (!accessToken) {
-
       return res.status(500).json({
-
         error:
           "Access Token do Mercado Pago não configurado"
-
       });
-
     }
 
-
-    /*
-     * ========================================
-     * CRIAR PREFERÊNCIA
-     * ========================================
-     */
+    // ================================
+    // CRIAR PAGAMENTO
+    // ================================
 
     const resposta = await fetch(
-
       "https://api.mercadopago.com/checkout/preferences",
-
       {
-
         method: "POST",
 
         headers: {
-
-          "Content-Type":
-            "application/json",
-
+          "Content-Type": "application/json",
           "Authorization":
             `Bearer ${accessToken}`
-
         },
 
         body: JSON.stringify({
 
           items: [
-
             {
+              title: String(titulo),
 
-              title:
-                String(titulo),
+              quantity: 1,
 
-              quantity:
-                1,
+              currency_id: "BRL",
 
-              currency_id:
-                "BRL",
-
-              unit_price:
-                Number(preco)
-
+              unit_price: valor
             }
-
           ],
 
           ...(email
             ? {
                 payer: {
-                  email:
-                    String(email)
+                  email: String(email)
                 }
               }
             : {})
 
         })
-
       }
-
     );
 
-
-    /*
-     * ========================================
-     * RESPOSTA DO MERCADO PAGO
-     * ========================================
-     */
+    // ================================
+    // RESPOSTA
+    // ================================
 
     const dados =
       await resposta.json();
 
-
-    /*
-     * ========================================
-     * ERRO DO MERCADO PAGO
-     * ========================================
-     */
+    // ================================
+    // ERRO MERCADO PAGO
+    // ================================
 
     if (!resposta.ok) {
 
@@ -224,19 +148,14 @@ export default async function handler(req, res) {
           dados.error ||
           "Erro ao criar pagamento",
 
-        details:
-          dados
+        details: dados
 
       });
-
     }
 
-
-    /*
-     * ========================================
-     * LINK DE PAGAMENTO
-     * ========================================
-     */
+    // ================================
+    // VERIFICAR LINK
+    // ================================
 
     if (!dados.init_point) {
 
@@ -246,40 +165,26 @@ export default async function handler(req, res) {
           "Mercado Pago não retornou o link de pagamento"
 
       });
-
     }
 
-
-    /*
-     * ========================================
-     * SUCESSO
-     * ========================================
-     */
+    // ================================
+    // SUCESSO
+    // ================================
 
     return res.status(200).json({
 
-      id:
-        dados.id,
+      id: dados.id,
 
-      link:
-        dados.init_point
+      link: dados.init_point
 
     });
 
-
   } catch (erro) {
-
-    /*
-     * ========================================
-     * ERRO GERAL
-     * ========================================
-     */
 
     console.error(
       "Erro na API:",
       erro
     );
-
 
     return res.status(500).json({
 
@@ -292,5 +197,4 @@ export default async function handler(req, res) {
     });
 
   }
-
 }
