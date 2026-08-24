@@ -14,37 +14,39 @@ export default async function handler(req, res) {
     if (!accessToken) {
       return res.status(500).json({
         error:
-          "MERCADOPAGO_ACCESS_TOKEN não configurado na Vercel."
+          "MERCADOPAGO_ACCESS_TOKEN não configurado."
       });
     }
+
+
+    /*
+    ========================================
+    RECEBER DADOS DO SITE
+    ========================================
+    */
 
     const {
-      formData,
       titulo,
       email,
-      dados
+      dados,
+      transaction_amount,
+      ...formData
     } = req.body || {};
 
-    if (!formData) {
-      return res.status(400).json({
-        error:
-          "Dados do pagamento não recebidos."
-      });
-    }
 
     if (!titulo) {
       return res.status(400).json({
-        error:
-          "Produto não informado."
+        error: "Produto não informado."
       });
     }
 
+
     if (!email) {
       return res.status(400).json({
-        error:
-          "E-mail não informado."
+        error: "E-mail não informado."
       });
     }
+
 
     /*
     ========================================
@@ -98,40 +100,25 @@ export default async function handler(req, res) {
 
     };
 
-    /*
-    ========================================
-    VERIFICAR PRODUTO
-    ========================================
-    */
 
-    if (
-      !Object.prototype.hasOwnProperty.call(
-        precos,
-        titulo
-      )
-    ) {
+    if (precos[titulo] === undefined) {
 
       return res.status(400).json({
-        error:
-          "Produto inválido."
+        error: "Produto inválido."
       });
 
     }
 
+
     /*
     ========================================
-    VALOR OFICIAL
+    CALCULAR VALOR NO SERVIDOR
     ========================================
     */
 
     let valor =
-      Number(precos[titulo]);
+      precos[titulo];
 
-    /*
-    ========================================
-    ADICIONAIS
-    ========================================
-    */
 
     if (
       titulo === "Xit VIP Atualizado iOS" &&
@@ -142,6 +129,7 @@ export default async function handler(req, res) {
 
     }
 
+
     if (
       titulo === "Xit VIP Atualizado Android" &&
       dados?.extraAndroid === true
@@ -150,6 +138,7 @@ export default async function handler(req, res) {
       valor += 10;
 
     }
+
 
     /*
     ========================================
@@ -172,59 +161,65 @@ export default async function handler(req, res) {
         ...(formData.payer || {}),
 
         email:
-          String(email)
+          email
 
       }
 
     };
 
+
     /*
     ========================================
-    ID ÚNICO DO PAGAMENTO
+    ID ÚNICO
     ========================================
     */
 
     const idempotencyKey =
       crypto.randomUUID();
 
+
     /*
     ========================================
-    ENVIAR AO MERCADO PAGO
+    ENVIAR PARA MERCADO PAGO
     ========================================
     */
 
-    const resposta = await fetch(
-      "https://api.mercadopago.com/v1/payments",
-      {
+    const resposta =
+      await fetch(
+        "https://api.mercadopago.com/v1/payments",
+        {
 
-        method: "POST",
+          method: "POST",
 
-        headers: {
+          headers: {
 
-          "Content-Type":
-            "application/json",
+            "Content-Type":
+              "application/json",
 
-          "Authorization":
-            `Bearer ${accessToken}`,
+            "Authorization":
+              `Bearer ${accessToken}`,
 
-          "X-Idempotency-Key":
-            idempotencyKey
+            "X-Idempotency-Key":
+              idempotencyKey
 
-        },
+          },
 
-        body:
-          JSON.stringify(pagamento)
+          body:
+            JSON.stringify(pagamento)
 
-      }
-    );
+        }
+      );
+
 
     const resultado =
       await resposta.json();
+
 
     console.log(
       "Resposta Mercado Pago:",
       resultado
     );
+
 
     /*
     ========================================
@@ -250,9 +245,37 @@ export default async function handler(req, res) {
 
     }
 
+
     /*
     ========================================
-    SUCESSO
+    DADOS DO PIX
+    ========================================
+    */
+
+    const transactionData =
+      resultado
+        ?.point_of_interaction
+        ?.transaction_data;
+
+
+    const qrCode =
+      transactionData
+        ?.qr_code || null;
+
+
+    const qrCodeBase64 =
+      transactionData
+        ?.qr_code_base64 || null;
+
+
+    const ticketUrl =
+      transactionData
+        ?.ticket_url || null;
+
+
+    /*
+    ========================================
+    RESPOSTA PARA O SITE
     ========================================
     */
 
@@ -268,9 +291,22 @@ export default async function handler(req, res) {
         resultado.status_detail,
 
       payment_method_id:
-        resultado.payment_method_id
+        resultado.payment_method_id,
+
+      transaction_amount:
+        resultado.transaction_amount,
+
+      qrCode:
+        qrCode,
+
+      qrCodeBase64:
+        qrCodeBase64,
+
+      ticketUrl:
+        ticketUrl
 
     });
+
 
   } catch (erro) {
 
@@ -278,6 +314,7 @@ export default async function handler(req, res) {
       "ERRO PROCESSAR PAGAMENTO:",
       erro
     );
+
 
     return res.status(500).json({
 
