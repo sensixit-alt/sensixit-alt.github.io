@@ -534,11 +534,6 @@ margin-top:35px;
 line-height:1.7;
 }
 
-
-/* =========================
-   PAGAMENTO DENTRO DO SITE
-========================= */
-
 #paymentModal{
 display:none;
 position:fixed;
@@ -607,10 +602,6 @@ grid-template-columns:1fr;
 
 <div class="container">
 
-<!-- =========================
-HOME
-========================= -->
-
 <div id="homePage">
 
 <div class="header">
@@ -640,7 +631,6 @@ HOME
 <div class="category-title">
 🎯 Sensibilidade Profissional
 </div>
-
 
 <div class="product">
 
@@ -672,7 +662,6 @@ VER PRODUTO
 
 </div>
 
-
 <div class="product">
 
 <div class="product-top">
@@ -702,7 +691,6 @@ VER PRODUTO
 </button>
 
 </div>
-
 
 <div class="product">
 
@@ -734,11 +722,9 @@ VER PRODUTO
 
 </div>
 
-
 <div class="category-title">
 🔥 Xit VIP Atualizado
 </div>
-
 
 <div class="product">
 
@@ -770,7 +756,6 @@ VER PRODUTO
 
 </div>
 
-
 <div class="product">
 
 <div class="product-top">
@@ -800,7 +785,6 @@ VER PRODUTO
 </button>
 
 </div>
-
 
 <div class="product">
 
@@ -832,13 +816,11 @@ VER PRODUTO
 
 </div>
 
-
 <div class="category-title">
 💎 Ofertas
 </div>
 
-
-<button class="diamond-button" onclick="openDiamonds()">
+<button class="diamond-button" onclick="openDiamonds">
 
 <div class="diamond-button-top">
 
@@ -865,7 +847,6 @@ e informe seu ID do Free Fire.
 
 </button>
 
-
 <div class="footer">
 © 2026 SenXit
 <br>
@@ -873,11 +854,6 @@ Todos os direitos reservados.
 </div>
 
 </div>
-
-
-<!-- =========================
-PRODUTO
-========================= -->
 
 <div id="productPage">
 
@@ -901,7 +877,6 @@ Descrição
 
 <ul class="features" id="detailFeatures"></ul>
 
-
 <div id="modelArea" style="display:none;">
 
 <div class="option-title">
@@ -917,7 +892,6 @@ Selecione seu modelo
 </select>
 
 </div>
-
 
 <div id="emulatorArea" style="display:none;">
 
@@ -942,7 +916,6 @@ Selecione seu emulador
 </select>
 
 </div>
-
 
 <div id="sensiArea" style="display:none;">
 
@@ -995,7 +968,6 @@ value="Rápida">
 
 </div>
 
-
 <div class="extra"
 id="iosExtra"
 style="display:none;">
@@ -1013,7 +985,6 @@ Adicionar opção extra
 </label>
 
 </div>
-
 
 <div class="extra"
 id="androidExtra"
@@ -1033,7 +1004,6 @@ Adicionar opção extra
 
 </div>
 
-
 <div class="email-area">
 
 <label>
@@ -1048,7 +1018,6 @@ placeholder="Digite seu melhor e-mail">
 
 </div>
 
-
 <div class="total">
 
 <span>Total</span>
@@ -1059,7 +1028,6 @@ R$ 0,00
 
 </div>
 
-
 <button
 class="buy"
 id="productBuyButton"
@@ -1068,7 +1036,6 @@ onclick="continuePurchase()">
 CONTINUAR PARA COMPRA
 
 </button>
-
 
 <div
 class="product-notice"
@@ -1092,7 +1059,6 @@ style="display:none;">
 
 </div>
 
-
 <div
 class="product-notice"
 id="androidNotice"
@@ -1115,11 +1081,6 @@ e o vídeo ensinando a instalação.
 
 </div>
 
-
-<!-- =========================
-DIAMANTES
-========================= -->
-
 <div id="diamondPage">
 
 <button class="back"
@@ -1128,7 +1089,6 @@ onclick="goHomeFromDiamonds()">
 ← Voltar para produtos
 
 </button>
-
 
 <div class="diamond-header">
 
@@ -1145,9 +1105,7 @@ que deseja comprar.
 
 </div>
 
-
 <div class="diamond-grid-page">
-
 
 <div class="diamond-choice"
 onclick="selectDiamond(this,65,1.50)">
@@ -1164,7 +1122,6 @@ R$ 1,50
 
 </div>
 
-
 <div class="diamond-choice"
 onclick="selectDiamond(this,100,3.99)">
 
@@ -1179,7 +1136,6 @@ R$ 3,99
 </div>
 
 </div>
-
 
 <div class="diamond-choice"
 onclick="selectDiamond(this,310,12.99)">
@@ -1196,7 +1152,6 @@ R$ 12,99
 
 </div>
 
-
 <div class="diamond-choice"
 onclick="selectDiamond(this,520,18.99)">
 
@@ -1211,7 +1166,6 @@ R$ 18,99
 </div>
 
 </div>
-
 
 <div class="diamond-choice"
 onclick="selectDiamond(this,1060,41.99)">
@@ -1228,7 +1182,6 @@ R$ 41,99
 
 </div>
 
-
 <div class="diamond-choice"
 onclick="selectDiamond(this,2180,85.99)">
 
@@ -1244,7 +1197,6 @@ R$ 85,99
 
 </div>
 
-
 <div class="diamond-choice"
 onclick="selectDiamond(this,5600,205.99)">
 
@@ -1259,7 +1211,6 @@ R$ 205,99
 </div>
 
 </div>
-
 
 <div class="diamond-choice"
 onclick="selectDiamond(this,22400,819.99)">
@@ -1278,13 +1229,11 @@ R$ 819,99
 
 </div>
 
-
 <div class="diamond-form">
 
 <div class="diamond-form-title">
 🎮 Dados da compra
 </div>
-
 
 <div class="diamond-input-area">
 
@@ -1299,7 +1248,6 @@ placeholder="Digite o ID da sua conta">
 
 </div>
 
-
 <div class="diamond-input-area">
 
 <label>📧 E-mail para contato e entrega</label>
@@ -1311,7 +1259,6 @@ type="email"
 placeholder="Digite seu melhor e-mail">
 
 </div>
-
 
 <div class="diamond-summary"
 id="diamondSummary">
@@ -1352,7 +1299,6 @@ R$ 0,00
 
 </div>
 
-
 <button
 class="buy"
 id="diamondBuyButton"
@@ -1361,7 +1307,6 @@ onclick="continueDiamondPurchase()">
 IR PARA PAGAMENTO
 
 </button>
-
 
 <div class="product-notice">
 
@@ -1372,7 +1317,6 @@ e confira seus dados antes de continuar.
 </div>
 
 </div>
-
 
 <div class="footer">
 
@@ -1387,11 +1331,6 @@ Todos os direitos reservados.
 </div>
 
 </div>
-
-
-<!-- =========================
-MODAL DE PAGAMENTO
-========================= -->
 
 <div id="paymentModal">
 
@@ -1433,12 +1372,7 @@ id="paymentBrick">
 
 </div>
 
-
 <script>
-
-/* =========================
-MODELOS
-========================= */
 
 const iosModels=[
 
@@ -1473,7 +1407,6 @@ const iosModels=[
 
 ];
 
-
 const androidModels=[
 
 "Samsung Galaxy A",
@@ -1500,11 +1433,6 @@ const androidModels=[
 "Outro Android"
 
 ];
-
-
-/* =========================
-PRODUTOS
-========================= */
 
 const products={
 
@@ -1535,7 +1463,6 @@ model:true
 
 },
 
-
 androidSensi:{
 
 icon:"Android",
@@ -1563,7 +1490,6 @@ model:true
 
 },
 
-
 emulatorSensi:{
 
 icon:"PC",
@@ -1587,7 +1513,6 @@ features:[
 emulator:true
 
 },
-
 
 iosXit:{
 
@@ -1613,7 +1538,6 @@ features:[
 iosExtra:true
 
 },
-
 
 androidXit:{
 
@@ -1641,7 +1565,6 @@ androidExtra:true,
 androidNotice:true
 
 },
-
 
 emulatorXit:{
 
@@ -1672,26 +1595,10 @@ emulatorNotice:true
 
 };
 
-
-/* =========================
-VARIÁVEIS
-========================= */
-
 let currentProduct=null;
 let selectedDiamond=null;
-let paymentController=null;
-
-
-/* =========================
-API
-========================= */
 
 const API_URL="/api/criar-pagamento";
-
-
-/* =========================
-MODELOS
-========================= */
 
 function loadModels(platform){
 
@@ -1723,11 +1630,6 @@ select.appendChild(option);
 });
 
 }
-
-
-/* =========================
-ABRIR PRODUTO
-========================= */
 
 function openProduct(id){
 
@@ -1773,7 +1675,6 @@ features.appendChild(li);
 
 });
 
-
 const areas=[
 
 "modelArea",
@@ -1792,7 +1693,6 @@ document.getElementById(id)
 .style.display="none";
 
 });
-
 
 if(product.model){
 
@@ -1845,7 +1745,6 @@ document.getElementById("androidNotice")
 
 }
 
-
 document.getElementById("email").value="";
 document.getElementById("modelSelect").value="";
 document.getElementById("emulatorSelect").value="";
@@ -1867,11 +1766,6 @@ window.scrollTo(0,0);
 
 }
 
-
-/* =========================
-VOLTAR
-========================= */
-
 function goHome(){
 
 document.getElementById("productPage")
@@ -1886,11 +1780,6 @@ document.getElementById("homePage")
 window.scrollTo(0,0);
 
 }
-
-
-/* =========================
-TOTAL
-========================= */
 
 function getProductTotal(){
 
@@ -1922,7 +1811,6 @@ return total;
 
 }
 
-
 function updateTotal(){
 
 const total=getProductTotal();
@@ -1941,7 +1829,7 @@ currency:"BRL"
 
 
 /* =========================
-ABRIR PAGAMENTO
+ABRIR PAGAMENTO - CORRIGIDO
 ========================= */
 
 async function abrirPagamento(
@@ -1954,11 +1842,11 @@ dadosExtra={}
 const modal=
 document.getElementById("paymentModal");
 
-const brick=
-document.getElementById("paymentBrick");
-
 const loading=
 document.getElementById("paymentLoading");
+
+const brick=
+document.getElementById("paymentBrick");
 
 const name=
 document.getElementById("paymentProductName");
@@ -1973,6 +1861,8 @@ brick.innerHTML="";
 
 loading.style.display="block";
 
+loading.textContent=
+"Preparando pagamento...";
 
 try{
 
@@ -1991,202 +1881,63 @@ headers:{
 body:JSON.stringify({
 
 titulo:titulo,
+
 preco:Number(preco),
+
 email:email,
-dados:dadosExtra,
-modo:"brick"
 
-})
-
-});
-
-
-const dados=
-await resposta.json();
-
-if(
-!resposta.ok ||
-!dados.publicKey
-){
-
-throw new Error(
-dados.error ||
-"Não foi possível carregar o pagamento."
-);
-
-}
-
-loading.style.display="none";
-
-
-const mp=
-new MercadoPago(
-dados.publicKey,
-{
-locale:"pt-BR"
-}
-);
-
-
-const bricks=mp.bricks();
-
-
-if(paymentController){
-
-try{
-
-await paymentController.unmount();
-
-}catch(e){}
-
-paymentController=null;
-
-}
-
-
-paymentController=
-await bricks.create(
-"payment",
-"paymentBrick",
-{
-
-initialization:{
-
-amount:Number(preco),
-
-payer:{
-email:email
-}
-
-},
-
-customization:{
-
-visual:{
-style:"dark",
-hideFormTitle:false
-},
-
-paymentMethods:{
-
-creditCard:"all",
-debitCard:"all",
-ticket:"all",
-bankTransfer:"all",
-mercadoPago:"all"
-
-}
-
-},
-
-callbacks:{
-
-onReady:()=>{
-
-console.log(
-"Pagamento carregado."
-);
-
-},
-
-onSubmit:async formData=>{
-
-try{
-
-const respostaPagamento=
-await fetch(
-"/api/processar-pagamento",
-{
-
-method:"POST",
-
-headers:{
-"Content-Type":
-"application/json"
-},
-
-body:JSON.stringify({
-
-...formData,
-
-titulo:titulo,
-preco:Number(preco),
-email:email,
 dados:dadosExtra
 
 })
 
 });
 
-const resultado=
-await respostaPagamento.json();
+const dados=
+await resposta.json();
 
-if(!respostaPagamento.ok){
+
+if(!resposta.ok){
 
 throw new Error(
-resultado.error ||
-"Pagamento não aprovado."
+dados.error ||
+"Erro ao criar o pagamento."
 );
 
 }
 
 
-if(
-resultado.status==="approved"
-){
+if(!dados.link){
 
-alert(
-"Pagamento aprovado! Obrigado pela compra."
-);
-
-closePayment();
-
-}else{
-
-alert(
-"Pagamento enviado. Aguarde a confirmação."
+throw new Error(
+"Mercado Pago não retornou o link de pagamento."
 );
 
 }
+
+
+loading.textContent=
+"Redirecionando para o Mercado Pago...";
+
+
+window.location.href=
+dados.link;
+
 
 }catch(error){
-
-console.error(error);
-
-alert(
-error.message ||
-"Erro ao processar pagamento."
-);
-
-}
-
-},
-
-onError:error=>{
 
 console.error(
-"Erro no pagamento:",
+"Erro ao abrir pagamento:",
 error
 );
-
-}
-
-}
-
-}
-
-);
-
-}catch(error){
-
-console.error(error);
 
 loading.style.display="none";
 
 brick.innerHTML=
 "<div class='payment-error'>"+
-"Não foi possível carregar o pagamento.<br><br>"+
-"Tente novamente."+
+"Não foi possível carregar o pagamento."+
+"<br><br>"+
+(error.message ||
+"Tente novamente.")+
 "</div>";
 
 }
@@ -2198,19 +1949,7 @@ brick.innerHTML=
 FECHAR PAGAMENTO
 ========================= */
 
-async function closePayment(){
-
-if(paymentController){
-
-try{
-
-await paymentController.unmount();
-
-}catch(e){}
-
-paymentController=null;
-
-}
+function closePayment(){
 
 document.getElementById(
 "paymentModal"
@@ -2233,7 +1972,6 @@ const email=
 document.getElementById("email")
 .value.trim();
 
-
 if(
 !email ||
 !email.includes("@")
@@ -2246,7 +1984,6 @@ alert(
 return;
 
 }
-
 
 if(
 product.model &&
@@ -2263,7 +2000,6 @@ return;
 
 }
 
-
 if(
 product.emulator &&
 !document.getElementById(
@@ -2278,7 +2014,6 @@ alert(
 return;
 
 }
-
 
 if(
 product.sensi &&
@@ -2295,9 +2030,7 @@ return;
 
 }
 
-
 const total=getProductTotal();
-
 
 const dados={
 
@@ -2334,7 +2067,6 @@ currentProduct==="androidXit"
 
 };
 
-
 const button=
 document.getElementById(
 "productBuyButton"
@@ -2345,14 +2077,12 @@ button.disabled=true;
 button.textContent=
 "ABRINDO PAGAMENTO...";
 
-
 await abrirPagamento(
 product.title,
 total,
 email,
 dados
 );
-
 
 button.disabled=false;
 
@@ -2507,7 +2237,6 @@ return;
 
 }
 
-
 const id=
 document.getElementById(
 "diamondId"
@@ -2517,7 +2246,6 @@ const email=
 document.getElementById(
 "diamondEmail"
 ).value.trim();
-
 
 if(!id){
 
@@ -2529,7 +2257,6 @@ return;
 
 }
 
-
 if(!/^[0-9]+$/.test(id)){
 
 alert(
@@ -2539,7 +2266,6 @@ alert(
 return;
 
 }
-
 
 if(
 !email ||
@@ -2554,7 +2280,6 @@ return;
 
 }
 
-
 localStorage.setItem(
 "senxitDiamondOrder",
 JSON.stringify({
@@ -2567,7 +2292,6 @@ email:email
 })
 );
 
-
 const button=
 document.getElementById(
 "diamondBuyButton"
@@ -2577,7 +2301,6 @@ button.disabled=true;
 
 button.textContent=
 "ABRINDO PAGAMENTO...";
-
 
 await abrirPagamento(
 
@@ -2600,7 +2323,6 @@ selectedDiamond.amount
 
 );
 
-
 button.disabled=false;
 
 button.textContent=
@@ -2608,10 +2330,6 @@ button.textContent=
 
 }
 
-
-/* =========================
-VOLTAR
-========================= */
 
 function goHomeFromDiamonds(){
 
