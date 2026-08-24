@@ -1,8 +1,8 @@
 export default async function handler(req, res) {
 
-  // ================================
+  // ==========================================
   // CORS
-  // ================================
+  // ==========================================
 
   res.setHeader(
     "Access-Control-Allow-Origin",
@@ -19,25 +19,34 @@ export default async function handler(req, res) {
     "Content-Type"
   );
 
-  // ================================
+
+  // ==========================================
   // OPTIONS
-  // ================================
+  // ==========================================
 
   if (req.method === "OPTIONS") {
     return res.status(204).end();
   }
 
-  // ================================
+
+  // ==========================================
   // SOMENTE POST
-  // ================================
+  // ==========================================
 
   if (req.method !== "POST") {
+
     return res.status(405).json({
       error: "Método não permitido"
     });
+
   }
 
+
   try {
+
+    // ========================================
+    // DADOS DO SITE
+    // ========================================
 
     const {
       titulo,
@@ -45,15 +54,23 @@ export default async function handler(req, res) {
       email
     } = req.body || {};
 
-    // ================================
-    // VALIDAÇÃO
-    // ================================
+
+    // ========================================
+    // VALIDAÇÃO DO PRODUTO
+    // ========================================
 
     if (!titulo) {
+
       return res.status(400).json({
         error: "Produto não informado"
       });
+
     }
+
+
+    // ========================================
+    // VALIDAÇÃO DO PREÇO
+    // ========================================
 
     const valor = Number(preco);
 
@@ -61,81 +78,157 @@ export default async function handler(req, res) {
       !Number.isFinite(valor) ||
       valor <= 0
     ) {
+
       return res.status(400).json({
         error: "Preço inválido"
       });
+
     }
 
-    // ================================
+
+    // ========================================
     // ACCESS TOKEN
-    // ================================
+    // ========================================
 
     const accessToken =
       process.env.MERCADOPAGO_ACCESS_TOKEN;
 
+
     if (!accessToken) {
+
       return res.status(500).json({
         error:
-          "Access Token do Mercado Pago não configurado"
+          "MERCADOPAGO_ACCESS_TOKEN não configurado na Vercel"
       });
+
     }
 
-    // ================================
-    // CRIAR PAGAMENTO
-    // ================================
 
-    const resposta = await fetch(
-      "https://api.mercadopago.com/checkout/preferences",
-      {
-        method: "POST",
+    // ========================================
+    // URL DO SEU SITE
+    // ========================================
 
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization":
-            `Bearer ${accessToken}`
-        },
+    const host =
+      req.headers.host;
 
-        body: JSON.stringify({
+    if (!host) {
 
-          items: [
-            {
-              title: String(titulo),
+      return res.status(500).json({
+        error:
+          "Não foi possível identificar o domínio do site"
+      });
 
-              quantity: 1,
+    }
 
-              currency_id: "BRL",
+    const siteUrl =
+      `https://${host}`;
 
-              unit_price: valor
-            }
-          ],
 
-          ...(email
-            ? {
-                payer: {
-                  email: String(email)
-                }
-              }
-            : {})
+    // ========================================
+    // CRIAR PREFERÊNCIA
+    // ========================================
 
-        })
-      }
-    );
+    const preferencia = {
 
-    // ================================
-    // RESPOSTA
-    // ================================
+      items: [
+
+        {
+
+          title:
+            String(titulo),
+
+          quantity:
+            1,
+
+          currency_id:
+            "BRL",
+
+          unit_price:
+            valor
+
+        }
+
+      ],
+
+
+      // ======================================
+      // RETORNO PARA O SENXIT
+      // ======================================
+
+      back_urls: {
+
+        success:
+          `${siteUrl}/?pagamento=sucesso`,
+
+        pending:
+          `${siteUrl}/?pagamento=pendente`,
+
+        failure:
+          `${siteUrl}/?pagamento=falhou`
+
+      },
+
+
+      // Volta automaticamente para o site
+      // depois de pagamento aprovado
+
+      auto_return:
+        "approved",
+
+
+      // Identificador interno da compra
+
+      external_reference:
+        `SENXIT-${Date.now()}`
+
+    };
+
+
+    // ========================================
+    // CRIAR PREFERÊNCIA NO MERCADO PAGO
+    // ========================================
+
+    const resposta =
+      await fetch(
+        "https://api.mercadopago.com/checkout/preferences",
+        {
+
+          method:
+            "POST",
+
+          headers: {
+
+            "Content-Type":
+              "application/json",
+
+            "Authorization":
+              `Bearer ${accessToken}`
+
+          },
+
+          body:
+            JSON.stringify(preferencia)
+
+        }
+      );
+
+
+    // ========================================
+    // LER RESPOSTA
+    // ========================================
 
     const dados =
       await resposta.json();
 
-    // ================================
-    // ERRO MERCADO PAGO
-    // ================================
+
+    // ========================================
+    // ERRO DO MERCADO PAGO
+    // ========================================
 
     if (!resposta.ok) {
 
       console.error(
-        "Erro Mercado Pago:",
+        "ERRO MERCADO PAGO:",
         dados
       );
 
@@ -148,48 +241,75 @@ export default async function handler(req, res) {
           dados.error ||
           "Erro ao criar pagamento",
 
-        details: dados
+        details:
+          dados
 
       });
+
     }
 
-    // ================================
+
+    // ========================================
     // VERIFICAR LINK
-    // ================================
+    // ========================================
 
     if (!dados.init_point) {
+
+      console.error(
+        "Mercado Pago não retornou init_point:",
+        dados
+      );
 
       return res.status(500).json({
 
         error:
-          "Mercado Pago não retornou o link de pagamento"
+          "Mercado Pago não retornou o link de pagamento",
+
+        details:
+          dados
 
       });
+
     }
 
-    // ================================
+
+    // ========================================
     // SUCESSO
-    // ================================
+    // ========================================
+
+    console.log(
+      "Pagamento criado:",
+      dados.id
+    );
+
 
     return res.status(200).json({
 
-      id: dados.id,
+      id:
+        dados.id,
 
-      link: dados.init_point
+      link:
+        dados.init_point
 
     });
 
+
   } catch (erro) {
 
+    // ========================================
+    // ERRO GERAL
+    // ========================================
+
     console.error(
-      "Erro na API:",
+      "ERRO NA API:",
       erro
     );
+
 
     return res.status(500).json({
 
       error:
-        "Erro ao criar pagamento",
+        "Erro interno ao criar pagamento",
 
       details:
         erro.message
@@ -197,4 +317,5 @@ export default async function handler(req, res) {
     });
 
   }
+
 }
