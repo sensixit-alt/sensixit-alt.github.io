@@ -6,8 +6,6 @@
 
 <title>SenXit - Produtos</title>
 
-<script src="https://sdk.mercadopago.com/js/v2"></script>
-
 <style>
 
 *{
@@ -590,9 +588,11 @@ line-height:1.5;
 }
 
 @media(max-width:380px){
+
 .diamond-grid-page{
 grid-template-columns:1fr;
 }
+
 }
 
 </style>
@@ -820,7 +820,7 @@ VER PRODUTO
 💎 Ofertas
 </div>
 
-<button class="diamond-button" onclick="openDiamonds">
+<button class="diamond-button" onclick="openDiamonds()">
 
 <div class="diamond-button-top">
 
@@ -854,6 +854,7 @@ Todos os direitos reservados.
 </div>
 
 </div>
+
 
 <div id="productPage">
 
@@ -927,7 +928,8 @@ Selecione seu emulador
 
 <div class="option">
 
-<input type="radio"
+<input
+type="radio"
 name="sensiPack"
 id="sensiLenta"
 value="Lenta">
@@ -940,7 +942,8 @@ value="Lenta">
 
 <div class="option">
 
-<input type="radio"
+<input
+type="radio"
 name="sensiPack"
 id="sensiMedia"
 value="Média">
@@ -953,7 +956,8 @@ value="Média">
 
 <div class="option">
 
-<input type="radio"
+<input
+type="radio"
 name="sensiPack"
 id="sensiRapida"
 value="Rápida">
@@ -968,13 +972,15 @@ value="Rápida">
 
 </div>
 
-<div class="extra"
+<div
+class="extra"
 id="iosExtra"
 style="display:none;">
 
 <label>
 
-<input type="checkbox"
+<input
+type="checkbox"
 id="iosExtraCheck"
 onchange="updateTotal()">
 
@@ -986,13 +992,15 @@ Adicionar opção extra
 
 </div>
 
-<div class="extra"
+<div
+class="extra"
 id="androidExtra"
 style="display:none;">
 
 <label>
 
-<input type="checkbox"
+<input
+type="checkbox"
 id="androidExtraCheck"
 onchange="updateTotal()">
 
@@ -1081,9 +1089,11 @@ e o vídeo ensinando a instalação.
 
 </div>
 
+
 <div id="diamondPage">
 
-<button class="back"
+<button
+class="back"
 onclick="goHomeFromDiamonds()">
 
 ← Voltar para produtos
@@ -1107,7 +1117,8 @@ que deseja comprar.
 
 <div class="diamond-grid-page">
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,65,1.50)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1122,7 +1133,8 @@ R$ 1,50
 
 </div>
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,100,3.99)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1137,7 +1149,8 @@ R$ 3,99
 
 </div>
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,310,12.99)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1152,7 +1165,8 @@ R$ 12,99
 
 </div>
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,520,18.99)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1167,7 +1181,8 @@ R$ 18,99
 
 </div>
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,1060,41.99)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1182,7 +1197,8 @@ R$ 41,99
 
 </div>
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,2180,85.99)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1197,7 +1213,8 @@ R$ 85,99
 
 </div>
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,5600,205.99)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1212,7 +1229,8 @@ R$ 205,99
 
 </div>
 
-<div class="diamond-choice"
+<div
+class="diamond-choice"
 onclick="selectDiamond(this,22400,819.99)">
 
 <div class="diamond-choice-icon">💎</div>
@@ -1260,7 +1278,8 @@ placeholder="Digite seu melhor e-mail">
 
 </div>
 
-<div class="diamond-summary"
+<div
+class="diamond-summary"
 id="diamondSummary">
 
 <div>
@@ -1332,6 +1351,7 @@ Todos os direitos reservados.
 
 </div>
 
+
 <div id="paymentModal">
 
 <div class="payment-box">
@@ -1359,18 +1379,16 @@ Produto
 <div
 id="paymentLoading">
 
-Carregando pagamento...
+Preparando pagamento...
 
 </div>
 
-<div
-id="paymentBrick">
-
-</div>
+<div id="paymentBrick"></div>
 
 </div>
 
 </div>
+
 
 <script>
 
@@ -1407,6 +1425,7 @@ const iosModels=[
 
 ];
 
+
 const androidModels=[
 
 "Samsung Galaxy A",
@@ -1433,6 +1452,7 @@ const androidModels=[
 "Outro Android"
 
 ];
+
 
 const products={
 
@@ -1463,6 +1483,7 @@ model:true
 
 },
 
+
 androidSensi:{
 
 icon:"Android",
@@ -1490,6 +1511,7 @@ model:true
 
 },
 
+
 emulatorSensi:{
 
 icon:"PC",
@@ -1513,6 +1535,7 @@ features:[
 emulator:true
 
 },
+
 
 iosXit:{
 
@@ -1538,6 +1561,7 @@ features:[
 iosExtra:true
 
 },
+
 
 androidXit:{
 
@@ -1565,6 +1589,7 @@ androidExtra:true,
 androidNotice:true
 
 },
+
 
 emulatorXit:{
 
@@ -1595,21 +1620,26 @@ emulatorNotice:true
 
 };
 
+
 let currentProduct=null;
 let selectedDiamond=null;
 
 const API_URL="/api/criar-pagamento";
 
+
 function loadModels(platform){
 
-const select=document.getElementById("modelSelect");
+const select=
+document.getElementById("modelSelect");
 
 select.innerHTML="";
 
-const first=document.createElement("option");
+const first=
+document.createElement("option");
 
 first.value="";
-first.textContent="Selecione seu modelo";
+first.textContent=
+"Selecione seu modelo";
 
 select.appendChild(first);
 
@@ -1620,7 +1650,8 @@ platform==="ios"
 
 models.forEach(model=>{
 
-const option=document.createElement("option");
+const option=
+document.createElement("option");
 
 option.value=model;
 option.textContent=model;
@@ -1630,6 +1661,7 @@ select.appendChild(option);
 });
 
 }
+
 
 function openProduct(id){
 
@@ -1646,7 +1678,8 @@ document.getElementById("diamondPage")
 document.getElementById("productPage")
 .style.display="block";
 
-const icon=document.getElementById("detailIcon");
+const icon=
+document.getElementById("detailIcon");
 
 icon.textContent=product.icon;
 
@@ -1667,13 +1700,15 @@ features.innerHTML="";
 
 product.features.forEach(item=>{
 
-const li=document.createElement("li");
+const li=
+document.createElement("li");
 
 li.textContent=item;
 
 features.appendChild(li);
 
 });
+
 
 const areas=[
 
@@ -1693,6 +1728,7 @@ document.getElementById(id)
 .style.display="none";
 
 });
+
 
 if(product.model){
 
@@ -1745,12 +1781,17 @@ document.getElementById("androidNotice")
 
 }
 
+
 document.getElementById("email").value="";
+
 document.getElementById("modelSelect").value="";
+
 document.getElementById("emulatorSelect").value="";
 
 document.getElementById("iosExtraCheck").checked=false;
+
 document.getElementById("androidExtraCheck").checked=false;
+
 
 document.querySelectorAll(
 'input[name="sensiPack"]'
@@ -1760,11 +1801,13 @@ input.checked=false;
 
 });
 
+
 updateTotal();
 
 window.scrollTo(0,0);
 
 }
+
 
 function goHome(){
 
@@ -1781,42 +1824,55 @@ window.scrollTo(0,0);
 
 }
 
+
 function getProductTotal(){
 
 if(!currentProduct)return 0;
 
-const product=products[currentProduct];
+const product=
+products[currentProduct];
 
-let total=product.price;
+let total=
+product.price;
+
 
 if(
 currentProduct==="iosXit" &&
-document.getElementById("iosExtraCheck").checked
+document.getElementById(
+"iosExtraCheck"
+).checked
 ){
 
 total+=15;
 
 }
 
+
 if(
 currentProduct==="androidXit" &&
-document.getElementById("androidExtraCheck").checked
+document.getElementById(
+"androidExtraCheck"
+).checked
 ){
 
 total+=10;
 
 }
 
+
 return total;
 
 }
 
+
 function updateTotal(){
 
-const total=getProductTotal();
+const total=
+getProductTotal();
 
-document.getElementById("totalPrice")
-.textContent=
+document.getElementById(
+"totalPrice"
+).textContent=
 total.toLocaleString(
 "pt-BR",
 {
@@ -1828,9 +1884,9 @@ currency:"BRL"
 }
 
 
-/* =========================
-ABRIR PAGAMENTO - CORRIGIDO
-========================= */
+/* =========================================
+   PAGAMENTO - MERCADO PAGO
+   ========================================= */
 
 async function abrirPagamento(
 titulo,
@@ -1840,16 +1896,25 @@ dadosExtra={}
 ){
 
 const modal=
-document.getElementById("paymentModal");
+document.getElementById(
+"paymentModal"
+);
 
 const loading=
-document.getElementById("paymentLoading");
+document.getElementById(
+"paymentLoading"
+);
 
 const brick=
-document.getElementById("paymentBrick");
+document.getElementById(
+"paymentBrick"
+);
 
 const name=
-document.getElementById("paymentProductName");
+document.getElementById(
+"paymentProductName"
+);
+
 
 modal.style.display="block";
 
@@ -1863,6 +1928,7 @@ loading.style.display="block";
 
 loading.textContent=
 "Preparando pagamento...";
+
 
 try{
 
@@ -1892,8 +1958,15 @@ dados:dadosExtra
 
 });
 
+
 const dados=
 await resposta.json();
+
+
+console.log(
+"Resposta da API:",
+dados
+);
 
 
 if(!resposta.ok){
@@ -1915,9 +1988,26 @@ throw new Error(
 }
 
 
+console.log(
+"Pagamento criado:",
+dados.id
+);
+
+console.log(
+"Link do Mercado Pago:",
+dados.link
+);
+
+
 loading.textContent=
 "Redirecionando para o Mercado Pago...";
 
+
+/*
+=========================================
+ABRE O CHECKOUT DO MERCADO PAGO
+=========================================
+*/
 
 window.location.href=
 dados.link;
@@ -1926,18 +2016,20 @@ dados.link;
 }catch(error){
 
 console.error(
-"Erro ao abrir pagamento:",
+"ERRO AO ABRIR PAGAMENTO:",
 error
 );
 
-loading.style.display="none";
+loading.style.display=
+"none";
 
 brick.innerHTML=
 "<div class='payment-error'>"+
 "Não foi possível carregar o pagamento."+
 "<br><br>"+
-(error.message ||
-"Tente novamente.")+
+error.message+
+"<br><br>"+
+"Tente novamente."+
 "</div>";
 
 }
@@ -1945,9 +2037,9 @@ brick.innerHTML=
 }
 
 
-/* =========================
-FECHAR PAGAMENTO
-========================= */
+/* =========================================
+   FECHAR PAGAMENTO
+   ========================================= */
 
 function closePayment(){
 
@@ -1960,17 +2052,20 @@ document.body.style.overflow="";
 }
 
 
-/* =========================
-COMPRA PRODUTO
-========================= */
+/* =========================================
+   COMPRA DE PRODUTO
+   ========================================= */
 
 async function continuePurchase(){
 
-const product=products[currentProduct];
+const product=
+products[currentProduct];
 
 const email=
-document.getElementById("email")
-.value.trim();
+document.getElementById(
+"email"
+).value.trim();
+
 
 if(
 !email ||
@@ -1984,6 +2079,7 @@ alert(
 return;
 
 }
+
 
 if(
 product.model &&
@@ -2000,6 +2096,7 @@ return;
 
 }
 
+
 if(
 product.emulator &&
 !document.getElementById(
@@ -2014,6 +2111,7 @@ alert(
 return;
 
 }
+
 
 if(
 product.sensi &&
@@ -2030,18 +2128,25 @@ return;
 
 }
 
-const total=getProductTotal();
+
+const total=
+getProductTotal();
+
 
 const dados={
 
 modelo:
 product.model
-?document.getElementById("modelSelect").value
+?document.getElementById(
+"modelSelect"
+).value
 :null,
 
 emulador:
 product.emulator
-?document.getElementById("emulatorSelect").value
+?document.getElementById(
+"emulatorSelect"
+).value
 :null,
 
 packSensi:
@@ -2067,6 +2172,7 @@ currentProduct==="androidXit"
 
 };
 
+
 const button=
 document.getElementById(
 "productBuyButton"
@@ -2077,12 +2183,14 @@ button.disabled=true;
 button.textContent=
 "ABRINDO PAGAMENTO...";
 
+
 await abrirPagamento(
 product.title,
 total,
 email,
 dados
 );
+
 
 button.disabled=false;
 
@@ -2092,36 +2200,52 @@ button.textContent=
 }
 
 
-/* =========================
-DIAMANTES
-========================= */
+/* =========================================
+   DIAMANTES
+   ========================================= */
 
 function openDiamonds(){
 
-document.getElementById("homePage")
-.style.display="none";
+document.getElementById(
+"homePage"
+).style.display="none";
 
-document.getElementById("productPage")
-.style.display="none";
+document.getElementById(
+"productPage"
+).style.display="none";
 
-document.getElementById("diamondPage")
-.style.display="block";
+document.getElementById(
+"diamondPage"
+).style.display="block";
+
 
 selectedDiamond=null;
 
-document.getElementById("diamondId").value="";
-document.getElementById("diamondEmail").value="";
 
-document.getElementById("diamondSummary")
-.style.display="none";
+document.getElementById(
+"diamondId"
+).value="";
+
+document.getElementById(
+"diamondEmail"
+).value="";
+
+
+document.getElementById(
+"diamondSummary"
+).style.display="none";
+
 
 document.querySelectorAll(
 ".diamond-choice"
 ).forEach(item=>{
 
-item.classList.remove("selected");
+item.classList.remove(
+"selected"
+);
 
 });
+
 
 window.scrollTo(0,0);
 
@@ -2138,16 +2262,26 @@ document.querySelectorAll(
 ".diamond-choice"
 ).forEach(item=>{
 
-item.classList.remove("selected");
+item.classList.remove(
+"selected"
+);
 
 });
 
-element.classList.add("selected");
+
+element.classList.add(
+"selected"
+);
+
 
 selectedDiamond={
+
 amount:amount,
+
 price:price
+
 };
+
 
 updateDiamondSummary();
 
@@ -2158,15 +2292,18 @@ function updateDiamondSummary(){
 
 if(!selectedDiamond)return;
 
+
 const id=
 document.getElementById(
 "diamondId"
 ).value.trim();
 
+
 const email=
 document.getElementById(
 "diamondEmail"
 ).value.trim();
+
 
 document.getElementById(
 "summaryDiamondAmount"
@@ -2174,6 +2311,7 @@ document.getElementById(
 selectedDiamond.amount
 .toLocaleString("pt-BR")
 +" Diamantes";
+
 
 document.getElementById(
 "summaryDiamondPrice"
@@ -2187,19 +2325,25 @@ currency:"BRL"
 }
 );
 
+
 document.getElementById(
 "summaryDiamondId"
 ).textContent=
-id||"Não informado";
+id ||
+"Não informado";
+
 
 document.getElementById(
 "summaryDiamondEmail"
 ).textContent=
-email||"Não informado";
+email ||
+"Não informado";
+
 
 document.getElementById(
 "diamondSummary"
-).style.display="block";
+).style.display=
+"block";
 
 }
 
@@ -2221,9 +2365,9 @@ updateDiamondSummary();
 );
 
 
-/* =========================
-COMPRA DIAMANTES
-========================= */
+/* =========================================
+   COMPRA DE DIAMANTES
+   ========================================= */
 
 async function continueDiamondPurchase(){
 
@@ -2237,15 +2381,18 @@ return;
 
 }
 
+
 const id=
 document.getElementById(
 "diamondId"
 ).value.trim();
 
+
 const email=
 document.getElementById(
 "diamondEmail"
 ).value.trim();
+
 
 if(!id){
 
@@ -2257,6 +2404,7 @@ return;
 
 }
 
+
 if(!/^[0-9]+$/.test(id)){
 
 alert(
@@ -2266,6 +2414,7 @@ alert(
 return;
 
 }
+
 
 if(
 !email ||
@@ -2280,17 +2429,26 @@ return;
 
 }
 
+
 localStorage.setItem(
 "senxitDiamondOrder",
 JSON.stringify({
 
-diamonds:selectedDiamond.amount,
-price:selectedDiamond.price,
-freeFireId:id,
-email:email
+diamonds:
+selectedDiamond.amount,
+
+price:
+selectedDiamond.price,
+
+freeFireId:
+id,
+
+email:
+email
 
 })
 );
+
 
 const button=
 document.getElementById(
@@ -2301,6 +2459,7 @@ button.disabled=true;
 
 button.textContent=
 "ABRINDO PAGAMENTO...";
+
 
 await abrirPagamento(
 
@@ -2323,6 +2482,7 @@ selectedDiamond.amount
 
 );
 
+
 button.disabled=false;
 
 button.textContent=
@@ -2330,6 +2490,10 @@ button.textContent=
 
 }
 
+
+/* =========================================
+   VOLTAR
+   ========================================= */
 
 function goHomeFromDiamonds(){
 
