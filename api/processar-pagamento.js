@@ -1,300 +1,151 @@
 export default async function handler(req, res) {
 
-  // ==========================================
-  // CORS
-  // ==========================================
-
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "*"
-  );
-
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "POST, OPTIONS"
-  );
-
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type"
-  );
-
-
-  // ==========================================
-  // OPTIONS
-  // ==========================================
-
-  if (req.method === "OPTIONS") {
-    return res.status(204).end();
-  }
-
-
-  // ==========================================
-  // SOMENTE POST
-  // ==========================================
-
   if (req.method !== "POST") {
-
     return res.status(405).json({
       error: "Método não permitido"
     });
-
   }
 
-
   try {
-
-    const body = req.body || {};
-
-
-    // ==========================================
-    // ACCESS TOKEN
-    // ==========================================
 
     const accessToken =
       process.env.MERCADOPAGO_ACCESS_TOKEN;
 
-
     if (!accessToken) {
-
       return res.status(500).json({
-        error:
-          "MERCADOPAGO_ACCESS_TOKEN não configurado na Vercel"
+        error: "MERCADOPAGO_ACCESS_TOKEN não configurado."
       });
-
     }
-
-
-    // ==========================================
-    // DADOS DO PAYMENT BRICK
-    // ==========================================
 
     const {
-
-      token,
-
-      transaction_amount,
-
-      amount,
-
-      installments,
-
-      payment_method_id,
-
-      issuer_id,
-
-      payer,
-
-      email,
-
+      formData,
       titulo,
+      email,
+      dados
+    } = req.body || {};
 
-      description
-
-    } = body;
-
-
-    // ==========================================
-    // VALOR
-    // ==========================================
-
-    const valor = Number(
-      transaction_amount ?? amount
-    );
-
-
-    if (
-      !Number.isFinite(valor) ||
-      valor <= 0
-    ) {
-
+    if (!formData) {
       return res.status(400).json({
-        error: "Valor do pagamento inválido"
+        error: "Dados do pagamento não recebidos."
       });
-
     }
 
+    /*
+    ========================================
+    PREÇOS OFICIAIS DOS PRODUTOS
+    ========================================
+    */
 
-    // ==========================================
-    // MÉTODO DE PAGAMENTO
-    // ==========================================
+    const precos = {
 
-    if (!payment_method_id) {
+      "Sensibilidade Profissional Mobile iOS": 80,
 
-      return res.status(400).json({
-        error:
-          "Método de pagamento não informado"
-      });
+      "Sensibilidade Profissional Mobile Android": 75,
 
-    }
+      "Sensibilidade Profissional Emulador": 97,
 
+      "Xit VIP Atualizado iOS": 199.99,
 
-    // ==========================================
-    // E-MAIL
-    // ==========================================
+      "Xit VIP Atualizado Android": 179.99,
 
-    const emailFinal =
-      payer?.email ||
-      email;
-
-
-    if (
-      !emailFinal ||
-      !String(emailFinal).includes("@")
-    ) {
-
-      return res.status(400).json({
-        error:
-          "E-mail do comprador não informado ou inválido"
-      });
-
-    }
-
-
-    // ==========================================
-    // DADOS DO PAGAMENTO
-    // ==========================================
-
-    const pagamento = {
-
-      transaction_amount:
-        valor,
-
-      description:
-        String(
-          titulo ||
-          description ||
-          "Compra SenXit"
-        ),
-
-      payment_method_id:
-        String(payment_method_id),
-
-      payer: {
-
-        email:
-          String(emailFinal)
-
-      }
+      "Xit VIP Atualizado Emulador": 179.99
 
     };
 
+    if (!precos[titulo]) {
+      return res.status(400).json({
+        error: "Produto inválido."
+      });
+    }
 
-    // ==========================================
-    // PIX / BOLETO
-    //
-    // IMPORTANTE:
-    // PIX NÃO USA TOKEN
-    // ==========================================
+    let valor = precos[titulo];
+
+    /*
+    ========================================
+    ADICIONAIS
+    ========================================
+    */
 
     if (
-      payment_method_id === "pix" ||
-      payment_method_id === "bolbradesco"
+      titulo === "Xit VIP Atualizado iOS" &&
+      dados?.extraIOS === true
     ) {
-
-      // Não adicionamos token.
-
+      valor += 15;
     }
 
-
-    // ==========================================
-    // CARTÃO
-    //
-    // CARTÃO PRECISA DE TOKEN
-    // ==========================================
-
-    else {
-
-      if (!token) {
-
-        return res.status(400).json({
-
-          error:
-            "Token do cartão não informado"
-
-        });
-
-      }
-
-
-      pagamento.token =
-        token;
-
-
-      if (installments) {
-
-        pagamento.installments =
-          Number(installments);
-
-      }
-
-
-      if (issuer_id) {
-
-        pagamento.issuer_id =
-          Number(issuer_id);
-
-      }
-
+    if (
+      titulo === "Xit VIP Atualizado Android" &&
+      dados?.extraAndroid === true
+    ) {
+      valor += 10;
     }
 
+    /*
+    ========================================
+    DADOS DO FORMULÁRIO
+    ========================================
+    */
 
-    // ==========================================
-    // ID DE IDEMPOTÊNCIA
-    // ==========================================
+    const pagamento = {
+      ...formData,
+
+      transaction_amount: Number(valor),
+
+      description: String(titulo),
+
+      payer: {
+        ...(formData.payer || {}),
+        email: email
+      }
+    };
+
+    /*
+    ========================================
+    ID ÚNICO DO PAGAMENTO
+    ========================================
+    */
 
     const idempotencyKey =
       crypto.randomUUID();
 
+    /*
+    ========================================
+    ENVIAR PARA MERCADO PAGO
+    ========================================
+    */
 
-    // ==========================================
-    // ENVIAR PARA MERCADO PAGO
-    // ==========================================
+    const resposta = await fetch(
+      "https://api.mercadopago.com/v1/payments",
+      {
 
-    const resposta =
-      await fetch(
-        "https://api.mercadopago.com/v1/payments",
-        {
+        method: "POST",
 
-          method: "POST",
+        headers: {
 
-          headers: {
+          "Content-Type":
+            "application/json",
 
-            "Content-Type":
-              "application/json",
+          "Authorization":
+            `Bearer ${accessToken}`,
 
-            "Authorization":
-              `Bearer ${accessToken}`,
+          "X-Idempotency-Key":
+            idempotencyKey
 
-            "X-Idempotency-Key":
-              idempotencyKey
+        },
 
-          },
+        body:
+          JSON.stringify(pagamento)
 
-          body:
-            JSON.stringify(pagamento)
+      }
+    );
 
-        }
-      );
-
-
-    // ==========================================
-    // RESPOSTA
-    // ==========================================
-
-    const dados =
+    const resultado =
       await resposta.json();
-
 
     console.log(
       "Resposta Mercado Pago:",
-      dados
+      resultado
     );
-
-
-    // ==========================================
-    // ERRO
-    // ==========================================
 
     if (!resposta.ok) {
 
@@ -303,47 +154,38 @@ export default async function handler(req, res) {
       ).json({
 
         error:
-          dados.message ||
-          dados.error ||
-          "Erro ao processar pagamento",
+          resultado.message ||
+          resultado.error ||
+          "Mercado Pago recusou o pagamento.",
 
         details:
-          dados
+          resultado
 
       });
 
     }
 
-
-    // ==========================================
-    // SUCESSO
-    // ==========================================
+    /*
+    ========================================
+    SUCESSO
+    ========================================
+    */
 
     return res.status(200).json({
 
       id:
-        dados.id,
+        resultado.id,
 
       status:
-        dados.status,
+        resultado.status,
 
       status_detail:
-        dados.status_detail,
+        resultado.status_detail,
 
       payment_method_id:
-        dados.payment_method_id,
-
-      transaction_amount:
-        dados.transaction_amount,
-
-      point_of_interaction:
-        dados.point_of_interaction || null,
-
-      transaction_details:
-        dados.transaction_details || null
+        resultado.payment_method_id
 
     });
-
 
   } catch (erro) {
 
@@ -352,11 +194,10 @@ export default async function handler(req, res) {
       erro
     );
 
-
     return res.status(500).json({
 
       error:
-        "Erro interno ao processar pagamento",
+        "Erro interno ao processar pagamento.",
 
       details:
         erro.message
