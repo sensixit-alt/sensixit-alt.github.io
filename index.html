@@ -2562,57 +2562,45 @@ function continuePurchase() {
 
     }
 
+try {
 
-    /*
-    ====================================================
-    LINK DE PAGAMENTO
+    const resposta = await fetch("/api/criar-pagamento", {
 
-    TROQUE SOMENTE O TEXTO ABAIXO PELO SEU LINK.
-    ====================================================
-    */
+        method: "POST",
 
-    const paymentLink =
-        "COLOCAR_LINK_DE_PAGAMENTO_AQUI";
+        headers: {
+            "Content-Type": "application/json"
+        },
 
+        body: JSON.stringify({
+            titulo: product.title,
+            preco: total,
+            email: email
+        })
 
-    if (
-        paymentLink ===
-        "COLOCAR_LINK_DE_PAGAMENTO_AQUI"
-    ) {
+    });
 
-        alert(
+    const dados = await resposta.json();
 
-            "Produto selecionado com sucesso!\n\n" +
-
-            "E-mail: " +
-            email +
-
-            "\nProduto: " +
-            product.title +
-
-            "\nTotal: " +
-
-            total.toLocaleString(
-                "pt-BR",
-                {
-                    style: "currency",
-                    currency: "BRL"
-                }
-            ) +
-
-            "\n\n" +
-
-            "O link de pagamento ainda será configurado."
-
+    if (!resposta.ok || !dados.link) {
+        throw new Error(
+            dados.error ||
+            "Não foi possível criar o pagamento."
         );
-
-        return;
-
     }
 
+    window.location.href = dados.link;
 
-    window.location.href =
-        paymentLink;
+} catch (erro) {
+
+    alert(
+        "Não foi possível iniciar o pagamento. Tente novamente."
+    );
+
+    console.error(erro);
+
+}
+
 
 }
 
