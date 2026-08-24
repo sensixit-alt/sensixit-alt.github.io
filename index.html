@@ -7,478 +7,797 @@
 <title>SenXit - Produtos</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
 
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:#08080c;
-    color:#fff;
-    min-height:100vh
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-button,input,select{font-family:inherit}
-
-.container{
-    width:100%;
-    max-width:520px;
-    margin:auto;
-    padding:20px 15px 45px
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #08080c;
+    color: #fff;
+    min-height: 100vh;
 }
 
-.header{
-    text-align:center;
-    padding:15px 0 22px
+button,
+input,
+select {
+    font-family: inherit;
 }
 
-.logo{
-    width:82px;
-    height:82px;
-    margin:0 auto 13px;
-    border-radius:24px;
-    background:linear-gradient(135deg,#a600ff,#5800b8);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
-    font-weight:900;
-    box-shadow:0 0 35px rgba(166,0,255,.25)
+.container {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+    padding: 20px 15px 45px;
 }
 
-.header h1{font-size:31px;margin-bottom:5px}
-.header p{color:#999;font-size:14px}
+/* =========================
+   HEADER
+========================= */
 
-.security{
-    background:linear-gradient(135deg,#1b0d25,#111117);
-    border:1px solid #7510a8;
-    border-radius:19px;
-    padding:18px 15px;
-    text-align:center;
-    margin-bottom:25px
+.header {
+    text-align: center;
+    padding: 15px 0 22px;
 }
 
-.security-title{
-    font-size:18px;
-    font-weight:900;
-    margin-bottom:8px
+.logo {
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 13px;
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a600ff,
+            #5800b8
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 35px rgba(166,0,255,.25);
 }
 
-.security p{
-    color:#bdbdbd;
-    font-size:13px;
-    line-height:1.5
+.header h1 {
+    font-size: 31px;
+    margin-bottom: 5px;
 }
 
-.category-title{
-    font-size:14px;
-    color:#888;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin:24px 3px 11px
+.header p {
+    color: #999;
+    font-size: 14px;
 }
 
-.product{
-    background:#15151c;
-    border:1px solid #292933;
-    border-radius:22px;
-    padding:21px;
-    margin-bottom:15px;
-    box-shadow:0 8px 25px rgba(0,0,0,.25)
+/* =========================
+   AVISO
+========================= */
+
+.security {
+    background:
+        linear-gradient(
+            135deg,
+            #1b0d25,
+            #111117
+        );
+
+    border: 1px solid #7510a8;
+    border-radius: 19px;
+
+    padding: 18px 15px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
 }
 
-.product-top{
-    display:flex;
-    align-items:center;
-    gap:15px
+.security-title {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 8px;
 }
 
-.product-icon{
-    width:62px;
-    height:62px;
-    flex-shrink:0;
-    border-radius:18px;
-    background:#22222c;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
-    font-weight:900
+.security p {
+    color: #bdbdbd;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
-.platform-ios{color:#fff}
-.platform-android{color:#8cff9a;font-size:15px}
+/* =========================
+   CATEGORIA
+========================= */
 
-.product-info{flex:1}
+.category-title {
+    font-size: 14px;
+    color: #888;
 
-.product h2{
-    font-size:18px;
-    margin-bottom:5px
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    margin: 24px 3px 11px;
 }
 
-.product-short{
-    color:#999;
-    font-size:13px;
-    line-height:1.4
+/* =========================
+   PRODUTO
+========================= */
+
+.product {
+    background: #15151c;
+
+    border: 1px solid #292933;
+    border-radius: 22px;
+
+    padding: 21px;
+
+    margin-bottom: 15px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
 }
 
-.discount{
-    display:inline-block;
-    margin-top:12px;
-    background:#5f008b;
-    color:#fff;
-    padding:5px 8px;
-    border-radius:7px;
-    font-size:11px;
-    font-weight:900
+.product-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.price{
-    margin-top:12px;
-    font-size:22px;
-    font-weight:900
+.product-icon {
+    width: 62px;
+    height: 62px;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+
+    background: #22222c;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    font-weight: 900;
 }
 
-.buy{
-    width:100%;
-    margin-top:15px;
-    padding:15px;
-    border:0;
-    border-radius:14px;
-    background:linear-gradient(135deg,#a000ff,#6500d9);
-    color:white;
-    font-size:15px;
-    font-weight:900;
-    cursor:pointer
+.platform-ios {
+    color: #fff;
 }
 
-.buy:active{transform:scale(.98)}
-
-.diamond-button{
-    width:100%;
-    background:linear-gradient(135deg,#351044,#17131c);
-    border:1px solid #7510a8;
-    border-radius:22px;
-    padding:20px;
-    margin-bottom:15px;
-    color:#fff;
-    text-align:left;
-    cursor:pointer;
-    box-shadow:0 8px 25px rgba(0,0,0,.25)
+.platform-android {
+    color: #8cff9a;
+    font-size: 15px;
 }
 
-.diamond-button-top{
-    display:flex;
-    align-items:center;
-    gap:15px
+.product-info {
+    flex: 1;
 }
 
-.diamond-button-icon{
-    width:62px;
-    height:62px;
-    border-radius:18px;
-    background:#22222c;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:30px
+.product h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
 }
 
-.diamond-button-info{flex:1}
-
-.diamond-button-info h2{
-    font-size:19px;
-    margin-bottom:5px
+.product-short {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.4;
 }
 
-.diamond-button-info p{
-    color:#999;
-    font-size:13px;
-    line-height:1.4
+.discount {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    background: #5f008b;
+
+    color: #fff;
+
+    padding: 5px 8px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 900;
 }
 
-.diamond-arrow{
-    font-size:24px;
-    color:#c45cff
+.price {
+    margin-top: 12px;
+
+    font-size: 22px;
+    font-weight: 900;
 }
 
-#productPage,#diamondPage{display:none}
+.buy {
+    width: 100%;
 
-.back{
-    border:0;
-    background:transparent;
-    color:#aaa;
-    font-size:14px;
-    padding:8px 0 20px;
-    cursor:pointer
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border: 0;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a000ff,
+            #6500d9
+        );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    cursor: pointer;
 }
 
-.detail-card{
-    background:#15151c;
-    border:1px solid #292933;
-    border-radius:22px;
-    padding:22px
+.buy:active {
+    transform: scale(.98);
 }
 
-.detail-icon{
-    width:82px;
-    height:82px;
-    border-radius:22px;
-    background:#22222c;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
-    font-weight:900;
-    margin-bottom:17px
+/* =========================
+   DIAMANTES
+========================= */
+
+.diamond-button {
+    width: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #351044,
+            #17131c
+        );
+
+    border: 1px solid #7510a8;
+
+    border-radius: 22px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    color: #fff;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
 }
 
-.detail-card h2{
-    font-size:24px;
-    margin-bottom:9px
+.diamond-button-top {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
 }
 
-.detail-description{
-    color:#999;
-    line-height:1.6;
-    font-size:14px;
-    margin-bottom:20px
+.diamond-button-icon {
+    width: 62px;
+    height: 62px;
+
+    border-radius: 18px;
+
+    background: #22222c;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
 }
 
-.features{
-    list-style:none;
-    margin-bottom:20px
+.diamond-button-info {
+    flex: 1;
 }
 
-.features li{
-    padding:8px 0;
-    color:#ccc;
-    font-size:14px
+.diamond-button-info h2 {
+    font-size: 19px;
+    margin-bottom: 5px;
 }
 
-.features li::before{
-    content:"✓";
-    color:#b000ff;
-    font-weight:900;
-    margin-right:8px
+.diamond-button-info p {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.4;
 }
 
-.option-title{
-    font-size:14px;
-    font-weight:800;
-    margin:20px 0 9px
+.diamond-arrow {
+    font-size: 24px;
+    color: #c45cff;
 }
 
-select,.email,.diamond-input{
-    width:100%;
-    background:#0e0e13;
-    color:#fff;
-    border:1px solid #363641;
-    border-radius:12px;
-    padding:14px;
-    outline:none;
-    font-size:14px
+/* =========================
+   TELAS
+========================= */
+
+#productPage {
+    display: none;
 }
 
-select:focus,.email:focus,.diamond-input:focus{
-    border-color:#9700e8
+#diamondPage {
+    display: none;
 }
 
-.option-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px
+/* =========================
+   VOLTAR
+========================= */
+
+.back {
+    border: 0;
+
+    background: transparent;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    padding: 8px 0 20px;
+
+    cursor: pointer;
 }
 
-.option{position:relative}
-.option input{display:none}
+/* =========================
+   DETALHE
+========================= */
 
-.option label{
-    display:block;
-    text-align:center;
-    padding:12px 4px;
-    border:1px solid #353540;
-    border-radius:12px;
-    background:#20202a;
-    color:#aaa;
-    font-size:12px;
-    cursor:pointer
+.detail-card {
+    background: #15151c;
+
+    border: 1px solid #292933;
+
+    border-radius: 22px;
+
+    padding: 22px;
 }
 
-.option input:checked+label{
-    border-color:#a000ff;
-    background:#351045;
-    color:#fff
+.detail-icon {
+    width: 82px;
+    height: 82px;
+
+    border-radius: 22px;
+
+    background: #22222c;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+    font-weight: 900;
+
+    margin-bottom: 17px;
 }
 
-.extra{
-    margin-top:17px;
-    padding:15px;
-    background:#101017;
-    border:1px solid #292933;
-    border-radius:14px
+.detail-card h2 {
+    font-size: 24px;
+    margin-bottom: 9px;
 }
 
-.extra label{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:#ddd;
-    font-size:13px
+.detail-description {
+    color: #999;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
 }
 
-.extra input{
-    width:18px;
-    height:18px;
-    accent-color:#a000ff
+.features {
+    list-style: none;
+
+    margin-bottom: 20px;
 }
 
-.email-area{margin-top:20px}
+.features li {
+    padding: 8px 0;
 
-.email-area label,.diamond-input-area label{
-    display:block;
-    color:#aaa;
-    font-size:13px;
-    margin-bottom:7px
+    color: #ccc;
+
+    font-size: 14px;
 }
 
-.total{
-    border-top:1px solid #292933;
-    margin-top:20px;
-    padding-top:18px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center
+.features li::before {
+    content: "✓";
+
+    color: #b000ff;
+
+    font-weight: 900;
+
+    margin-right: 8px;
 }
 
-.total span{color:#999;font-size:14px}
-.total strong{font-size:25px}
+/* =========================
+   OPÇÕES
+========================= */
 
-.product-notice{
-    margin-top:18px;
-    padding:14px;
-    border-radius:13px;
-    background:#100d13;
-    color:#999;
-    font-size:11px;
-    line-height:1.5
+.option-title {
+    font-size: 14px;
+
+    font-weight: 800;
+
+    margin: 20px 0 9px;
 }
 
-.diamond-header{
-    text-align:center;
-    margin:5px 0 20px
+select,
+.email,
+.diamond-input {
+    width: 100%;
+
+    background: #0e0e13;
+
+    color: #fff;
+
+    border: 1px solid #363641;
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    outline: none;
+
+    font-size: 14px;
 }
 
-.diamond-header-icon{
-    font-size:48px;
-    margin-bottom:8px
+select:focus,
+.email:focus,
+.diamond-input:focus {
+    border-color: #9700e8;
 }
 
-.diamond-header h2{
-    font-size:25px;
-    margin-bottom:6px
+/* =========================
+   PACK
+========================= */
+
+.option-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 8px;
 }
 
-.diamond-header p{
-    color:#999;
-    font-size:13px
+.option {
+    position: relative;
 }
 
-.diamond-grid-page{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px
+.option input {
+    display: none;
 }
 
-.diamond-choice{
-    background:#15151c;
-    border:1px solid #292933;
-    border-radius:18px;
-    padding:17px 10px;
-    text-align:center;
-    cursor:pointer
+.option label {
+    display: block;
+
+    text-align: center;
+
+    padding: 12px 4px;
+
+    border: 1px solid #353540;
+
+    border-radius: 12px;
+
+    background: #20202a;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    cursor: pointer;
 }
 
-.diamond-choice.selected{
-    border-color:#a000ff;
-    background:#351045;
-    box-shadow:0 0 18px rgba(160,0,255,.18)
+.option input:checked + label {
+    border-color: #a000ff;
+
+    background: #351045;
+
+    color: #fff;
 }
 
-.diamond-choice-icon{
-    font-size:27px;
-    margin-bottom:7px
+/* =========================
+   EXTRA
+========================= */
+
+.extra {
+    margin-top: 17px;
+
+    padding: 15px;
+
+    background: #101017;
+
+    border: 1px solid #292933;
+
+    border-radius: 14px;
 }
 
-.diamond-choice-amount{
-    font-size:16px;
-    font-weight:900
+.extra label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #ddd;
+
+    font-size: 13px;
 }
 
-.diamond-choice-price{
-    margin-top:6px;
-    font-size:17px;
-    font-weight:900;
-    color:#c45cff
+.extra input {
+    width: 18px;
+    height: 18px;
+
+    accent-color: #a000ff;
 }
 
-.diamond-form{
-    margin-top:20px;
-    background:#15151c;
-    border:1px solid #292933;
-    border-radius:22px;
-    padding:20px
+/* =========================
+   EMAIL
+========================= */
+
+.email-area {
+    margin-top: 20px;
 }
 
-.diamond-form-title{
-    font-size:17px;
-    font-weight:900;
-    margin-bottom:15px
+.email-area label,
+.diamond-input-area label {
+    display: block;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
 }
 
-.diamond-input-area{margin-bottom:15px}
+/* =========================
+   TOTAL
+========================= */
 
-.diamond-summary{
-    display:none;
-    margin-top:18px;
-    padding:15px;
-    background:#101017;
-    border:1px solid #292933;
-    border-radius:14px
+.total {
+    border-top: 1px solid #292933;
+
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
 }
 
-.diamond-summary div{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    padding:5px 0;
-    font-size:13px
+.total span {
+    color: #999;
+
+    font-size: 14px;
 }
 
-.diamond-summary span{color:#999}
-.diamond-summary strong{color:#fff;text-align:right}
-
-.diamond-summary .summary-total{
-    border-top:1px solid #292933;
-    margin-top:10px;
-    padding-top:12px
+.total strong {
+    font-size: 25px;
 }
 
-.diamond-summary .summary-total strong{
-    color:#c45cff;
-    font-size:20px
+/* =========================
+   AVISO
+========================= */
+
+.product-notice {
+    margin-top: 18px;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    background: #100d13;
+
+    color: #999;
+
+    font-size: 11px;
+
+    line-height: 1.5;
 }
 
-.footer{
-    text-align:center;
-    color:#666;
-    font-size:12px;
-    margin-top:35px;
-    line-height:1.7
+/* =========================
+   DIAMANTES PAGE
+========================= */
+
+.diamond-header {
+    text-align: center;
+
+    margin: 5px 0 20px;
 }
 
-@media(max-width:380px){
-    .diamond-grid-page{grid-template-columns:1fr}
+.diamond-header-icon {
+    font-size: 48px;
+
+    margin-bottom: 8px;
 }
+
+.diamond-header h2 {
+    font-size: 25px;
+
+    margin-bottom: 6px;
+}
+
+.diamond-header p {
+    color: #999;
+
+    font-size: 13px;
+}
+
+.diamond-grid-page {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 10px;
+}
+
+.diamond-choice {
+    background: #15151c;
+
+    border: 1px solid #292933;
+
+    border-radius: 18px;
+
+    padding: 17px 10px;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.diamond-choice.selected {
+    border-color: #a000ff;
+
+    background: #351045;
+
+    box-shadow:
+        0 0 18px rgba(160,0,255,.18);
+}
+
+.diamond-choice-icon {
+    font-size: 27px;
+
+    margin-bottom: 7px;
+}
+
+.diamond-choice-amount {
+    font-size: 16px;
+
+    font-weight: 900;
+}
+
+.diamond-choice-price {
+    margin-top: 6px;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    color: #c45cff;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.diamond-form {
+    margin-top: 20px;
+
+    background: #15151c;
+
+    border: 1px solid #292933;
+
+    border-radius: 22px;
+
+    padding: 20px;
+}
+
+.diamond-form-title {
+    font-size: 17px;
+
+    font-weight: 900;
+
+    margin-bottom: 15px;
+}
+
+.diamond-input-area {
+    margin-bottom: 15px;
+}
+
+/* =========================
+   RESUMO
+========================= */
+
+.diamond-summary {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    background: #101017;
+
+    border: 1px solid #292933;
+
+    border-radius: 14px;
+}
+
+.diamond-summary div {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 5px 0;
+
+    font-size: 13px;
+}
+
+.diamond-summary span {
+    color: #999;
+}
+
+.diamond-summary strong {
+    color: #fff;
+
+    text-align: right;
+}
+
+.diamond-summary .summary-total {
+    border-top: 1px solid #292933;
+
+    margin-top: 10px;
+
+    padding-top: 12px;
+}
+
+.diamond-summary .summary-total strong {
+    color: #c45cff;
+
+    font-size: 20px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+
+    color: #666;
+
+    font-size: 12px;
+
+    margin-top: 35px;
+
+    line-height: 1.7;
+}
+
+@media (max-width:380px) {
+
+    .diamond-grid-page {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 </style>
 </head>
 
@@ -486,359 +805,983 @@ select:focus,.email:focus,.diamond-input:focus{
 
 <div class="container">
 
+<!-- =====================================================
+     HOME
+===================================================== -->
+
 <div id="homePage">
 
 <div class="header">
-<div class="logo">SX</div>
-<h1>SenXit</h1>
-<p>Produtos e ferramentas</p>
+
+<div class="logo">
+SX
 </div>
 
+<h1>
+SenXit
+</h1>
+
+<p>
+Produtos e ferramentas
+</p>
+
+</div>
+
+
 <div class="security">
-<div class="security-title">🔥 PRODUTOS 100% ANTIBAN!</div>
+
+<div class="security-title">
+🔥 PRODUTOS 100% ANTIBAN!
+</div>
+
 <p>
 🛡️ Mais segurança e proteção durante o uso.
 <br>
 📦 Produtos selecionados e suporte na entrega.
 </p>
+
 </div>
 
-<div class="category-title">🎯 Sensibilidade Profissional</div>
 
-<div class="product">
-<div class="product-top">
-<div class="product-icon platform-ios">iOS</div>
-<div class="product-info">
-<h2>Sensibilidade Profissional Mobile iOS</h2>
-<p class="product-short">Sensibilidade profissional testada para iPhone.</p>
+<div class="category-title">
+🎯 Sensibilidade Profissional
 </div>
-</div>
-<span class="discount">44% OFF</span>
-<div class="price">R$ 80,00</div>
-<button class="buy" onclick="openProduct('iosSensi')">VER PRODUTO</button>
-</div>
+
 
 <div class="product">
+
 <div class="product-top">
-<div class="product-icon platform-android">Android</div>
+
+<div class="product-icon platform-ios">
+iOS
+</div>
+
 <div class="product-info">
-<h2>Sensibilidade Profissional Mobile Android</h2>
-<p class="product-short">Sensibilidade profissional testada para Android.</p>
-</div>
-</div>
-<span class="discount">44% OFF</span>
-<div class="price">R$ 75,00</div>
-<button class="buy" onclick="openProduct('androidSensi')">VER PRODUTO</button>
+
+<h2>
+Sensibilidade Profissional Mobile iOS
+</h2>
+
+<p class="product-short">
+Sensibilidade profissional testada para iPhone.
+</p>
+
 </div>
 
-<div class="product">
-<div class="product-top">
-<div class="product-icon">PC</div>
-<div class="product-info">
-<h2>Sensibilidade Profissional Emulador</h2>
-<p class="product-short">Configuração profissional para emuladores.</p>
-</div>
-</div>
-<span class="discount">44% OFF</span>
-<div class="price">R$ 97,00</div>
-<button class="buy" onclick="openProduct('emulatorSensi')">VER PRODUTO</button>
 </div>
 
-<div class="category-title">🔥 Xit VIP Atualizado</div>
+<span class="discount">
+44% OFF
+</span>
 
-<div class="product">
-<div class="product-top">
-<div class="product-icon platform-ios">iOS</div>
-<div class="product-info">
-<h2>Xit VIP Atualizado iOS</h2>
-<p class="product-short">Versão atualizada para dispositivos iOS.</p>
-</div>
-</div>
-<span class="discount">44% OFF</span>
-<div class="price">R$ 199,99</div>
-<button class="buy" onclick="openProduct('iosXit')">VER PRODUTO</button>
+<div class="price">
+R$ 80,00
 </div>
 
-<div class="product">
-<div class="product-top">
-<div class="product-icon platform-android">Android</div>
-<div class="product-info">
-<h2>Xit VIP Atualizado Android</h2>
-<p class="product-short">Arquivo atualizado com suporte para instalação.</p>
-</div>
-</div>
-<span class="discount">44% OFF</span>
-<div class="price">R$ 179,99</div>
-<button class="buy" onclick="openProduct('androidXit')">VER PRODUTO</button>
-</div>
-
-<div class="product">
-<div class="product-top">
-<div class="product-icon">PC</div>
-<div class="product-info">
-<h2>Xit VIP Atualizado Emulador</h2>
-<p class="product-short">Painel externo e arquivos para emulador.</p>
-</div>
-</div>
-<span class="discount">44% OFF</span>
-<div class="price">R$ 179,99</div>
-<button class="buy" onclick="openProduct('emulatorXit')">VER PRODUTO</button>
-</div>
-
-<div class="category-title">💎 Ofertas</div>
-
-<button class="diamond-button" onclick="openDiamonds()">
-<div class="diamond-button-top">
-<div class="diamond-button-icon">💎</div>
-<div class="diamond-button-info">
-<h2>Diamantes Baratos</h2>
-<p>Compre diamantes com desconto e informe seu ID do Free Fire.</p>
-</div>
-<div class="diamond-arrow">→</div>
-</div>
+<button
+class="buy"
+onclick="openProduct('iosSensi')"
+>
+VER PRODUTO
 </button>
 
+</div>
+
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-icon platform-android">
+Android
+</div>
+
+<div class="product-info">
+
+<h2>
+Sensibilidade Profissional Mobile Android
+</h2>
+
+<p class="product-short">
+Sensibilidade profissional testada para Android.
+</p>
+
+</div>
+
+</div>
+
+<span class="discount">
+44% OFF
+</span>
+
+<div class="price">
+R$ 75,00
+</div>
+
+<button
+class="buy"
+onclick="openProduct('androidSensi')"
+>
+VER PRODUTO
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-icon">
+PC
+</div>
+
+<div class="product-info">
+
+<h2>
+Sensibilidade Profissional Emulador
+</h2>
+
+<p class="product-short">
+Configuração profissional para emuladores.
+</p>
+
+</div>
+
+</div>
+
+<span class="discount">
+44% OFF
+</span>
+
+<div class="price">
+R$ 97,00
+</div>
+
+<button
+class="buy"
+onclick="openProduct('emulatorSensi')"
+>
+VER PRODUTO
+</button>
+
+</div>
+
+
+<div class="category-title">
+🔥 Xit VIP Atualizado
+</div>
+
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-icon platform-ios">
+iOS
+</div>
+
+<div class="product-info">
+
+<h2>
+Xit VIP Atualizado iOS
+</h2>
+
+<p class="product-short">
+Versão atualizada para dispositivos iOS.
+</p>
+
+</div>
+
+</div>
+
+<span class="discount">
+44% OFF
+</span>
+
+<div class="price">
+R$ 199,99
+</div>
+
+<button
+class="buy"
+onclick="openProduct('iosXit')"
+>
+VER PRODUTO
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-icon platform-android">
+Android
+</div>
+
+<div class="product-info">
+
+<h2>
+Xit VIP Atualizado Android
+</h2>
+
+<p class="product-short">
+Arquivo atualizado com suporte para instalação.
+</p>
+
+</div>
+
+</div>
+
+<span class="discount">
+44% OFF
+</span>
+
+<div class="price">
+R$ 179,99
+</div>
+
+<button
+class="buy"
+onclick="openProduct('androidXit')"
+>
+VER PRODUTO
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-icon">
+PC
+</div>
+
+<div class="product-info">
+
+<h2>
+Xit VIP Atualizado Emulador
+</h2>
+
+<p class="product-short">
+Painel externo e arquivos para emulador.
+</p>
+
+</div>
+
+</div>
+
+<span class="discount">
+44% OFF
+</span>
+
+<div class="price">
+R$ 179,99
+</div>
+
+<button
+class="buy"
+onclick="openProduct('emulatorXit')"
+>
+VER PRODUTO
+</button>
+
+</div>
+
+
+<div class="category-title">
+💎 Ofertas
+</div>
+
+
+<button
+class="diamond-button"
+onclick="openDiamonds()"
+>
+
+<div class="diamond-button-top">
+
+<div class="diamond-button-icon">
+💎
+</div>
+
+<div class="diamond-button-info">
+
+<h2>
+Diamantes Baratos
+</h2>
+
+<p>
+Compre diamantes com desconto
+e informe seu ID do Free Fire.
+</p>
+
+</div>
+
+<div class="diamond-arrow">
+→
+</div>
+
+</div>
+
+</button>
+
+
 <div class="footer">
+
 © 2026 SenXit
+
 <br>
+
 Todos os direitos reservados.
-</div>
 
 </div>
 
+</div>
+
+
+<!-- =====================================================
+     PRODUTO
+===================================================== -->
 
 <div id="productPage">
 
-<button class="back" onclick="goHome()">← Voltar para produtos</button>
+<button
+class="back"
+onclick="goHome()"
+>
+← Voltar para produtos
+</button>
+
 
 <div class="detail-card">
 
-<div class="detail-icon" id="detailIcon">🎯</div>
+<div
+class="detail-icon"
+id="detailIcon"
+>
+🎯
+</div>
 
-<h2 id="detailTitle">Produto</h2>
 
-<p class="detail-description" id="detailDescription">Descrição</p>
+<h2 id="detailTitle">
+Produto
+</h2>
 
-<ul class="features" id="detailFeatures"></ul>
 
-<div id="modelArea" style="display:none;">
+<p
+class="detail-description"
+id="detailDescription"
+>
+Descrição
+</p>
 
-<div class="option-title">📱 Escolha o modelo do seu celular</div>
+
+<ul
+class="features"
+id="detailFeatures"
+>
+</ul>
+
+
+<div
+id="modelArea"
+style="display:none;"
+>
+
+<div class="option-title">
+📱 Escolha o modelo do seu celular
+</div>
 
 <select id="modelSelect">
-<option value="">Selecione seu modelo</option>
+
+<option value="">
+Selecione seu modelo
+</option>
+
 </select>
 
 </div>
 
-<div id="emulatorArea" style="display:none;">
 
-<div class="option-title">🖥️ Escolha seu emulador</div>
+<div
+id="emulatorArea"
+style="display:none;"
+>
+
+<div class="option-title">
+🖥️ Escolha seu emulador
+</div>
 
 <select id="emulatorSelect">
-<option value="">Selecione seu emulador</option>
-<option>BlueStacks</option>
-<option>MSI</option>
-<option>LDPlayer</option>
-<option>GameLoop</option>
-<option>Nox</option>
-<option>MEmu</option>
-<option>Outro</option>
+
+<option value="">
+Selecione seu emulador
+</option>
+
+<option>
+BlueStacks
+</option>
+
+<option>
+MSI
+</option>
+
+<option>
+LDPlayer
+</option>
+
+<option>
+GameLoop
+</option>
+
+<option>
+Nox
+</option>
+
+<option>
+MEmu
+</option>
+
+<option>
+Outro
+</option>
+
 </select>
 
 </div>
 
-<div id="sensiArea" style="display:none;">
 
-<div class="option-title">⚡ Escolha seu Pack de Sensi</div>
+<div
+id="sensiArea"
+style="display:none;"
+>
+
+<div class="option-title">
+⚡ Escolha seu Pack de Sensi
+</div>
 
 <div class="option-grid">
 
 <div class="option">
-<input type="radio" name="sensiPack" id="sensiLenta" value="Lenta">
-<label for="sensiLenta">🐢 Lenta</label>
+
+<input
+type="radio"
+name="sensiPack"
+id="sensiLenta"
+value="Lenta"
+>
+
+<label for="sensiLenta">
+🐢 Lenta
+</label>
+
 </div>
+
 
 <div class="option">
-<input type="radio" name="sensiPack" id="sensiMedia" value="Média">
-<label for="sensiMedia">⚡ Média</label>
+
+<input
+type="radio"
+name="sensiPack"
+id="sensiMedia"
+value="Média"
+>
+
+<label for="sensiMedia">
+⚡ Média
+</label>
+
 </div>
+
 
 <div class="option">
-<input type="radio" name="sensiPack" id="sensiRapida" value="Rápida">
-<label for="sensiRapida">🚀 Rápida</label>
-</div>
 
-</div>
-</div>
+<input
+type="radio"
+name="sensiPack"
+id="sensiRapida"
+value="Rápida"
+>
 
-<div class="extra" id="iosExtra" style="display:none;">
-<label>
-<input type="checkbox" id="iosExtraCheck" onchange="updateTotal()">
-Adicionar opção extra
-<strong>+ R$ 15,00</strong>
+<label for="sensiRapida">
+🚀 Rápida
 </label>
+
 </div>
 
-<div class="extra" id="androidExtra" style="display:none;">
-<label>
-<input type="checkbox" id="androidExtraCheck" onchange="updateTotal()">
-Adicionar opção extra
-<strong>+ R$ 10,00</strong>
-</label>
 </div>
+
+</div>
+
+
+<div
+class="extra"
+id="iosExtra"
+style="display:none;"
+>
+
+<label>
+
+<input
+type="checkbox"
+id="iosExtraCheck"
+onchange="updateTotal()"
+>
+
+Adicionar opção extra
+
+<strong>
++ R$ 15,00
+</strong>
+
+</label>
+
+</div>
+
+
+<div
+class="extra"
+id="androidExtra"
+style="display:none;"
+>
+
+<label>
+
+<input
+type="checkbox"
+id="androidExtraCheck"
+onchange="updateTotal()"
+>
+
+Adicionar opção extra
+
+<strong>
++ R$ 10,00
+</strong>
+
+</label>
+
+</div>
+
 
 <div class="email-area">
-<label>📧 E-mail para contato e entrega</label>
-<input class="email" id="email" type="email" placeholder="Digite seu melhor e-mail">
+
+<label>
+📧 E-mail para contato e entrega
+</label>
+
+<input
+class="email"
+id="email"
+type="email"
+placeholder="Digite seu melhor e-mail"
+>
+
 </div>
+
 
 <div class="total">
-<span>Total</span>
-<strong id="totalPrice">R$ 0,00</strong>
+
+<span>
+Total
+</span>
+
+<strong id="totalPrice">
+R$ 0,00
+</strong>
+
 </div>
 
-<button class="buy" id="productBuyButton" onclick="continuePurchase()">
+
+<button
+class="buy"
+id="productBuyButton"
+onclick="continuePurchase()"
+>
 CONTINUAR PARA COMPRA
 </button>
 
-<div class="product-notice" id="emulatorNotice" style="display:none;">
-🔥 <strong>PRODUTOS 100% ANTIBAN!</strong>
+
+<div
+class="product-notice"
+id="emulatorNotice"
+style="display:none;"
+>
+
+🔥 <strong>
+PRODUTOS 100% ANTIBAN!
+</strong>
+
 <br><br>
+
 🛡️ Mais segurança e proteção durante o uso.
+
 <br>
-📦 Painel + arquivos para emulador + Pack de Sensi à sua escolha.
+
+📦 Painel + arquivos para emulador
++ Pack de Sensi à sua escolha.
+
 <br><br>
+
 ⚡ Lenta • Média • Rápida
+
 </div>
 
-<div class="product-notice" id="androidNotice" style="display:none;">
-📦 O produto Android inclui o arquivo e o vídeo ensinando a instalação.
+
+<div
+class="product-notice"
+id="androidNotice"
+style="display:none;"
+>
+
+📦 O produto Android inclui o arquivo
+e o vídeo ensinando a instalação.
+
 <br><br>
+
 🎯 Sensibilidade e DPI testadas.
-</div>
 
-</div>
-
-<div class="footer">© 2026 SenXit</div>
-
-</div>
-
-
-<div id="diamondPage">
-
-<button class="back" onclick="goHomeFromDiamonds()">← Voltar para produtos</button>
-
-<div class="diamond-header">
-<div class="diamond-header-icon">💎</div>
-<h2>Diamantes Baratos</h2>
-<p>Escolha a quantidade de diamantes que deseja comprar.</p>
-</div>
-
-<div class="diamond-grid-page">
-
-<div class="diamond-choice" onclick="selectDiamond(this,65,1.50)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">65 Diamantes</div>
-<div class="diamond-choice-price">R$ 1,50</div>
-</div>
-
-<div class="diamond-choice" onclick="selectDiamond(this,100,3.99)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">100 Diamantes</div>
-<div class="diamond-choice-price">R$ 3,99</div>
-</div>
-
-<div class="diamond-choice" onclick="selectDiamond(this,310,12.99)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">310 Diamantes</div>
-<div class="diamond-choice-price">R$ 12,99</div>
-</div>
-
-<div class="diamond-choice" onclick="selectDiamond(this,520,18.99)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">520 Diamantes</div>
-<div class="diamond-choice-price">R$ 18,99</div>
-</div>
-
-<div class="diamond-choice" onclick="selectDiamond(this,1060,41.99)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">1.060 Diamantes</div>
-<div class="diamond-choice-price">R$ 41,99</div>
-</div>
-
-<div class="diamond-choice" onclick="selectDiamond(this,2180,85.99)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">2.180 Diamantes</div>
-<div class="diamond-choice-price">R$ 85,99</div>
-</div>
-
-<div class="diamond-choice" onclick="selectDiamond(this,5600,205.99)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">5.600 Diamantes</div>
-<div class="diamond-choice-price">R$ 205,99</div>
-</div>
-
-<div class="diamond-choice" onclick="selectDiamond(this,22400,819.99)">
-<div class="diamond-choice-icon">💎</div>
-<div class="diamond-choice-amount">22.400 Diamantes</div>
-<div class="diamond-choice-price">R$ 819,99</div>
 </div>
 
 </div>
 
-<div class="diamond-form">
-
-<div class="diamond-form-title">🎮 Dados da compra</div>
-
-<div class="diamond-input-area">
-<label>ID do Free Fire</label>
-<input class="diamond-input" id="diamondId" type="text" inputmode="numeric" placeholder="Digite o ID da sua conta">
-</div>
-
-<div class="diamond-input-area">
-<label>📧 E-mail para contato e entrega</label>
-<input class="diamond-input" id="diamondEmail" type="email" placeholder="Digite seu melhor e-mail">
-</div>
-
-<div class="diamond-summary" id="diamondSummary">
-
-<div>
-<span>Produto</span>
-<strong id="summaryDiamondAmount">—</strong>
-</div>
-
-<div>
-<span>ID Free Fire</span>
-<strong id="summaryDiamondId">—</strong>
-</div>
-
-<div>
-<span>E-mail</span>
-<strong id="summaryDiamondEmail">—</strong>
-</div>
-
-<div class="summary-total">
-<span>Total</span>
-<strong id="summaryDiamondPrice">R$ 0,00</strong>
-</div>
-
-</div>
-
-<button class="buy" id="diamondBuyButton" onclick="continueDiamondPurchase()">
-IR PARA PAGAMENTO
-</button>
-
-<div class="product-notice">
-💎 Escolha seu pacote de diamantes, informe corretamente o ID da sua conta e confira seus dados antes de continuar.
-</div>
-
-</div>
 
 <div class="footer">
 © 2026 SenXit
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     DIAMANTES
+===================================================== -->
+
+<div id="diamondPage">
+
+<button
+class="back"
+onclick="goHomeFromDiamonds()"
+>
+← Voltar para produtos
+</button>
+
+
+<div class="diamond-header">
+
+<div class="diamond-header-icon">
+💎
+</div>
+
+<h2>
+Diamantes Baratos
+</h2>
+
+<p>
+Escolha a quantidade de diamantes
+que deseja comprar.
+</p>
+
+</div>
+
+
+<div class="diamond-grid-page">
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,65,1.50)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+65 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 1,50
+</div>
+
+</div>
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,100,3.99)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+100 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 3,99
+</div>
+
+</div>
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,310,12.99)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+310 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 12,99
+</div>
+
+</div>
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,520,18.99)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+520 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 18,99
+</div>
+
+</div>
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,1060,41.99)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+1.060 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 41,99
+</div>
+
+</div>
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,2180,85.99)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+2.180 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 85,99
+</div>
+
+</div>
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,5600,205.99)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+5.600 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 205,99
+</div>
+
+</div>
+
+
+<div
+class="diamond-choice"
+onclick="selectDiamond(this,22400,819.99)"
+>
+
+<div class="diamond-choice-icon">
+💎
+</div>
+
+<div class="diamond-choice-amount">
+22.400 Diamantes
+</div>
+
+<div class="diamond-choice-price">
+R$ 819,99
+</div>
+
+</div>
+
+</div>
+
+
+<div class="diamond-form">
+
+<div class="diamond-form-title">
+🎮 Dados da compra
+</div>
+
+
+<div class="diamond-input-area">
+
+<label>
+ID do Free Fire
+</label>
+
+<input
+class="diamond-input"
+id="diamondId"
+type="text"
+inputmode="numeric"
+placeholder="Digite o ID da sua conta"
+>
+
+</div>
+
+
+<div class="diamond-input-area">
+
+<label>
+📧 E-mail para contato e entrega
+</label>
+
+<input
+class="diamond-input"
+id="diamondEmail"
+type="email"
+placeholder="Digite seu melhor e-mail"
+>
+
+</div>
+
+
+<div
+class="diamond-summary"
+id="diamondSummary"
+>
+
+<div>
+
+<span>
+Produto
+</span>
+
+<strong id="summaryDiamondAmount">
+—
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+ID Free Fire
+</span>
+
+<strong id="summaryDiamondId">
+—
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+E-mail
+</span>
+
+<strong id="summaryDiamondEmail">
+—
+</strong>
+
+</div>
+
+
+<div class="summary-total">
+
+<span>
+Total
+</span>
+
+<strong id="summaryDiamondPrice">
+R$ 0,00
+</strong>
+
+</div>
+
+</div>
+
+
+<button
+class="buy"
+id="diamondBuyButton"
+onclick="continueDiamondPurchase()"
+>
+IR PARA PAGAMENTO
+</button>
+
+
+<div class="product-notice">
+
+💎 Escolha seu pacote de diamantes,
+informe corretamente o ID da sua conta
+e confira seus dados antes de continuar.
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+© 2026 SenXit
+
 <br>
+
 Todos os direitos reservados.
+
 </div>
 
 </div>
@@ -848,652 +1791,1092 @@ Todos os direitos reservados.
 
 <script>
 
-const iosModels=[
-"iPhone 11",
-"iPhone 11 Pro",
-"iPhone 11 Pro Max",
-"iPhone 12",
-"iPhone 12 Pro",
-"iPhone 12 Pro Max",
-"iPhone 13",
-"iPhone 13 Pro",
-"iPhone 13 Pro Max",
-"iPhone 14",
-"iPhone 14 Plus",
-"iPhone 14 Pro",
-"iPhone 14 Pro Max",
-"iPhone 15",
-"iPhone 15 Plus",
-"iPhone 15 Pro",
-"iPhone 15 Pro Max",
-"iPhone 16",
-"iPhone 16 Plus",
-"iPhone 16 Pro",
-"iPhone 16 Pro Max",
-"Outro iPhone"
+/* =====================================================
+   MODELOS
+===================================================== */
+
+const iosModels = [
+
+    "iPhone 11",
+    "iPhone 11 Pro",
+    "iPhone 11 Pro Max",
+
+    "iPhone 12",
+    "iPhone 12 Pro",
+    "iPhone 12 Pro Max",
+
+    "iPhone 13",
+    "iPhone 13 Pro",
+    "iPhone 13 Pro Max",
+
+    "iPhone 14",
+    "iPhone 14 Plus",
+    "iPhone 14 Pro",
+    "iPhone 14 Pro Max",
+
+    "iPhone 15",
+    "iPhone 15 Plus",
+    "iPhone 15 Pro",
+    "iPhone 15 Pro Max",
+
+    "iPhone 16",
+    "iPhone 16 Plus",
+    "iPhone 16 Pro",
+    "iPhone 16 Pro Max",
+
+    "Outro iPhone"
+
 ];
 
-const androidModels=[
-"Samsung Galaxy A",
-"Samsung Galaxy S",
-"Samsung Galaxy M",
-"Samsung Galaxy Z",
-"Motorola Moto G",
-"Motorola Edge",
-"Xiaomi",
-"Redmi",
-"POCO",
-"Realme",
-"Infinix",
-"Tecno",
-"ASUS ROG",
-"ASUS Zenfone",
-"OnePlus",
-"Outro Android"
+
+const androidModels = [
+
+    "Samsung Galaxy A",
+    "Samsung Galaxy S",
+    "Samsung Galaxy M",
+    "Samsung Galaxy Z",
+
+    "Motorola Moto G",
+    "Motorola Edge",
+
+    "Xiaomi",
+    "Redmi",
+    "POCO",
+
+    "Realme",
+    "Infinix",
+    "Tecno",
+
+    "ASUS ROG",
+    "ASUS Zenfone",
+
+    "OnePlus",
+
+    "Outro Android"
+
 ];
 
-const products={
 
-iosSensi:{
-icon:"iOS",
-iconClass:"platform-ios",
-title:"Sensibilidade Profissional Mobile iOS",
-price:80,
-platform:"ios",
-description:"Sensibilidade profissional testada para dispositivos iOS, buscando uma configuração mais adequada ao seu modelo de celular.",
-features:[
-"Sensibilidade profissional",
-"Configuração para celular",
-"Escolha do modelo do aparelho",
-"Configuração personalizada"
-],
-model:true
-},
+/* =====================================================
+   PRODUTOS
+===================================================== */
 
-androidSensi:{
-icon:"Android",
-iconClass:"platform-android",
-title:"Sensibilidade Profissional Mobile Android",
-price:75,
-platform:"android",
-description:"Sensibilidade profissional para Android, com escolha do modelo do aparelho.",
-features:[
-"Sensibilidade profissional",
-"Configuração para celular",
-"Escolha do modelo do aparelho",
-"Configuração personalizada"
-],
-model:true
-},
+const products = {
 
-emulatorSensi:{
-icon:"PC",
-title:"Sensibilidade Profissional Emulador",
-price:97,
-description:"Configuração de sensibilidade profissional para quem joga através de emulador.",
-features:[
-"Sensibilidade profissional",
-"Escolha do emulador",
-"Configuração direcionada ao emulador",
-"Pack de configuração"
-],
-emulator:true
-},
+    iosSensi: {
 
-iosXit:{
-icon:"iOS",
-iconClass:"platform-ios",
-title:"Xit VIP Atualizado iOS",
-price:199.99,
-description:"Xit VIP atualizado para dispositivos iOS.",
-features:[
-"Versão atualizada",
-"Produto para iOS",
-"Suporte na entrega",
-"Configuração conforme o produto"
-],
-iosExtra:true
-},
+        icon: "iOS",
 
-androidXit:{
-icon:"Android",
-iconClass:"platform-android",
-title:"Xit VIP Atualizado Android",
-price:179.99,
-description:"Xit VIP atualizado para Android com arquivo e vídeo explicando como realizar a instalação.",
-features:[
-"Arquivo para Android",
-"Vídeo ensinando a instalação",
-"Sensibilidade testada",
-"DPI testada",
-"Suporte na entrega"
-],
-androidExtra:true,
-androidNotice:true
-},
+        iconClass: "platform-ios",
 
-emulatorXit:{
-icon:"PC",
-title:"Xit VIP Atualizado Emulador",
-price:179.99,
-description:"Produto para emulador com painel totalmente externo e os arquivos necessários.",
-features:[
-"Painel totalmente externo",
-"Arquivos para o emulador",
-"Escolha do Pack de Sensi",
-"Lenta, Média ou Rápida",
-"Suporte na entrega"
-],
-emulator:true,
-sensi:true,
-emulatorNotice:true
-}
+        title:
+        "Sensibilidade Profissional Mobile iOS",
+
+        price: 80,
+
+        platform: "ios",
+
+        description:
+        "Sensibilidade profissional testada para dispositivos iOS, buscando uma configuração mais adequada ao seu modelo de celular.",
+
+        features: [
+
+            "Sensibilidade profissional",
+
+            "Configuração para celular",
+
+            "Escolha do modelo do aparelho",
+
+            "Configuração personalizada"
+
+        ],
+
+        model: true
+
+    },
+
+
+    androidSensi: {
+
+        icon: "Android",
+
+        iconClass: "platform-android",
+
+        title:
+        "Sensibilidade Profissional Mobile Android",
+
+        price: 75,
+
+        platform: "android",
+
+        description:
+        "Sensibilidade profissional para Android, com escolha do modelo do aparelho.",
+
+        features: [
+
+            "Sensibilidade profissional",
+
+            "Configuração para celular",
+
+            "Escolha do modelo do aparelho",
+
+            "Configuração personalizada"
+
+        ],
+
+        model: true
+
+    },
+
+
+    emulatorSensi: {
+
+        icon: "PC",
+
+        title:
+        "Sensibilidade Profissional Emulador",
+
+        price: 97,
+
+        description:
+        "Configuração de sensibilidade profissional para quem joga através de emulador.",
+
+        features: [
+
+            "Sensibilidade profissional",
+
+            "Escolha do emulador",
+
+            "Configuração direcionada ao emulador",
+
+            "Pack de configuração"
+
+        ],
+
+        emulator: true
+
+    },
+
+
+    iosXit: {
+
+        icon: "iOS",
+
+        iconClass: "platform-ios",
+
+        title:
+        "Xit VIP Atualizado iOS",
+
+        price: 199.99,
+
+        description:
+        "Xit VIP atualizado para dispositivos iOS.",
+
+        features: [
+
+            "Versão atualizada",
+
+            "Produto para iOS",
+
+            "Suporte na entrega",
+
+            "Configuração conforme o produto"
+
+        ],
+
+        iosExtra: true
+
+    },
+
+
+    androidXit: {
+
+        icon: "Android",
+
+        iconClass: "platform-android",
+
+        title:
+        "Xit VIP Atualizado Android",
+
+        price: 179.99,
+
+        description:
+        "Xit VIP atualizado para Android com arquivo e vídeo explicando como realizar a instalação.",
+
+        features: [
+
+            "Arquivo para Android",
+
+            "Vídeo ensinando a instalação",
+
+            "Sensibilidade testada",
+
+            "DPI testada",
+
+            "Suporte na entrega"
+
+        ],
+
+        androidExtra: true,
+
+        androidNotice: true
+
+    },
+
+
+    emulatorXit: {
+
+        icon: "PC",
+
+        title:
+        "Xit VIP Atualizado Emulador",
+
+        price: 179.99,
+
+        description:
+        "Produto para emulador com painel totalmente externo e os arquivos necessários.",
+
+        features: [
+
+            "Painel totalmente externo",
+
+            "Arquivos para o emulador",
+
+            "Escolha do Pack de Sensi",
+
+            "Lenta, Média ou Rápida",
+
+            "Suporte na entrega"
+
+        ],
+
+        emulator: true,
+
+        sensi: true,
+
+        emulatorNotice: true
+
+    }
 
 };
 
-let currentProduct=null;
-let selectedDiamond=null;
 
-function loadModels(platform){
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
 
-const select=document.getElementById("modelSelect");
+let currentProduct = null;
 
-select.innerHTML="";
+let selectedDiamond = null;
 
-const first=document.createElement("option");
 
-first.value="";
-first.textContent="Selecione seu modelo";
+/* =====================================================
+   URL DA API
+===================================================== */
 
-select.appendChild(first);
+const API_URL =
+    "https://sensixit-alt-github-io.vercel.app/api/criar-pagamento";
 
-const models=platform==="ios"?iosModels:androidModels;
 
-models.forEach(model=>{
+/* =====================================================
+   CARREGAR MODELOS
+===================================================== */
 
-const option=document.createElement("option");
+function loadModels(platform) {
 
-option.value=model;
-option.textContent=model;
+    const select =
+        document.getElementById("modelSelect");
 
-select.appendChild(option);
+    select.innerHTML = "";
 
-});
+    const firstOption =
+        document.createElement("option");
 
-}
+    firstOption.value = "";
 
-function openProduct(id){
+    firstOption.textContent =
+        "Selecione seu modelo";
 
-currentProduct=id;
+    select.appendChild(firstOption);
 
-const product=products[id];
+    const models =
+        platform === "ios"
+        ? iosModels
+        : androidModels;
 
-document.getElementById("homePage").style.display="none";
-document.getElementById("diamondPage").style.display="none";
-document.getElementById("productPage").style.display="block";
+    models.forEach(function(model) {
 
-const detailIcon=document.getElementById("detailIcon");
+        const option =
+            document.createElement("option");
 
-detailIcon.textContent=product.icon;
+        option.value = model;
 
-detailIcon.className="detail-icon "+(product.iconClass||"");
+        option.textContent = model;
 
-document.getElementById("detailTitle").textContent=product.title;
+        select.appendChild(option);
 
-document.getElementById("detailDescription").textContent=product.description;
-
-const features=document.getElementById("detailFeatures");
-
-features.innerHTML="";
-
-product.features.forEach(item=>{
-
-const li=document.createElement("li");
-
-li.textContent=item;
-
-features.appendChild(li);
-
-});
-
-[
-"modelArea",
-"emulatorArea",
-"sensiArea",
-"iosExtra",
-"androidExtra",
-"emulatorNotice",
-"androidNotice"
-].forEach(id=>{
-
-document.getElementById(id).style.display="none";
-
-});
-
-if(product.model){
-
-document.getElementById("modelArea").style.display="block";
-
-loadModels(product.platform);
+    });
 
 }
 
-if(product.emulator){
 
-document.getElementById("emulatorArea").style.display="block";
+/* =====================================================
+   ABRIR PRODUTO
+===================================================== */
+
+function openProduct(id) {
+
+    currentProduct = id;
+
+    const product =
+        products[id];
+
+    document.getElementById("homePage")
+        .style.display = "none";
+
+    document.getElementById("diamondPage")
+        .style.display = "none";
+
+    document.getElementById("productPage")
+        .style.display = "block";
+
+    const detailIcon =
+        document.getElementById("detailIcon");
+
+    detailIcon.textContent =
+        product.icon;
+
+    detailIcon.className =
+        "detail-icon " +
+        (product.iconClass || "");
+
+    document.getElementById("detailTitle")
+        .textContent =
+        product.title;
+
+    document.getElementById("detailDescription")
+        .textContent =
+        product.description;
+
+    const features =
+        document.getElementById("detailFeatures");
+
+    features.innerHTML = "";
+
+    product.features.forEach(function(item) {
+
+        const li =
+            document.createElement("li");
+
+        li.textContent =
+            item;
+
+        features.appendChild(li);
+
+    });
+
+    const areas = [
+
+        "modelArea",
+
+        "emulatorArea",
+
+        "sensiArea",
+
+        "iosExtra",
+
+        "androidExtra",
+
+        "emulatorNotice",
+
+        "androidNotice"
+
+    ];
+
+    areas.forEach(function(id) {
+
+        document.getElementById(id)
+            .style.display = "none";
+
+    });
+
+    if (product.model) {
+
+        document.getElementById("modelArea")
+            .style.display = "block";
+
+        loadModels(product.platform);
+
+    }
+
+    if (product.emulator) {
+
+        document.getElementById("emulatorArea")
+            .style.display = "block";
+
+    }
+
+    if (product.sensi) {
+
+        document.getElementById("sensiArea")
+            .style.display = "block";
+
+    }
+
+    if (product.iosExtra) {
+
+        document.getElementById("iosExtra")
+            .style.display = "block";
+
+    }
+
+    if (product.androidExtra) {
+
+        document.getElementById("androidExtra")
+            .style.display = "block";
+
+    }
+
+    if (product.emulatorNotice) {
+
+        document.getElementById("emulatorNotice")
+            .style.display = "block";
+
+    }
+
+    if (product.androidNotice) {
+
+        document.getElementById("androidNotice")
+            .style.display = "block";
+
+    }
+
+    document.getElementById("email").value = "";
+
+    document.getElementById("modelSelect").value = "";
+
+    document.getElementById("emulatorSelect").value = "";
+
+    document.getElementById("iosExtraCheck").checked =
+        false;
+
+    document.getElementById("androidExtraCheck").checked =
+        false;
+
+    document.querySelectorAll(
+        'input[name="sensiPack"]'
+    ).forEach(function(input) {
+
+        input.checked = false;
+
+    });
+
+    updateTotal();
+
+    window.scrollTo(0,0);
 
 }
 
-if(product.sensi){
 
-document.getElementById("sensiArea").style.display="block";
+/* =====================================================
+   VOLTAR
+===================================================== */
 
-}
+function goHome() {
 
-if(product.iosExtra){
+    document.getElementById("productPage")
+        .style.display = "none";
 
-document.getElementById("iosExtra").style.display="block";
+    document.getElementById("diamondPage")
+        .style.display = "none";
 
-}
+    document.getElementById("homePage")
+        .style.display = "block";
 
-if(product.androidExtra){
-
-document.getElementById("androidExtra").style.display="block";
-
-}
-
-if(product.emulatorNotice){
-
-document.getElementById("emulatorNotice").style.display="block";
-
-}
-
-if(product.androidNotice){
-
-document.getElementById("androidNotice").style.display="block";
-
-}
-
-document.getElementById("email").value="";
-document.getElementById("modelSelect").value="";
-document.getElementById("emulatorSelect").value="";
-document.getElementById("iosExtraCheck").checked=false;
-document.getElementById("androidExtraCheck").checked=false;
-
-document.querySelectorAll('input[name="sensiPack"]').forEach(input=>{
-input.checked=false;
-});
-
-updateTotal();
-
-window.scrollTo(0,0);
-
-}
-
-function goHome(){
-
-document.getElementById("productPage").style.display="none";
-document.getElementById("diamondPage").style.display="none";
-document.getElementById("homePage").style.display="block";
-
-window.scrollTo(0,0);
-
-}
-
-function updateTotal(){
-
-if(!currentProduct)return;
-
-const product=products[currentProduct];
-
-let total=product.price;
-
-if(
-currentProduct==="iosXit" &&
-document.getElementById("iosExtraCheck").checked
-){
-
-total+=15;
-
-}
-
-if(
-currentProduct==="androidXit" &&
-document.getElementById("androidExtraCheck").checked
-){
-
-total+=10;
-
-}
-
-document.getElementById("totalPrice").textContent=
-total.toLocaleString("pt-BR",{
-style:"currency",
-currency:"BRL"
-});
+    window.scrollTo(0,0);
 
 }
 
 
-async function continuePurchase(){
+/* =====================================================
+   TOTAL
+===================================================== */
 
-const product=products[currentProduct];
+function updateTotal() {
 
-const email=document.getElementById("email").value.trim();
+    if (!currentProduct) {
+        return;
+    }
 
-if(!email||!email.includes("@")){
+    const product =
+        products[currentProduct];
 
-alert("Digite um e-mail válido para continuar.");
+    let total =
+        product.price;
 
-return;
+    if (
+        currentProduct === "iosXit" &&
+        document.getElementById(
+            "iosExtraCheck"
+        ).checked
+    ) {
 
-}
+        total += 15;
 
-if(
-product.model &&
-!document.getElementById("modelSelect").value
-){
+    }
 
-alert("Escolha o modelo do seu celular.");
+    if (
+        currentProduct === "androidXit" &&
+        document.getElementById(
+            "androidExtraCheck"
+        ).checked
+    ) {
 
-return;
+        total += 10;
 
-}
+    }
 
-if(
-product.emulator &&
-!document.getElementById("emulatorSelect").value
-){
-
-alert("Escolha o seu emulador.");
-
-return;
-
-}
-
-if(
-product.sensi &&
-!document.querySelector('input[name="sensiPack"]:checked')
-){
-
-alert("Escolha o Pack de Sensi.");
-
-return;
-
-}
-
-let total=product.price;
-
-if(
-currentProduct==="iosXit" &&
-document.getElementById("iosExtraCheck").checked
-){
-
-total+=15;
+    document.getElementById("totalPrice")
+        .textContent =
+        total.toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
 
 }
 
-if(
-currentProduct==="androidXit" &&
-document.getElementById("androidExtraCheck").checked
-){
 
-total+=10;
+/* =====================================================
+   PAGAMENTO DOS PRODUTOS
+===================================================== */
+
+async function continuePurchase() {
+
+    const product =
+        products[currentProduct];
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+    if (
+        !email ||
+        !email.includes("@")
+    ) {
+
+        alert(
+            "Digite um e-mail válido para continuar."
+        );
+
+        return;
+
+    }
+
+    if (
+        product.model &&
+        !document.getElementById(
+            "modelSelect"
+        ).value
+    ) {
+
+        alert(
+            "Escolha o modelo do seu celular."
+        );
+
+        return;
+
+    }
+
+    if (
+        product.emulator &&
+        !document.getElementById(
+            "emulatorSelect"
+        ).value
+    ) {
+
+        alert(
+            "Escolha o seu emulador."
+        );
+
+        return;
+
+    }
+
+    if (
+        product.sensi &&
+        !document.querySelector(
+            'input[name="sensiPack"]:checked'
+        )
+    ) {
+
+        alert(
+            "Escolha o Pack de Sensi."
+        );
+
+        return;
+
+    }
+
+    let total =
+        product.price;
+
+    if (
+        currentProduct === "iosXit" &&
+        document.getElementById(
+            "iosExtraCheck"
+        ).checked
+    ) {
+
+        total += 15;
+
+    }
+
+    if (
+        currentProduct === "androidXit" &&
+        document.getElementById(
+            "androidExtraCheck"
+        ).checked
+    ) {
+
+        total += 10;
+
+    }
+
+    const button =
+        document.getElementById(
+            "productBuyButton"
+        );
+
+    button.disabled = true;
+
+    button.textContent =
+        "CRIANDO PAGAMENTO...";
+
+    try {
+
+        const resposta =
+            await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                    JSON.stringify({
+
+                        titulo:
+                            product.title,
+
+                        preco:
+                            total,
+
+                        email:
+                            email
+
+                    })
+
+                }
+            );
+
+        const dados =
+            await resposta.json();
+
+        if (
+            !resposta.ok ||
+            !dados.link
+        ) {
+
+            throw new Error(
+                dados.error ||
+                "Não foi possível criar o pagamento."
+            );
+
+        }
+
+        window.location.href =
+            dados.link;
+
+    } catch (erro) {
+
+        console.error(
+            "Erro no pagamento:",
+            erro
+        );
+
+        alert(
+            "Não foi possível iniciar o pagamento. Tente novamente."
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+            "CONTINUAR PARA COMPRA";
+
+    }
 
 }
 
-const button=document.getElementById("productBuyButton");
 
-button.disabled=true;
-button.textContent="CRIANDO PAGAMENTO...";
+/* =====================================================
+   ABRIR DIAMANTES
+===================================================== */
 
-try{
+function openDiamonds() {
 
-const resposta=await fetch(
-"/api/criar-pagamento",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
+    document.getElementById("homePage")
+        .style.display = "none";
 
-titulo:product.title,
+    document.getElementById("productPage")
+        .style.display = "none";
 
-preco:total,
+    document.getElementById("diamondPage")
+        .style.display = "block";
 
-email:email
+    selectedDiamond = null;
 
-})
+    document.getElementById("diamondId")
+        .value = "";
+
+    document.getElementById("diamondEmail")
+        .value = "";
+
+    document.getElementById("diamondSummary")
+        .style.display = "none";
+
+    document.querySelectorAll(
+        ".diamond-choice"
+    ).forEach(function(item) {
+
+        item.classList.remove(
+            "selected"
+        );
+
+    });
+
+    window.scrollTo(0,0);
+
 }
+
+
+/* =====================================================
+   ESCOLHER DIAMANTES
+===================================================== */
+
+function selectDiamond(
+    element,
+    amount,
+    price
+) {
+
+    document.querySelectorAll(
+        ".diamond-choice"
+    ).forEach(function(item) {
+
+        item.classList.remove(
+            "selected"
+        );
+
+    });
+
+    element.classList.add(
+        "selected"
+    );
+
+    selectedDiamond = {
+
+        amount: amount,
+
+        price: price
+
+    };
+
+    updateDiamondSummary();
+
+}
+
+
+/* =====================================================
+   RESUMO DIAMANTES
+===================================================== */
+
+function updateDiamondSummary() {
+
+    if (!selectedDiamond) {
+        return;
+    }
+
+    const id =
+        document.getElementById(
+            "diamondId"
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            "diamondEmail"
+        ).value.trim();
+
+    document.getElementById(
+        "summaryDiamondAmount"
+    ).textContent =
+
+        selectedDiamond.amount
+            .toLocaleString("pt-BR")
+        +
+        " Diamantes";
+
+    document.getElementById(
+        "summaryDiamondPrice"
+    ).textContent =
+
+        selectedDiamond.price
+            .toLocaleString(
+                "pt-BR",
+                {
+                    style: "currency",
+                    currency: "BRL"
+                }
+            );
+
+    document.getElementById(
+        "summaryDiamondId"
+    ).textContent =
+
+        id ||
+        "Não informado";
+
+    document.getElementById(
+        "summaryDiamondEmail"
+    ).textContent =
+
+        email ||
+        "Não informado";
+
+    document.getElementById(
+        "diamondSummary"
+    ).style.display = "block";
+
+}
+
+
+/* =====================================================
+   ATUALIZAR RESUMO
+===================================================== */
+
+document.addEventListener(
+    "input",
+    function(event) {
+
+        if (
+
+            event.target.id ===
+            "diamondId"
+
+            ||
+
+            event.target.id ===
+            "diamondEmail"
+
+        ) {
+
+            updateDiamondSummary();
+
+        }
+
+    }
 );
 
-const dados=await resposta.json();
 
-if(!resposta.ok||!dados.link){
+/* =====================================================
+   PAGAMENTO DOS DIAMANTES
+===================================================== */
 
-throw new Error(
-dados.error||
-"Não foi possível criar o pagamento."
-);
+async function continueDiamondPurchase() {
 
-}
+    if (!selectedDiamond) {
 
-window.location.href=dados.link;
+        alert(
+            "Escolha primeiro a quantidade de diamantes."
+        );
 
-}catch(erro){
+        return;
 
-console.error(erro);
+    }
 
-alert(
-"Não foi possível iniciar o pagamento. Tente novamente."
-);
+    const id =
+        document.getElementById(
+            "diamondId"
+        ).value.trim();
 
-button.disabled=false;
-button.textContent="CONTINUAR PARA COMPRA";
+    const email =
+        document.getElementById(
+            "diamondEmail"
+        ).value.trim();
 
-}
+    if (!id) {
 
-}
+        alert(
+            "Digite o ID do Free Fire."
+        );
 
+        return;
 
-function openDiamonds(){
+    }
 
-document.getElementById("homePage").style.display="none";
-document.getElementById("productPage").style.display="none";
-document.getElementById("diamondPage").style.display="block";
+    if (!/^[0-9]+$/.test(id)) {
 
-selectedDiamond=null;
+        alert(
+            "Digite apenas números no ID do Free Fire."
+        );
 
-document.getElementById("diamondId").value="";
-document.getElementById("diamondEmail").value="";
-document.getElementById("diamondSummary").style.display="none";
+        return;
 
-document.querySelectorAll(".diamond-choice").forEach(item=>{
-item.classList.remove("selected");
-});
+    }
 
-window.scrollTo(0,0);
+    if (
+        !email ||
+        !email.includes("@")
+    ) {
 
-}
+        alert(
+            "Digite um e-mail válido."
+        );
 
+        return;
 
-function selectDiamond(element,amount,price){
+    }
 
-document.querySelectorAll(".diamond-choice").forEach(item=>{
-item.classList.remove("selected");
-});
 
-element.classList.add("selected");
+    /*
+    O ID fica somente no navegador.
+    Ele NÃO é enviado para a API.
+    */
 
-selectedDiamond={
-amount:amount,
-price:price
-};
+    const order = {
 
-updateDiamondSummary();
+        diamonds:
+            selectedDiamond.amount,
 
-}
+        price:
+            selectedDiamond.price,
 
+        freeFireId:
+            id,
 
-function updateDiamondSummary(){
+        email:
+            email
 
-if(!selectedDiamond)return;
+    };
 
-const id=document.getElementById("diamondId").value.trim();
+    localStorage.setItem(
+        "senxitDiamondOrder",
+        JSON.stringify(order)
+    );
 
-const email=document.getElementById("diamondEmail").value.trim();
 
-document.getElementById("summaryDiamondAmount").textContent=
-selectedDiamond.amount.toLocaleString("pt-BR")+" Diamantes";
+    const button =
+        document.getElementById(
+            "diamondBuyButton"
+        );
 
-document.getElementById("summaryDiamondPrice").textContent=
-selectedDiamond.price.toLocaleString(
-"pt-BR",
-{
-style:"currency",
-currency:"BRL"
-}
-);
+    button.disabled = true;
 
-document.getElementById("summaryDiamondId").textContent=
-id||"Não informado";
+    button.textContent =
+        "CRIANDO PAGAMENTO...";
 
-document.getElementById("summaryDiamondEmail").textContent=
-email||"Não informado";
 
-document.getElementById("diamondSummary").style.display="block";
+    try {
 
-}
+        const resposta =
+            await fetch(
+                API_URL,
+                {
 
+                    method: "POST",
 
-document.addEventListener("input",event=>{
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-if(
-event.target.id==="diamondId"||
-event.target.id==="diamondEmail"
-){
+                    body:
+                    JSON.stringify({
 
-updateDiamondSummary();
+                        titulo:
+                            selectedDiamond.amount
+                                .toLocaleString("pt-BR")
+                            +
+                            " Diamantes",
 
-}
+                        preco:
+                            selectedDiamond.price,
 
-});
+                        email:
+                            email
 
+                    })
 
-async function continueDiamondPurchase(){
+                }
+            );
 
-if(!selectedDiamond){
 
-alert("Escolha primeiro a quantidade de diamantes.");
+        const dados =
+            await resposta.json();
 
-return;
 
-}
+        if (
+            !resposta.ok ||
+            !dados.link
+        ) {
 
-const id=document.getElementById("diamondId").value.trim();
+            throw new Error(
+                dados.error ||
+                "Não foi possível criar o pagamento."
+            );
 
-const email=document.getElementById("diamondEmail").value.trim();
+        }
 
-if(!id){
 
-alert("Digite o ID do Free Fire.");
+        window.location.href =
+            dados.link;
 
-return;
 
-}
+    } catch (erro) {
 
-if(!/^[0-9]+$/.test(id)){
+        console.error(
+            "Erro no pagamento:",
+            erro
+        );
 
-alert("Digite apenas números no ID do Free Fire.");
+        alert(
+            "Não foi possível iniciar o pagamento. Tente novamente."
+        );
 
-return;
+        button.disabled = false;
 
-}
+        button.textContent =
+            "IR PARA PAGAMENTO";
 
-if(!email||!email.includes("@")){
-
-alert("Digite um e-mail válido.");
-
-return;
-
-}
-
-localStorage.setItem(
-"senxitDiamondOrder",
-JSON.stringify({
-
-diamonds:selectedDiamond.amount,
-
-price:selectedDiamond.price,
-
-freeFireId:id,
-
-email:email
-
-})
-);
-
-const button=document.getElementById("diamondBuyButton");
-
-button.disabled=true;
-button.textContent="CRIANDO PAGAMENTO...";
-
-try{
-
-const resposta=await fetch(
-"/api/criar-pagamento",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-
-titulo:
-selectedDiamond.amount.toLocaleString("pt-BR")+
-" Diamantes",
-
-preco:selectedDiamond.price,
-
-email:email
-
-})
-}
-);
-
-const dados=await resposta.json();
-
-if(!resposta.ok||!dados.link){
-
-throw new Error(
-dados.error||
-"Não foi possível criar o pagamento."
-);
-
-}
-
-window.location.href=dados.link;
-
-}catch(erro){
-
-console.error(erro);
-
-alert(
-"Não foi possível iniciar o pagamento. Tente novamente."
-);
-
-button.disabled=false;
-button.textContent="IR PARA PAGAMENTO";
-
-}
+    }
 
 }
 
 
-function goHomeFromDiamonds(){
+/* =====================================================
+   VOLTAR
+===================================================== */
 
-goHome();
+function goHomeFromDiamonds() {
+
+    goHome();
 
 }
 
